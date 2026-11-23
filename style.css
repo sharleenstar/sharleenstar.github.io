@@ -689,14 +689,6 @@ body[data-mode="dark"] .scoreboard-strip{background:#182636; border-color:#39587
 body[data-mode="dark"] .scoreboard-teams{color:#e1f1fc}
 body[data-mode="dark"] .scoreboard-teams strong{background:#3d76ab; color:#fff}
 
-body[data-mode="dark"] .mobile-menu-title{color:#f0dce0}
-body[data-mode="dark"] .mobile-menu-toggle{
-  background:#242e3b; color:#e2ebf2; border-color:#374759;
-}
-body[data-mode="dark"] .mobile-menu-toggle:hover{background:#2e3b4c}
-body[data-mode="dark"] .side-nav{border-top-color:#324152}
-
-
 body[data-mode="dark"] .mobile-menu-toggle{
   background:rgba(30, 38, 49, 0.72);
   color:#f0c4cc;
