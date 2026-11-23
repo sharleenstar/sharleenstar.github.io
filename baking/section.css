@@ -1,0 +1,52 @@
+body[data-theme="baking"]{
+  --section-paper:#fbf3e6;
+  --section-border:#dec3a1;
+  --section-outline:#efe0ca;
+  --section-accent:#7c4d2b;
+  --section-accent-soft:#c68b59;
+  --section-badge-bg:#7c4d2b;
+  --section-badge-fg:#fffaf2;
+  --section-pattern:radial-gradient(rgba(198, 139, 89, 0.09) 1.2px, transparent 1.2px);
+  --section-pattern-size:20px 20px;
+}
+
+.bakery-header{
+  background:#fbf3e6; border:1px solid #dec3a1; border-radius:4px;
+  outline:1px dashed #c68b59; outline-offset:-6px;
+  padding:20px 22px 10px; margin-bottom:26px; text-align:center;
+}
+.bakery-stamp{
+  display:inline-block; font-family:var(--serif); font-size:.82rem; font-weight:700;
+  letter-spacing:.1em; color:#7c4d2b; background:#f3e3cb;
+  padding:3px 12px; border:1px solid #dec3a1; border-radius:20px; margin-bottom:8px;
+}
+.bakery-header .section-sub{color:#9a6740; margin-bottom:10px}
+.recipe-grid{display:flex; flex-direction:column; gap:24px}
+.recipe-card{border-top:4px solid #c68b59}
+.recipe-top{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px}
+.recipe-badges{display:flex; flex-wrap:wrap; gap:8px}
+.recipe-badges span{
+  font-family:var(--serif); font-size:.88rem; font-weight:600; color:#7c4d2b;
+  background:#f4e6d2; border:1px solid #dec3a1; padding:2px 10px; border-radius:14px;
+}
+.recipe-intro{font-style:italic; color:#5e4636; margin-top:0}
+.recipe-cols{display:grid; grid-template-columns:1fr 1.35fr; gap:22px; margin-top:14px; padding-top:14px; border-top:1px dashed #dec3a1}
+.recipe-ingredients h4, .recipe-method h4{font-size:1.15rem; color:#7c4d2b; text-transform:uppercase; letter-spacing:.05em}
+.recipe-ingredients ul, .recipe-method ol{margin:6px 0 0; padding-left:20px; font-size:.95rem}
+.recipe-ingredients li, .recipe-method li{margin-bottom:5px}
+
+@media (max-width: 860px){
+  .recipe-cols{grid-template-columns:1fr}
+}
+
+body[data-mode="dark"][data-theme="baking"]{
+  --section-paper:#29221c;
+  --section-border:#6e5239;
+  --section-outline:#453425;
+  --section-accent:#edd0b0;
+  --section-accent-soft:#cf9766;
+  --section-badge-bg:#633d22;
+  --section-badge-fg:#fdf3e7;
+}
+
+

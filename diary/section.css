@@ -1,0 +1,24 @@
+body[data-theme="diary"]{
+  --section-paper:#fffdf9;
+  --section-border:#d5dfe8;
+  --section-outline:#dce6f0;
+  --section-accent:#273e57;
+  --section-accent-soft:#c98a92;
+  --section-badge-bg:#273e57;
+  --section-badge-fg:#fffdf9;
+}
+
+/* Diary entry cards inherit shared editorial card styling */
+#diary .entry h3 a {
+  color: inherit;
+}
+
+body[data-mode="dark"][data-theme="diary"]{
+  --section-paper:#222b37;
+  --section-border:#3b4d63;
+  --section-outline:#2e3d4f;
+  --section-accent:#e8c4c9;
+  --section-accent-soft:#d99ca5;
+  --section-badge-bg:#384c63;
+  --section-badge-fg:#f7ecee;
+}

@@ -6,7 +6,8 @@
   <title>Notes from Star</title>
   <!-- Adaptive Light/Dark Mode SVG Star Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bfill:%235c2432%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23c98a92%7D%7D%3C/style%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
+  <link id="section-theme-css" rel="stylesheet" href="">
 </head>
 
 <body data-theme="home" data-mode="light">
@@ -69,12 +70,12 @@
             <div class="books-row">
               <div class="spine-book sb-1" aria-hidden="true">
                 <span class="foil-band">✦</span>
-                <span class="spine-title">Binding 13</span>
+                <span class="spine-title">BOOK ONE</span>
                 <span class="foil-band">✦</span>
               </div>
               <div class="spine-book sb-2" aria-hidden="true">
                 <span class="foil-band">✦</span>
-                <span class="spine-title">The Hunger Games</span>
+                <span class="spine-title">BOOK TWO</span>
                 <span class="foil-band">✦</span>
               </div>
 
@@ -83,7 +84,7 @@
                 <div class="center-book-3d">
                   <div class="book-spine-face">
                     <span class="foil-band">✦</span>
-                    <span class="spine-title">Currently Reading</span>
+                    <span class="spine-title">★ READ</span>
                     <span class="foil-band">✦</span>
                   </div>
                   <div class="book-cover-face">
@@ -97,12 +98,12 @@
 
               <div class="spine-book sb-3" aria-hidden="true">
                 <span class="foil-band">✦</span>
-                <span class="spine-title">Dark Age</span>
+                <span class="spine-title">BOOK FOUR</span>
                 <span class="foil-band">✦</span>
               </div>
               <div class="spine-book sb-4" aria-hidden="true">
                 <span class="foil-band">✦</span>
-                <span class="spine-title">The Deal</span>
+                <span class="spine-title">BOOK FIVE</span>
                 <span class="foil-band">✦</span>
               </div>
             </div>
@@ -224,219 +225,32 @@
 
     <!-- ==================== DIARY ==================== -->
     <section id="diary">
-      <h2 class="section-title">Dear Diary</h2>
-      <p class="section-sub">newest entries first</p>
-
-      <article class="card entry">
-        <div class="meta"><span>November 2026</span><span>#01</span></div>
-        <h3><a href="diary/first-post.html" style="text-decoration:none;">Starting my little corner of the internet</a></h3>
-        <p>Notes on finishing university at 22, building this site from scratch, and wanting a cozy place to log books, bakes, hockey games, and everyday life without algorithms.</p>
-        <a href="diary/first-post.html">Read full entry →</a>
-      </article>
+      <!-- Loaded dynamically from diary/section.html -->
     </section>
 
     <!-- ==================== BOOKSHELF (OLD PAPER & ROMANCE BURGUNDY/PINK) ==================== -->
     <section id="books">
-      <div class="section-banner books-banner">
-        <span class="banner-ornament">❦ ❧</span>
-        <h2 class="section-title">The Bookshelf</h2>
-        <p class="section-sub">aged paper, dog-eared pages &amp; star ratings</p>
-      </div>
-
-      <div id="current-read-card" class="card book-card current-read-spotlight">
-        <div class="book-card-top">
-          <span class="tag">Current Read ★</span>
-          <span class="ex-libris">Open Book • Winter Edition</span>
-        </div>
-        <h3>Current Read Title Here</h3>
-        <div class="stars">★★★★<span class="off">★</span></div>
-        <p><strong>Author:</strong> Author Name &nbsp;•&nbsp; <strong>Progress:</strong> Chapter / Page #</p>
-        <p>Add a short note on why you picked this up, your current thoughts, and a favourite line so far.</p>
-      </div>
-
-      <div class="grid">
-        <div class="card book-card">
-          <div class="book-card-top">
-            <span class="tag">Reading Now</span>
-            <span class="ex-libris">Ex Libris ★ Star</span>
-          </div>
-          <h3>Book Title Here</h3>
-          <div class="stars">★★★★<span class="off">★</span></div>
-          <p>Write a few cozy thoughts about what you're reading right now, favorite quotes, or tea pairings.</p>
-        </div>
-
-        <div class="card book-card">
-          <div class="book-card-top">
-            <span class="tag">Finished</span>
-            <span class="ex-libris">Chapter Notes</span>
-          </div>
-          <h3>Cozy Winter Romance / Fantasy</h3>
-          <div class="stars">★★★★★</div>
-          <p>Another spot for your latest five-star read and mini review.</p>
-        </div>
-      </div>
+      <!-- Loaded dynamically from books/section.html -->
     </section>
 
     <!-- ==================== MOVIES & TV (VINTAGE CINEMA THEATRE) ==================== -->
     <section id="screen">
-      <div class="cinema-marquee">
-        <div class="marquee-lights">★ • ★ • ★ • NOW SHOWING • ★ • ★ • ★</div>
-        <h2 class="section-title">The Starlight Cinema</h2>
-        <p class="section-sub">matinees, late-night rewatches &amp; comfort series</p>
-      </div>
-
-      <div class="grid">
-        <div class="card cinema-card">
-          <div class="ticket-header">
-            <span class="tag">FEATURE PRESENTATION</span>
-            <span class="seat-no">ROW G • SEAT 12</span>
-          </div>
-          <h3 style="margin-top:12px;">Show or Movie Title</h3>
-          <div class="stars">★★★★★</div>
-          <p>Your mini review, cinematography notes, and favorite comfort scenes.</p>
-        </div>
-
-        <div id="latest-screen-review" class="card cinema-card">
-          <div class="ticket-header">
-            <span class="tag">LATEST REVIEW</span>
-            <span class="seat-no">ROW G • SEAT 12</span>
-          </div>
-          <h3 style="margin-top:12px;">Latest Show or Movie Title</h3>
-          <div class="stars">★★★★★</div>
-          <p>Your latest mini review, favourite scene, and overall rating.</p>
-        </div>
-
-        <div class="card cinema-card">
-          <div class="ticket-header">
-            <span class="tag">WINTER REWATCH</span>
-            <span class="seat-no">ADMIT ONE</span>
-          </div>
-          <h3 style="margin-top:12px;">Classic Comfort Film</h3>
-          <div class="stars">★★★★<span class="off">★</span></div>
-          <p>Popcorn, dim lights, and cozy soundtrack appreciation.</p>
-        </div>
-      </div>
+      <!-- Loaded dynamically from screen/section.html -->
     </section>
 
     <!-- ==================== BAKING & RECIPES (PATISSERIE & WARM BAKERY) ==================== -->
     <section id="baking">
-      <div class="bakery-header">
-        <span class="bakery-stamp">🥐 FRESH FROM THE OVEN • EST. STAR'S KITCHEN 🥖</span>
-        <h2 class="section-title">Star's Little Patisserie</h2>
-        <p class="section-sub">warm bread, flaky pastries &amp; tried-and-true recipes</p>
-      </div>
-
-      <div class="recipe-grid">
-        <article class="card recipe-card">
-          <div class="recipe-top">
-            <span class="tag">Pastries</span>
-            <div class="recipe-badges">
-              <span>⏱ Prep: 25m</span>
-              <span>🔥 Bake: 18m @ 190°C</span>
-            </div>
-          </div>
-          <h3>Brown Butter Cinnamon Brioche Rolls</h3>
-          <p class="recipe-intro">Soft, pillowy morning rolls swirled with caramelized brown butter, dark muscovado sugar, and Ceylon cinnamon.</p>
-
-          <div class="recipe-cols">
-            <div class="recipe-ingredients">
-              <h4>Ingredients</h4>
-              <ul>
-                <li>350g strong bread flour</li>
-                <li>7g instant dry yeast &amp; 40g caster sugar</li>
-                <li>160ml warm whole milk + 1 large egg</li>
-                <li>65g browned unsalted butter, softened</li>
-                <li>Cinnamon-sugar filling &amp; vanilla bean glaze</li>
-              </ul>
-            </div>
-            <div class="recipe-method">
-              <h4>Method</h4>
-              <ol>
-                <li>Whisk warm milk, yeast, and sugar; knead with flour, egg, and cooled brown butter until glossy.</li>
-                <li>Proof 1 hour until doubled, roll into a rectangle, spread cinnamon butter, and slice into 9 rolls.</li>
-                <li>Bake at 190°C for 18–20 mins until golden and brush with vanilla glaze while warm.</li>
-              </ol>
-            </div>
-          </div>
-        </article>
-
-        <article class="card recipe-card">
-          <div class="recipe-top">
-            <span class="tag">Artisan Bread</span>
-            <div class="recipe-badges">
-              <span>⏱ Prep: 20m</span>
-              <span>🔥 Bake: 35m @ 220°C</span>
-            </div>
-          </div>
-          <h3>Rosemary &amp; Sea Salt Honey Focaccia</h3>
-          <p class="recipe-intro">Crisp golden crust with an airy crumb—perfect alongside winter soup or warm out of the tin.</p>
-
-          <div class="recipe-cols">
-            <div class="recipe-ingredients">
-              <h4>Ingredients</h4>
-              <ul>
-                <li>400g bread flour &amp; 320ml lukewarm water</li>
-                <li>7g yeast + 1 tbsp wildflower honey</li>
-                <li>3 tbsp extra virgin olive oil</li>
-                <li>Fresh rosemary sprigs &amp; flaky sea salt</li>
-              </ul>
-            </div>
-            <div class="recipe-method">
-              <h4>Method</h4>
-              <ol>
-                <li>Mix water, honey, and yeast; stir in flour, salt, and olive oil into a shaggy dough.</li>
-                <li>Perform 3 sets of stretch-and-folds every 25 minutes, then proof in an oiled pan.</li>
-                <li>Dimple generously, top with rosemary and sea salt, and bake at 220°C until deeply golden.</li>
-              </ol>
-            </div>
-          </div>
-        </article>
-      </div>
+      <!-- Loaded dynamically from baking/section.html -->
     </section>
 
     <!-- ==================== ENGINEERING (BLUEPRINT & SLEEK FUTURISTIC LAB) ==================== -->
     <section id="engineering">
-      <div class="eng-hud-header">
-        <div class="hud-status"><span>SYS.STATUS // FINAL_YEAR_BENG</span><span>GRID: 18PX // REV 2026.11</span></div>
-        <h2 class="section-title">Engineering Lab &amp; Blueprints</h2>
-        <p class="section-sub">uni life, systems design, projects &amp; technical notes</p>
-      </div>
-
-      <div class="card eng-card">
-        <div class="eng-card-meta">
-          <span class="tag">LOG // 01 • FINAL YEAR</span>
-          <span class="eng-coords">[42.0°N // THESIS_MODE]</span>
-        </div>
-        <h3 style="margin-top:12px;">Life as a 22-year-old girl in engineering</h3>
-        <p>Things I've learned surviving labs, CAD late nights, group projects, and getting ready to graduate.</p>
-        <div class="eng-specs">
-          <span><strong>Focus:</strong> Systems &amp; Prototyping</span>
-          <span><strong>Stack:</strong> MATLAB • Python • CAD</span>
-          <span><strong>Fuel:</strong> Iced Vanilla Oat Latte</span>
-        </div>
-      </div>
+      <!-- Loaded dynamically from engineering/section.html -->
     </section>
 
     <!-- ==================== ICE HOCKEY (RINK FROST & SCOREBOARD) ==================== -->
     <section id="hockey">
-      <div class="rink-banner">
-        <div class="rink-faceoff">🏒 ⋆ ❄ FACE-OFF CENTER ICE ❄ ⋆ 🏒</div>
-        <h2 class="section-title">Ice Hockey Rinkside</h2>
-        <p class="section-sub">games watched, overtime thrillers &amp; team notes</p>
-      </div>
-
-      <div class="card hockey-card">
-        <div class="scoreboard-strip">
-          <span class="tag">FINAL / OT 🏒</span>
-          <div class="scoreboard-teams">
-            <span>HOME <strong>4</strong></span>
-            <span class="vs-pill">VS</span>
-            <span>AWAY <strong>2</strong></span>
-          </div>
-          <span class="rink-clock">P3 • 00:00 ❄</span>
-        </div>
-        <p style="margin-top:14px;">Add your favorite plays, top-shelf goals, goalie glove saves, and team notes here.</p>
-      </div>
+      <!-- Loaded dynamically from hockey/section.html -->
     </section>
 
     <footer>
@@ -577,17 +391,36 @@
 </script>
 
 <script>
-  function showTab(sectionId, btn) {
-    document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
-    document.getElementById(sectionId).classList.add('active');
-    document.querySelectorAll('.side-nav button').forEach(b => b.setAttribute('aria-selected', 'false'));
-    if (btn) btn.setAttribute('aria-selected', 'true');
-    document.body.setAttribute('data-theme', sectionId);
+  const SECTION_FOLDERS = ['diary', 'books', 'screen', 'baking', 'engineering', 'hockey'];
+  const loadedSectionHtml = new Set();
+
+  function syncSectionStylesheet(sectionId) {
+    const link = document.getElementById('section-theme-css');
+    if (!link) return;
+    if (SECTION_FOLDERS.includes(sectionId)) {
+      link.href = `${sectionId}/section.css?v=10`;
+    } else {
+      link.removeAttribute('href');
+    }
   }
-  function showTabByName(sectionId, targetId) {
-    const btns = Array.from(document.querySelectorAll('.side-nav button'));
-    const match = btns.find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + sectionId + "'"));
-    showTab(sectionId, match);
+
+  async function ensureSectionContent(sectionId, targetId) {
+    if (!SECTION_FOLDERS.includes(sectionId)) return;
+    const sectionEl = document.getElementById(sectionId);
+    if (!sectionEl) return;
+
+    if (!loadedSectionHtml.has(sectionId)) {
+      try {
+        const res = await fetch(`${sectionId}/section.html?v=10`);
+        if (res.ok) {
+          sectionEl.innerHTML = await res.text();
+          loadedSectionHtml.add(sectionId);
+        }
+      } catch (err) {
+        // Fallback if opened via file:// protocol without a local/static HTTP server
+      }
+    }
+
     if (targetId) {
       requestAnimationFrame(() => {
         const el = document.getElementById(targetId);
@@ -595,6 +428,29 @@
       });
     }
   }
+
+  function showTab(sectionId, btn) {
+    document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+    const targetSection = document.getElementById(sectionId);
+    if (targetSection) targetSection.classList.add('active');
+    document.querySelectorAll('.side-nav button').forEach(b => b.setAttribute('aria-selected', 'false'));
+    if (btn) btn.setAttribute('aria-selected', 'true');
+    document.body.setAttribute('data-theme', sectionId);
+    syncSectionStylesheet(sectionId);
+    ensureSectionContent(sectionId);
+  }
+
+  function showTabByName(sectionId, targetId) {
+    const btns = Array.from(document.querySelectorAll('.side-nav button'));
+    const match = btns.find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + sectionId + "'"));
+    showTab(sectionId, match);
+    ensureSectionContent(sectionId, targetId);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const currentTheme = document.body.getAttribute('data-theme') || 'home';
+    syncSectionStylesheet(currentTheme);
+  });
 </script>
 
 <script>

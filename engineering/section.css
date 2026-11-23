@@ -1,0 +1,58 @@
+body[data-theme="engineering"]{
+  --section-paper:#f3f8fc;
+  --section-border:#9ebbd4;
+  --section-outline:#cce0f0;
+  --section-accent:#1b3b5c;
+  --section-accent-soft:#2b8cbe;
+  --section-badge-bg:#1b3b5c;
+  --section-badge-fg:#e6f4ff;
+  --section-pattern:
+    linear-gradient(90deg, rgba(43, 140, 190, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(43, 140, 190, 0.08) 1px, transparent 1px);
+  --section-pattern-size:18px 18px;
+}
+
+.eng-hud-header{
+  background:#f3f8fc;
+  background-image:
+    linear-gradient(90deg, rgba(43, 140, 190, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(43, 140, 190, 0.08) 1px, transparent 1px);
+  background-size:18px 18px;
+  border:1px solid #9ebbd4; border-left:5px solid #2b8cbe;
+  padding:16px 22px 10px; margin-bottom:24px; border-radius:3px;
+}
+.hud-status{
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  font-family:var(--mono); font-size:.75rem; color:#2b8cbe; letter-spacing:.06em;
+  border-bottom:1px solid #cce0f0; padding-bottom:6px; margin-bottom:10px;
+}
+.eng-hud-header .section-sub{color:#3c6e91; margin-bottom:10px}
+.eng-card{border-left:4px solid #2b8cbe; box-shadow:0 4px 18px rgba(43,140,190,.1)}
+.eng-card-meta{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px}
+.eng-coords{font-family:var(--mono); font-size:.78rem; color:#2b8cbe}
+.eng-specs{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; padding-top:10px;
+  border-top:1px dashed #9ebbd4; font-family:var(--mono); font-size:.8rem; color:#1b3b5c;
+}
+
+body[data-mode="dark"][data-theme="engineering"]{
+  --section-paper:#192533;
+  --section-border:#3c6382;
+  --section-outline:#284259;
+  --section-accent:#9fd2f5;
+  --section-accent-soft:#4aa3d8;
+  --section-badge-bg:#214361;
+  --section-badge-fg:#e6f5ff;
+  --section-pattern:
+    linear-gradient(90deg, rgba(74, 163, 216, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(74, 163, 216, 0.08) 1px, transparent 1px);
+  --section-pattern-size:18px 18px;
+}
+
+body[data-mode="dark"] .eng-hud-header{
+  background-color:#192533;
+  background-image:
+    linear-gradient(90deg, rgba(110, 186, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(110, 186, 235, 0.08) 1px, transparent 1px);
+  background-size:18px 18px;
+}

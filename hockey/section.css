@@ -1,0 +1,43 @@
+body[data-theme="hockey"]{
+  --section-paper:#f2f8fd;
+  --section-border:#a8c8e4;
+  --section-outline:#d6e8f7;
+  --section-accent:#1d4870;
+  --section-accent-soft:#5899cc;
+  --section-badge-bg:#1d4870;
+  --section-badge-fg:#f4faff;
+  --section-pattern:linear-gradient(180deg, rgba(168, 200, 228, 0.14) 0%, transparent 100%);
+  --section-pattern-size:100% 100%;
+}
+
+.rink-banner{
+  background:linear-gradient(135deg, #e3f0fb 0%, #f5faff 50%, #dcebfa 100%);
+  border:1px solid #a8c8e4; border-top:4px solid #1d4870; border-bottom:4px solid #c94a5a;
+  padding:18px 20px 10px; margin-bottom:24px; text-align:center; border-radius:4px;
+}
+.rink-faceoff{font-family:var(--serif); font-weight:700; font-size:.9rem; letter-spacing:.12em; color:#1d4870; margin-bottom:4px}
+.rink-banner .section-sub{color:#3b6b96; margin-bottom:10px}
+.hockey-card{border-left:5px solid #1d4870}
+.scoreboard-strip{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;
+  background:#e6f1fb; border:1px solid #b5d1ea; padding:10px 14px; border-radius:4px;
+}
+.scoreboard-teams{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:1.25rem; color:#1d4870}
+.scoreboard-teams strong{background:#1d4870; color:#fff; padding:1px 8px; border-radius:3px; font-family:var(--mono); font-size:1.05rem}
+.vs-pill{font-size:.8rem; font-weight:700; color:#5899cc}
+.rink-clock{font-family:var(--mono); font-size:.82rem; font-weight:600; color:#1d4870}
+
+body[data-mode="dark"][data-theme="hockey"]{
+  --section-paper:#1a2938;
+  --section-border:#466d91;
+  --section-outline:#2c465e;
+  --section-accent:#a8d4f7;
+  --section-accent-soft:#69aee3;
+  --section-badge-bg:#1f486e;
+  --section-badge-fg:#f0f8ff;
+}
+
+body[data-mode="dark"] .rink-banner{
+  background:linear-gradient(135deg, #1b2f42 0%, #22384d 50%, #192b3d 100%);
+  border-color:#43698c;
+}
