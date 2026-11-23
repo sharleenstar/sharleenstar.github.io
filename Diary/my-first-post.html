@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ✏️ 1. PAGE TITLE (shows in the browser tab) -->
+<title>Finally, Friday | Sandy Boots &amp; Slapshots</title>
+
+<!-- 🎨 Shared design. "../" means "go up one folder", so this file is meant to live
+     inside a folder like diary/. If you put a post in the main folder instead,
+     change this to  href="style.css" -->
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<main class="wrap">
+
+  <!-- ⬅️ Back button. Change #diary to #home, #books, #screen, #eng or #hockey
+       to return to a different tab -->
+  <a class="back-btn" href="../index.html#diary">← Back to Home</a>
+
+  <article class="post">
+
+    <header class="post-head">
+      <!-- ✏️ 2. TITLE + DATE -->
+      <h1>Finally, Friday</h1>
+      <div class="meta">20 November 2026</div>
+    </header>
+
+    <!-- 📸 3. POLAROID PHOTO. Save your image in an images/ folder in the main
+         site folder, then use ../images/photo.jpg (the ../ is needed from inside a folder) -->
+    <figure class="polaroid">
+      <div class="photo">🌸</div>
+      <figcaption><span class="hand" style="font-size:1.5rem">library steps at sunset</span></figcaption>
+    </figure>
+
+    <!-- 📝 4. YOUR TEXT. One <p>...</p> per paragraph. Use <h2>Subheading</h2> for headings. -->
+    <div class="card post-body">
+      <p>Handed in my lab report, bought a pastry as a reward, and watched the sunset from the library steps.</p>
+      <p>Small wins count, and today I let myself count every single one of them.
+    </div>
+
+  </article>
+</main>
+
+<footer style="text-align:center;font-family:var(--hand);font-size:1.4rem;color:var(--sand-dark);padding:20px 20px 50px">made with love, sunscreen &amp; too much coffee ♡</footer>
+</body>
+</html>

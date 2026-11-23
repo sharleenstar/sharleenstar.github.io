@@ -4,118 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sandy Boots & Slapshots</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Caveat:wght@500;700&family=Lora:wght@400;500&display=swap" rel="stylesheet">
 
-<style>
-/* ============ 1. COLOURS & FONTS (change these to re-theme everything) ============ */
-:root{
-  --blush:#f4d3d3;  --blush-deep:#e8aeb4;
-  --cream:#fbf4e6;  --paper:#fffaf0;
-  --denim:#5a7ca3;  --denim-dark:#3d5a80;
-  --sand:#dcc29b;   --sand-dark:#b89868;
-  --ink:#5a4538;
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --hand:'Caveat','Segoe Script',cursive;
-  --body:'Lora',Georgia,serif;
-}
-
-/* ============ 2. PAGE + PAPER TEXTURE ============ */
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0; color:var(--ink); font-family:var(--body); line-height:1.7;
-  background-color:var(--cream);
-  /* paper grain made from an inline SVG noise filter - no image files needed */
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px 60px}
-h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 .4em}
-.hand{font-family:var(--hand);font-weight:700;color:var(--denim)}
-a{color:var(--denim-dark)}
-
-/* ============ 3. HEADER + NAV TABS ============ */
-header{text-align:center;padding:46px 20px 10px}
-header h1{font-size:clamp(2.4rem,7vw,4.4rem);font-weight:700;color:var(--denim-dark);letter-spacing:.01em}
-header .hand{font-size:1.7rem;display:block;transform:rotate(-2deg);color:var(--blush-deep)}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px 0 34px}
-nav button{
-  font-family:var(--hand);font-size:1.45rem;font-weight:700;cursor:pointer;
-  padding:2px 20px 4px;color:var(--denim-dark);background:var(--paper);
-  border:2px dashed var(--denim);border-radius:14px 14px 4px 4px;
-  transition:transform .15s, background .15s;
-}
-nav button:nth-child(odd){transform:rotate(-1.5deg)}
-nav button:nth-child(even){transform:rotate(1.2deg)}
-nav button:hover{background:var(--blush)}
-nav button[aria-selected="true"]{background:var(--denim);color:var(--cream);border-style:solid;transform:rotate(0) translateY(2px)}
-nav button:focus-visible{outline:3px solid var(--blush-deep);outline-offset:3px}
-
-/* ============ 4. SECTIONS ============ */
-section{display:none}
-section.active{display:block}
-.section-title{text-align:center;font-size:clamp(2rem,5vw,3rem);color:var(--denim-dark)}
-.section-sub{text-align:center;font-family:var(--hand);font-size:1.5rem;margin:-6px 0 30px;color:var(--sand-dark)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:34px 26px}
-
-/* ============ 5. PAPER CARD (stitched denim border) ============ */
-.card{
-  background:var(--paper);padding:22px 24px;margin-bottom:26px;position:relative;
-  border-radius:4px;box-shadow:0 3px 10px rgba(90,69,56,.15);
-  outline:2px dashed var(--denim);outline-offset:-9px;
-}
-.card.blush{background:var(--blush)}
-.card.sand{background:#f1e3c8}
-.card h3{font-size:1.7rem;color:var(--denim-dark)}
-.meta{font-family:var(--hand);font-size:1.3rem;color:var(--sand-dark);line-height:1.2}
-.tag{display:inline-block;font-family:var(--hand);font-size:1.15rem;background:var(--denim);color:var(--cream);padding:0 12px;border-radius:12px;transform:rotate(-2deg)}
-
-/* ============ 6. TAPED POLAROID ============ */
-.polaroid{
-  background:#fff;padding:12px 12px 16px;margin:0;position:relative;
-  box-shadow:0 5px 14px rgba(90,69,56,.25);transition:transform .2s;
-}
-.polaroid:nth-child(3n+1){transform:rotate(-2.5deg)}
-.polaroid:nth-child(3n+2){transform:rotate(1.8deg)}
-.polaroid:nth-child(3n){transform:rotate(-.8deg)}
-.polaroid:hover{transform:rotate(0) scale(1.03);z-index:2}
-/* the washi tape strip */
-.polaroid::before{
-  content:"";position:absolute;top:-13px;left:50%;width:92px;height:26px;margin-left:-46px;
-  transform:rotate(-3deg);opacity:.85;
-  background:repeating-linear-gradient(45deg,var(--blush-deep) 0 8px,var(--blush) 8px 16px);
-}
-.polaroid:nth-child(even)::before{background:repeating-linear-gradient(90deg,var(--sand) 0 7px,#efdfc0 7px 14px);transform:rotate(3deg)}
-.photo{aspect-ratio:1/1;background:linear-gradient(135deg,var(--blush),var(--sand));display:grid;place-items:center;font-size:3.4rem;overflow:hidden}
-.photo img{width:100%;height:100%;object-fit:cover;display:block}
-.polaroid figcaption{padding-top:10px;text-align:center}
-.polaroid .title{font-family:var(--serif);font-weight:700;font-size:1.2rem;line-height:1.2;color:var(--denim-dark)}
-.polaroid .note{font-size:.88rem;line-height:1.45;margin-top:4px}
-.stars{color:var(--blush-deep);font-size:1.25rem;letter-spacing:2px}
-.stars .off{color:#e6dccb}
-
-/* ============ 7. HOME ============ */
-.welcome{display:grid;grid-template-columns:240px 1fr;gap:34px;align-items:center;margin-bottom:34px}
-.welcome .polaroid{transform:rotate(-3deg)}
-.chips{display:flex;flex-wrap:wrap;gap:12px;padding:0;margin:0;list-style:none}
-.chips li{font-family:var(--hand);font-size:1.5rem;background:var(--paper);border:2px solid var(--denim);padding:0 16px;border-radius:30px;box-shadow:3px 3px 0 var(--blush-deep)}
-.chips li:nth-child(even){transform:rotate(1.5deg);background:var(--blush)}
-.chips li:nth-child(3n){transform:rotate(-1.5deg);background:#f1e3c8}
-
-/* ============ 8. DIARY ============ */
-.entry{max-width:700px;margin:0 auto 30px}
-.entry .meta{display:flex;justify-content:space-between}
-
-/* ============ 9. HOCKEY SCOREBOARD ROWS ============ */
-.game{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
-.game .score{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--denim-dark)}
-
-footer{text-align:center;font-family:var(--hand);font-size:1.4rem;color:var(--sand-dark);padding:20px}
-
-@media(max-width:640px){.welcome{grid-template-columns:1fr}.welcome .polaroid{max-width:260px;margin:0 auto}}
-@media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
-</style>
+<!-- 🎨 All styling lives in style.css (shared by every page) -->
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -205,6 +96,7 @@ footer{text-align:center;font-family:var(--hand);font-size:1.4rem;color:var(--sa
    To add something: copy one {...} line, paste it under the others
    (keep the comma between items!), and change the words.
    Photos: put image files in an "images" folder and use  img:"images/name.jpg"
+   Want a card to open a full post? Add  link:"diary/your-post.html"  to it.
    Leave img:"" to show the emoji placeholder in "icon" instead.
    Ratings are 1 to 5. Dates use YYYY-MM-DD so diary sorting works.
    ===================================================================== */
@@ -231,7 +123,7 @@ const screenLog = [
 
 /* ---- DIARY: newest sorted to top automatically ---- */
 const diary = [
-  { date:"2026-11-20", mood:"🌸", title:"Finally, Friday",
+  { date:"2026-11-20", mood:"🌸", title:"Finally, Friday", link:"diary/my-first-post.html",
     text:"Handed in my lab report, bought a pastry as a reward, and watched the sunset from the library steps. Small wins count." },
   { date:"2026-11-10", mood:"☕", title:"Exam season has entered the chat",
     text:"Colour-coded notes, three highlighters, and a playlist called 'study but make it cinematic'. We are so back." }
@@ -266,26 +158,27 @@ const stars = n => '<span class="stars" aria-label="'+n+' out of 5 stars">' +
 const photo = i => i.img ? '<div class="photo"><img src="'+i.img+'" alt="'+i.title+'"></div>'
                           : '<div class="photo">'+(i.icon||'📷')+'</div>';
 const nice = d => new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
+const ttl = i => i.link ? '<a class="post-link" href="'+i.link+'">'+i.title+'</a>' : i.title;
 const newest = (a,b) => b.date.localeCompare(a.date);
 
 $('obsessions').innerHTML = obsessions.map(o => '<li>'+o+'</li>').join('');
 
 $('bookGrid').innerHTML = books.map(b =>
-  '<figure class="polaroid">'+photo(b)+'<figcaption><div class="title">'+b.title+'</div>'+
+  '<figure class="polaroid">'+photo(b)+'<figcaption><div class="title">'+ttl(b)+'</div>'+
   '<div class="meta">'+b.author+' · '+b.status+'</div>'+stars(b.rating)+
   '<div class="note">'+b.note+'</div></figcaption></figure>').join('');
 
 $('screenGrid').innerHTML = [...screenLog].sort(newest).map(s =>
-  '<figure class="polaroid">'+photo(s)+'<figcaption><div class="title">'+s.title+'</div>'+
+  '<figure class="polaroid">'+photo(s)+'<figcaption><div class="title">'+ttl(s)+'</div>'+
   '<div class="meta">'+s.type+' · '+nice(s.date)+'</div>'+stars(s.rating)+
   '<div class="note">'+s.note+'</div></figcaption></figure>').join('');
 
 $('diaryList').innerHTML = [...diary].sort(newest).map((e,i) =>
   '<article class="card '+(i%2?'sand':'blush')+' entry"><div class="meta"><span>'+nice(e.date)+'</span><span>'+e.mood+'</span></div>'+
-  '<h3>'+e.title+'</h3><p>'+e.text+'</p></article>').join('');
+  '<h3>'+ttl(e)+'</h3><p>'+e.text+'</p>'+(e.link?'<a class="meta post-link" href="'+e.link+'">Read the full post</a>':'')+'</article>').join('');
 
 $('engGrid').innerHTML = [...engineering].sort(newest).map(e =>
-  '<article class="card"><span class="tag">'+e.tag+'</span><h3 style="margin-top:8px">'+e.title+'</h3>'+
+  '<article class="card"><span class="tag">'+e.tag+'</span><h3 style="margin-top:8px">'+ttl(e)+'</h3>'+
   '<div class="meta">'+nice(e.date)+'</div><p>'+e.text+'</p></article>').join('');
 
 $('gameList').innerHTML = [...games].sort(newest).map(g =>
