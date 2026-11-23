@@ -398,14 +398,23 @@ footer{text-align:center; padding-top:24px; font-family:var(--hand); font-size:1
 
 /* ============ 9. DARK MODE TOGGLE & COZY NIGHT PALETTE ============ */
 .mode-toggle{
+  position:fixed; bottom:18px; left:18px; z-index:50;
   display:flex; align-items:center; justify-content:center; gap:7px;
-  width:100%; margin-bottom:10px; padding:7px 12px;
+  width:auto; margin-bottom:0; padding:8px 13px;
   font-family:var(--serif); font-size:.98rem; font-weight:700; letter-spacing:.03em;
   color:var(--denim-dark); background:var(--blush);
   border:1px solid var(--blush-deep); border-radius:4px;
+  box-shadow:0 6px 18px rgba(39, 62, 87, 0.18);
   cursor:pointer; transition:all .16s ease;
 }
 .mode-toggle:hover{filter:brightness(.97); transform:translateY(-1px)}
+
+body[data-mode="dark"] .mode-toggle{
+  background:#3a272f;
+  color:#f7dce2;
+  border-color:#8a5662;
+  box-shadow:0 6px 20px rgba(0, 0, 0, 0.45);
+}
 
 body[data-mode="dark"]{
   --cream:#1d2836;

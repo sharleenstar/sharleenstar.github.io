@@ -333,9 +333,12 @@
   function syncLogoWithMode(mode) {
     const logoImg = document.getElementById('site-logo-img');
     if (!logoImg) return;
+    const isPostSubpage = window.location.pathname.includes('/diary/') ||
+      (logoImg.getAttribute('data-light-src') || '').startsWith('../');
+    const prefix = isPostSubpage ? '../' : '';
     const targetSrc = mode === 'dark'
-      ? (logoImg.getAttribute('data-dark-src') || 'logo-dark.png')
-      : (logoImg.getAttribute('data-light-src') || 'logo.png');
+      ? (logoImg.getAttribute('data-dark-src') || `${prefix}logo-dark.png`)
+      : (logoImg.getAttribute('data-light-src') || `${prefix}logo.png`);
     if (logoImg.getAttribute('src') !== targetSrc) {
       logoImg.setAttribute('src', targetSrc);
     }
@@ -352,6 +355,7 @@
     if (btn) {
       const isDark = cleanMode === 'dark';
       btn.setAttribute('aria-pressed', String(isDark));
+      btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
       const icon = btn.querySelector('.mode-icon');
       const label = btn.querySelector('.mode-label');
       if (icon) icon.textContent = isDark ? '☀️' : '🌙';
@@ -368,12 +372,16 @@
   }
 
   (function initMode() {
-    let saved = 'light';
+    let chosen = null;
     try {
       const stored = localStorage.getItem(MODE_STORAGE_KEY);
-      if (stored === 'dark' || stored === 'light') saved = stored;
+      if (stored === 'dark' || stored === 'light') chosen = stored;
     } catch (e) {}
-    applyColorMode(saved);
+
+    if (!chosen && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      chosen = 'dark';
+    }
+    applyColorMode(chosen || 'light');
   })();
 </script>
 
