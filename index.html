@@ -59,7 +59,7 @@
       <div class="card">
         <div class="postage-stamp">WINTER<br>EDITION</div>
         <h3>Welcome to my digital diary!</h3>
-        <p>A bit about the things I'm into right now: late-night reads, comfort films, fresh bakes, life updates, and way too many hockey opinions.</p>
+        <p>A little bit of everything I'm into right now: late-night reads, comfort films, fresh bakes, life updates, and way too many hockey opinions. Grab a warm drink, snuggle up, and stay a while.</p>
       </div>
 
       <div class="moodboard">
@@ -166,7 +166,8 @@
             <div class="tv-main-row">
               <div class="tv-screen-bezel">
                 <div class="tv-crt-screen">
-                  <img src="images/watching-screen.jpg" alt="Current show or movie title screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <!-- Supports a GIF (e.g. images/watching-screen.gif) or static image (images/watching-screen.jpg) -->
+                  <img src="images/watching-screen.gif" data-fallback-img="images/watching-screen.jpg" alt="Current show or movie title screen" onerror="if (this.dataset.fallbackImg && this.src !== this.dataset.fallbackImg) { this.src = this.dataset.fallbackImg; this.dataset.fallbackImg = ''; } else { this.style.display='none'; this.nextElementSibling.style.display='grid'; }">
                   <div class="tv-screen-fallback" style="display:none;">
                     <span>NOW SHOWING<br>★ ★ ★</span>
                   </div>
