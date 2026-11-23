@@ -44,6 +44,8 @@
     </div>
   </aside>
 
+  <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="setMobileMenuOpen(false)"></div>
+
   <main class="main-content">
     <header class="masthead">
       <span class="hand">~ a personal blog ~</span>
@@ -416,9 +418,12 @@
   function setMobileMenuOpen(isOpen) {
     const nav = document.getElementById('side-nav-menu');
     const btn = document.getElementById('mobile-menu-btn');
+    const backdrop = document.getElementById('mobile-menu-backdrop');
     if (!nav || !btn) return;
     nav.classList.toggle('is-open', isOpen);
     btn.setAttribute('aria-expanded', String(isOpen));
+    if (backdrop) backdrop.classList.toggle('is-open', isOpen);
+    document.body.style.overflow = (isOpen && window.innerWidth <= 860) ? 'hidden' : '';
   }
 
   function toggleMobileMenu() {
@@ -427,7 +432,6 @@
     setMobileMenuOpen(!nav.classList.contains('is-open'));
   }
 
-  // Close the collapsible menu automatically after picking a tab on narrow screens
   (function hookMobileTabClose() {
     const nav = document.getElementById('side-nav-menu');
     if (!nav) return;
