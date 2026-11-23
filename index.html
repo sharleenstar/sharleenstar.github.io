@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Notes from Star</title>
-  <!-- Guaranteed URL-encoded SVG Star Favicon (with ?v=3 cache-buster) -->
+  <!-- Guaranteed URL-encoded SVG Star Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23273e57'/%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z' fill='%23eed6d8' stroke='%23fffdf9' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23273e57'/%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z' fill='%23eed6d8' stroke='%23fffdf9' stroke-width='2'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
-<body data-theme="home">
+<body data-theme="home" data-mode="light">
 
 <div class="layout">
   <aside class="sidebar" aria-label="Site Navigation">
@@ -30,6 +30,10 @@
     </nav>
 
     <div class="side-footer">
+      <button type="button" class="mode-toggle" id="mode-toggle-btn" onclick="toggleDarkMode()" aria-pressed="false">
+        <span class="mode-icon">🌙</span>
+        <span class="mode-label">Dark Mode</span>
+      </button>
       <div class="visitor-badge">visitors: <span id="gc-views">...</span></div>
     </div>
   </aside>
@@ -38,7 +42,7 @@
     <header class="masthead">
       <span class="hand">~ a little corner of the internet ~</span>
       <h1 class="logo-title">
-        <img src="logo.png" alt="Notes from Star" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <img id="site-logo-img" src="logo.png" data-light-src="logo.png" data-dark-src="logo-dark.png" alt="Notes from Star" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
         <span class="logo-fallback" style="display:none;">Notes from Star</span>
       </h1>
     </header>
@@ -324,12 +328,61 @@
 </div>
 
 <script>
+  const MODE_STORAGE_KEY = 'star_notes_mode';
+
+  function syncLogoWithMode(mode) {
+    const logoImg = document.getElementById('site-logo-img');
+    if (!logoImg) return;
+    const targetSrc = mode === 'dark'
+      ? (logoImg.getAttribute('data-dark-src') || 'logo-dark.png')
+      : (logoImg.getAttribute('data-light-src') || 'logo.png');
+    if (logoImg.getAttribute('src') !== targetSrc) {
+      logoImg.setAttribute('src', targetSrc);
+    }
+    logoImg.style.display = '';
+    if (logoImg.nextElementSibling) {
+      logoImg.nextElementSibling.style.display = 'none';
+    }
+  }
+
+  function applyColorMode(mode) {
+    const cleanMode = mode === 'dark' ? 'dark' : 'light';
+    document.body.setAttribute('data-mode', cleanMode);
+    const btn = document.getElementById('mode-toggle-btn');
+    if (btn) {
+      const isDark = cleanMode === 'dark';
+      btn.setAttribute('aria-pressed', String(isDark));
+      const icon = btn.querySelector('.mode-icon');
+      const label = btn.querySelector('.mode-label');
+      if (icon) icon.textContent = isDark ? '☀️' : '🌙';
+      if (label) label.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    }
+    syncLogoWithMode(cleanMode);
+  }
+
+  function toggleDarkMode() {
+    const current = document.body.getAttribute('data-mode') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    try { localStorage.setItem(MODE_STORAGE_KEY, next); } catch (e) {}
+    applyColorMode(next);
+  }
+
+  (function initMode() {
+    let saved = 'light';
+    try {
+      const stored = localStorage.getItem(MODE_STORAGE_KEY);
+      if (stored === 'dark' || stored === 'light') saved = stored;
+    } catch (e) {}
+    applyColorMode(saved);
+  })();
+</script>
+
+<script>
   function showTab(sectionId, btn) {
     document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
     document.getElementById(sectionId).classList.add('active');
     document.querySelectorAll('.side-nav button').forEach(b => b.setAttribute('aria-selected', 'false'));
     if (btn) btn.setAttribute('aria-selected', 'true');
-    // Switch subtle section-specific paper/accent theme while keeping shared gingham & sidebar
     document.body.setAttribute('data-theme', sectionId);
   }
   function showTabByName(sectionId) {
