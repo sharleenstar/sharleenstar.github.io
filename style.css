@@ -232,11 +232,20 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 
 .shelf-scene{
+  position:relative;
+  width:100%; aspect-ratio:1 / 1;
+  display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
+  background:linear-gradient(180deg, #f5f8fc 0%, #eaeff5 100%);
+  border:1px dashed rgba(74, 107, 140, 0.28);
+  border-radius:6px;
+  padding:14px 6px 10px;
   overflow:visible;
 }
 
 .books-row{
-  gap:3px;
+  display:flex; align-items:flex-end; justify-content:center; gap:4px;
+  width:100%; height:78%;
+  padding:0 4px;
   transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
 }
 
@@ -246,17 +255,41 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 
 .spine-book{
-  flex:1 1 20px; min-width:9px; max-width:24px;
+  flex:1 1 20px; min-width:10px; max-width:24px; height:84%;
+  border-radius:3px 3px 1px 1px;
+  display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+  padding:5px 1px;
+  box-shadow:inset -2px 0 4px rgba(0,0,0,.16), 0 2px 4px rgba(39,62,87,.12);
   transition:flex-basis .34s cubic-bezier(.22,.68,.32,1.15), max-width .34s cubic-bezier(.22,.68,.32,1.15), min-width .34s cubic-bezier(.22,.68,.32,1.15), transform .28s ease, opacity .25s ease;
+  overflow:hidden;
 }
 
+/* Side books become thinner/smaller and yield space when the current read book expands */
 .shelf-widget:hover .spine-book,
 .shelf-widget:focus-visible .spine-book{
   flex:0 1 11px; min-width:8px; max-width:12px;
-  transform:translateX(0);
   opacity:.82;
 }
 
+.spine-book .spine-title{
+  writing-mode:vertical-rl; transform:rotate(180deg);
+  font-family:var(--mono); font-size:.46rem; font-weight:600; letter-spacing:.06em;
+  color:#f5d88c;
+  text-shadow:0 1px 1px rgba(0,0,0,.45);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-height:70%;
+}
+.spine-book .foil-band{
+  font-size:.44rem; line-height:1;
+  color:#f7df9c;
+  text-shadow:0 0 3px rgba(235, 194, 98, 0.45);
+}
+
+.sb-1{height:82%; background:linear-gradient(180deg, #56799c 0%, #3b5875 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
+.sb-2{height:90%; background:linear-gradient(180deg, #cf8f98 0%, #a86b74 100%); border-top:1.5px solid #f2d48b; border-bottom:1.5px solid #f2d48b}
+.sb-3{height:86%; background:linear-gradient(180deg, #7d2d3e 0%, #581c29 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
+.sb-4{height:78%; background:linear-gradient(180deg, #536f8a 0%, #384e63 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
+
+/* Centre book expands larger & flips out to show cover art on hover */
 .center-book-slot{
   position:relative;
   flex:0 0 36px; width:36px; height:94%;
@@ -264,7 +297,6 @@ section.active{display:block; animation:fadeIn .22s ease}
   z-index:6;
   transition:flex-basis .36s cubic-bezier(.22,.68,.32,1.15), width .36s cubic-bezier(.22,.68,.32,1.15), height .36s cubic-bezier(.22,.68,.32,1.15);
 }
-
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
   flex:0 0 132px; width:132px; height:112%;
@@ -275,7 +307,6 @@ section.active{display:block; animation:fadeIn .22s ease}
   transform-style:preserve-3d;
   transition:transform .38s cubic-bezier(.22,.68,.32,1.15);
 }
-
 .shelf-widget:hover .center-book-3d,
 .shelf-widget:focus-visible .center-book-3d{
   transform:translateY(-10px) scale(1.12);
@@ -340,20 +371,20 @@ section.active{display:block; animation:fadeIn .22s ease}
   box-shadow:0 3px 6px rgba(39, 62, 87, 0.16);
 }
 
-/* ---- 5B. PINK RECORD PLAYER + BLACK SPINNING VINYL + STILL CENTER ALBUM ART ---- */
+/* ---- 5B. DUSTY ROSE / MUTE PINK RECORD PLAYER + LARGER SPINNING VINYL & ALBUM ART ---- */
 .record-player-widget{
-  background:#f4c4cd;
-  border:1px solid #d99aa6;
+  background:#cfa4aa;
+  border:1px solid #b5848c;
   border-radius:10px;
   padding:10px;
-  box-shadow:0 6px 16px rgba(39, 62, 87, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  box-shadow:0 6px 16px rgba(39, 62, 87, 0.12), inset 0 1px 0 rgba(255, 253, 249, 0.45);
 }
 
 .rp-deck{
   position:relative;
   width:100%; aspect-ratio:1 / 1;
-  background:linear-gradient(145deg, #f8d2d9 0%, #ecb6c1 100%);
-  border:1px solid #dba0ac;
+  background:linear-gradient(145deg, #dab3b9 0%, #c4959d 100%);
+  border:1px solid #b5848c;
   border-radius:8px;
   display:grid; place-items:center;
   overflow:hidden;
@@ -361,8 +392,8 @@ section.active{display:block; animation:fadeIn .22s ease}
 
 .rp-screw{
   position:absolute; width:7px; height:7px; border-radius:50%;
-  background:#d495a1; border:1px solid #be7c89;
-  box-shadow:inset 0 1px 1px rgba(255,255,255,.6);
+  background:#b8878f; border:1px solid #9d6c75;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.45);
 }
 .rp-tl{top:7px; left:7px}
 .rp-tr{top:7px; right:7px}
@@ -371,13 +402,13 @@ section.active{display:block; animation:fadeIn .22s ease}
 
 .rp-platter{
   position:relative;
-  width:72%; aspect-ratio:1 / 1;
+  width:82%; aspect-ratio:1 / 1;
   border-radius:50%;
-  background:#d89ea9;
+  background:#b98991;
   padding:4px;
   box-shadow:inset 0 2px 6px rgba(45, 20, 26, 0.25);
   display:grid; place-items:center;
-  margin-right:10%;
+  margin-right:8%;
 }
 
 /* Outer black vinyl record spins slowly */
@@ -410,11 +441,11 @@ section.active{display:block; animation:fadeIn .22s ease}
 /* Center album art spins in sync with the vinyl */
 .rp-album-center{
   position:absolute;
-  width:38%; aspect-ratio:1 / 1;
+  width:44%; aspect-ratio:1 / 1;
   border-radius:50%;
   overflow:hidden;
-  background:#f8d4da;
-  border:2px solid #f5dce1;
+  background:#dfb9bf;
+  border:2px solid #f7eaec;
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.45);
   display:grid; place-items:center;
   z-index:2;
@@ -516,7 +547,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .rp-marquee-track{
   display:inline-flex; gap:28px;
-  animation:rpScrollText 11s linear infinite;
+  animation:rpScrollText 22s linear infinite;
 }
 .rp-ticker-bar:hover .rp-marquee-track{animation-play-state:paused}
 @keyframes rpScrollText{
@@ -539,31 +570,31 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 
 .retro-tv-body{
-  width:90%; aspect-ratio:1 / 1;
+  width:100%; aspect-ratio:1.12 / 1;
   background:linear-gradient(180deg, #b88463 0%, #996749 100%);
   border:2px solid #754b32;
   border-radius:12px;
-  padding:10px 9px 8px;
-  display:flex; flex-direction:column; justify-content:space-between;
+  padding:9px 9px 11px;
+  display:flex; flex-direction:column; justify-content:space-between; gap:7px;
   position:relative;
   box-shadow:inset 0 2px 0 rgba(255, 232, 214, 0.35), 0 4px 10px rgba(39, 62, 87, 0.16);
-  margin-top:8px;
+  margin:auto 0;
 }
 
 .tv-antennas{
-  position:absolute; top:-13px; left:50%; transform:translateX(-50%);
-  width:52px; height:14px; pointer-events:none;
+  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  width:52px; height:12px; pointer-events:none;
 }
 .ant-left, .ant-right{
-  position:absolute; bottom:0; width:2px; height:16px;
+  position:absolute; bottom:0; width:2px; height:14px;
   background:#5c6672; border-radius:2px;
 }
 .ant-left{left:14px; transform:rotate(-28deg); transform-origin:bottom center}
 .ant-right{right:14px; transform:rotate(28deg); transform-origin:bottom center}
 
 .tv-main-row{
-  display:grid; grid-template-columns:1fr 26px; gap:7px;
-  height:100%;
+  display:grid; grid-template-columns:1fr 24px; gap:6px;
+  flex:1 1 auto; min-height:0;
 }
 
 .tv-screen-bezel{
@@ -634,6 +665,30 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .tv-vents span{
   display:block; height:2px; background:#6e6152; border-radius:1px;
+}
+
+.tv-bottom-console{
+  display:flex; align-items:center; justify-content:space-between; gap:8px;
+  background:#d8cfc2;
+  border:1px solid #8f7e6a;
+  border-radius:6px;
+  padding:5px 8px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55);
+}
+.tv-console-btns{
+  display:flex; align-items:center; gap:5px;
+}
+.tv-console-btns span{
+  width:9px; height:9px; border-radius:2px;
+  background:linear-gradient(180deg, #f3ede4, #b7aa99);
+  border:1px solid #6f6253;
+  box-shadow:0 1px 1px rgba(0,0,0,.2);
+}
+.tv-console-dials{
+  display:flex; align-items:center; gap:6px;
+}
+.tv-console-dials .tv-dial{
+  width:13px; height:13px;
 }
 
 .tv-feet{
@@ -1092,21 +1147,21 @@ body[data-mode="dark"] .shelf-scene{
 }
 
 body[data-mode="dark"] .record-player-widget{
-  background:#4d2d37;
-  border-color:#7c4a59;
-  box-shadow:0 8px 20px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 220, 228, 0.16);
+  background:#472c34;
+  border-color:#754b57;
+  box-shadow:0 8px 20px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 220, 228, 0.14);
 }
 body[data-mode="dark"] .rp-deck{
-  background:linear-gradient(145deg, #5a3540 0%, #42252e 100%);
-  border-color:#7a4857;
+  background:linear-gradient(145deg, #54353e 0%, #3d242c 100%);
+  border-color:#734955;
 }
 body[data-mode="dark"] .rp-platter{
-  background:#371f27;
+  background:#331d24;
   box-shadow:inset 0 2px 6px rgba(0, 0, 0, 0.45);
 }
 body[data-mode="dark"] .rp-ticker-bar{
   background:#1c232d;
-  border-color:#7c4a59;
+  border-color:#754b57;
   color:#f5dce2;
 }
 body[data-mode="dark"] .rp-ticker-bar:hover{
