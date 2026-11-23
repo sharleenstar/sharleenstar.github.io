@@ -232,68 +232,42 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 
 .shelf-scene{
-  position:relative;
-  width:100%; aspect-ratio:1 / 1;
-  display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
-  background:linear-gradient(180deg, #f5f8fc 0%, #eaeff5 100%);
-  border:1px dashed rgba(74, 107, 140, 0.28);
-  border-radius:6px;
-  padding:14px 6px 10px;
   overflow:visible;
 }
 
 .books-row{
-  display:flex; align-items:flex-end; justify-content:center; gap:4px;
-  width:100%; height:78%;
-  padding:0 4px;
+  gap:3px;
+  transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
+}
+
+.shelf-widget:hover .books-row,
+.shelf-widget:focus-visible .books-row{
+  gap:6px;
 }
 
 .spine-book{
-  flex:1 1 22px; min-width:12px; max-width:26px; height:84%;
-  border-radius:3px 3px 1px 1px;
-  display:flex; flex-direction:column; align-items:center; justify-content:space-between;
-  padding:5px 1px;
-  box-shadow:inset -2px 0 4px rgba(0,0,0,.16), 0 2px 4px rgba(39,62,87,.12);
-  transition:flex-basis .32s ease, max-width .32s ease, min-width .32s ease, transform .25s ease, opacity .25s ease;
-  overflow:hidden;
+  flex:1 1 20px; min-width:9px; max-width:24px;
+  transition:flex-basis .34s cubic-bezier(.22,.68,.32,1.15), max-width .34s cubic-bezier(.22,.68,.32,1.15), min-width .34s cubic-bezier(.22,.68,.32,1.15), transform .28s ease, opacity .25s ease;
 }
 
-/* Side books become thinner/smaller when the current read book expands on hover */
 .shelf-widget:hover .spine-book,
 .shelf-widget:focus-visible .spine-book{
-  flex:0 1 13px; min-width:10px; max-width:14px;
-  opacity:.86;
+  flex:0 1 11px; min-width:8px; max-width:12px;
+  transform:translateX(0);
+  opacity:.82;
 }
 
-.spine-book .spine-title{
-  writing-mode:vertical-rl; transform:rotate(180deg);
-  font-family:var(--mono); font-size:.46rem; font-weight:600; letter-spacing:.06em;
-  color:#f5d88c;
-  text-shadow:0 1px 1px rgba(0,0,0,.45);
-  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-height:70%;
-}
-.spine-book .foil-band{
-  font-size:.44rem; line-height:1;
-  color:#f7df9c;
-  text-shadow:0 0 3px rgba(235, 194, 98, 0.45);
-}
-
-.sb-1{height:82%; background:linear-gradient(180deg, #56799c 0%, #3b5875 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
-.sb-2{height:90%; background:linear-gradient(180deg, #cf8f98 0%, #a86b74 100%); border-top:1.5px solid #f2d48b; border-bottom:1.5px solid #f2d48b}
-.sb-3{height:86%; background:linear-gradient(180deg, #7d2d3e 0%, #581c29 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
-.sb-4{height:78%; background:linear-gradient(180deg, #536f8a 0%, #384e63 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
-
-/* Centre book expands slightly larger & flips out to show cover art on hover */
 .center-book-slot{
   position:relative;
-  flex:0 0 34px; width:34px; height:94%;
-  perspective:750px;
-  z-index:4;
-  transition:flex-basis .34s cubic-bezier(.22,.68,.32,1.15), width .34s cubic-bezier(.22,.68,.32,1.15), height .34s cubic-bezier(.22,.68,.32,1.15);
+  flex:0 0 36px; width:36px; height:94%;
+  perspective:800px;
+  z-index:6;
+  transition:flex-basis .36s cubic-bezier(.22,.68,.32,1.15), width .36s cubic-bezier(.22,.68,.32,1.15), height .36s cubic-bezier(.22,.68,.32,1.15);
 }
+
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 104px; width:104px; height:103%;
+  flex:0 0 132px; width:132px; height:112%;
 }
 
 .center-book-3d{
@@ -301,9 +275,10 @@ section.active{display:block; animation:fadeIn .22s ease}
   transform-style:preserve-3d;
   transition:transform .38s cubic-bezier(.22,.68,.32,1.15);
 }
+
 .shelf-widget:hover .center-book-3d,
 .shelf-widget:focus-visible .center-book-3d{
-  transform:translateY(-6px) scale(1.06);
+  transform:translateY(-10px) scale(1.12);
 }
 
 .book-spine-face{
@@ -405,7 +380,7 @@ section.active{display:block; animation:fadeIn .22s ease}
   margin-right:10%;
 }
 
-/* Outer black vinyl record spins */
+/* Outer black vinyl record spins slowly */
 .rp-vinyl{
   position:relative;
   width:100%; height:100%;
@@ -425,14 +400,14 @@ section.active{display:block; animation:fadeIn .22s ease}
   box-shadow:0 3px 9px rgba(15, 18, 22, 0.35);
 }
 .rp-vinyl.is-spinning{
-  animation:rpSpin 6s linear infinite;
+  animation:rpSpin 12s linear infinite;
 }
 @keyframes rpSpin{
   from{transform:rotate(0deg)}
   to{transform:rotate(360deg)}
 }
 
-/* Center album art stays still */
+/* Center album art spins in sync with the vinyl */
 .rp-album-center{
   position:absolute;
   width:38%; aspect-ratio:1 / 1;
@@ -443,6 +418,7 @@ section.active{display:block; animation:fadeIn .22s ease}
   box-shadow:0 1px 4px rgba(0, 0, 0, 0.45);
   display:grid; place-items:center;
   z-index:2;
+  animation:rpSpin 12s linear infinite;
 }
 .rp-album-center img{
   width:100%; height:100%; object-fit:cover; display:block;
@@ -563,7 +539,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 
 .retro-tv-body{
-  width:100%; aspect-ratio:1 / 1;
+  width:90%; aspect-ratio:1 / 1;
   background:linear-gradient(180deg, #b88463 0%, #996749 100%);
   border:2px solid #754b32;
   border-radius:12px;
