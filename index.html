@@ -6,7 +6,7 @@
   <title>Notes from Star</title>
   <!-- Adaptive Light/Dark Mode SVG Star Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bfill:%235c2432%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23c98a92%7D%7D%3C/style%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=6">
+  <link rel="stylesheet" href="style.css?v=7">
 </head>
 
 <body data-theme="home" data-mode="light">
@@ -29,13 +29,12 @@
       <button role="tab" aria-selected="false" onclick="showTab('hockey', this)">Ice Hockey <span>🏒</span></button>
     </nav>
 
-    <div class="side-footer">
-      <button type="button" class="mode-toggle" id="mode-toggle-btn" onclick="toggleDarkMode()" aria-pressed="false">
-        <span class="mode-icon">🌙</span>
-        <span class="mode-label">Dark Mode</span>
-      </button>
-      <div class="visitor-badge">visitors: <span id="gc-views">...</span></div>
-    </div>
+  <div class="side-footer">
+    <button type="button" class="mode-toggle" id="mode-toggle-btn" onclick="toggleDarkMode()" aria-pressed="false" aria-label="Switch to Dark Mode" title="Switch to Dark Mode">
+    <span class="mode-icon" aria-hidden="true"></span>
+    </button>
+    <div class="visitor-badge">visitors: <span id="gc-views">...</span></div>
+  </div>
   </aside>
 
   <main class="main-content">
@@ -330,6 +329,9 @@
 <script>
   const MODE_STORAGE_KEY = 'star_notes_mode';
 
+  const MOON_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>`;
+  const SUN_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.2M12 19.3v2.2M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2.5 12h2.2M19.3 12h2.2M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/></svg>`;
+
   function syncLogoWithMode(mode) {
     const logoImg = document.getElementById('site-logo-img');
     if (!logoImg) return;
@@ -354,12 +356,12 @@
     const btn = document.getElementById('mode-toggle-btn');
     if (btn) {
       const isDark = cleanMode === 'dark';
+      const nextLabel = isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode';
       btn.setAttribute('aria-pressed', String(isDark));
-      btn.setAttribute('aria-label', isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode');
+      btn.setAttribute('aria-label', nextLabel);
+      btn.setAttribute('title', nextLabel);
       const icon = btn.querySelector('.mode-icon');
-      const label = btn.querySelector('.mode-label');
-      if (icon) icon.textContent = isDark ? '☀️' : '🌙';
-      if (label) label.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+      if (icon) icon.innerHTML = isDark ? SUN_SVG : MOON_SVG;
     }
     syncLogoWithMode(cleanMode);
   }
