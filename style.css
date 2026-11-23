@@ -393,6 +393,11 @@ footer{
 }
 
 /* ============ 8. RESPONSIVE MOBILE LAYOUT ============ */
+.mobile-menu-toggle,
+.mobile-menu-backdrop{
+  display:none;
+}
+
 @media (max-width: 860px){
   .layout{grid-template-columns:1fr; gap:14px; margin:12px 10px 36px; padding:16px 14px 40px}
 
@@ -409,7 +414,26 @@ footer{
   .mobile-menu-toggle{
     display:inline-flex !important;
     position:fixed; top:16px; left:16px; z-index:110;
-    width:40px; height:40px;
+    width:40px; height:40px; padding:0;
+    align-items:center; justify-content:center;
+    color:var(--denim-dark);
+    background:rgba(255, 253, 249, 0.72);
+    backdrop-filter:blur(6px);
+    border:1px solid rgba(74, 107, 140, 0.35);
+    border-radius:50%;
+    box-shadow:0 4px 14px rgba(39, 62, 87, 0.14);
+    cursor:pointer; transition:all .18s ease;
+  }
+  .mobile-menu-toggle:hover{
+    background:rgba(238, 214, 216, 0.88);
+    border-color:var(--blush-deep);
+    transform:translateY(-2px);
+  }
+  .hamburger-lines{
+    display:flex; flex-direction:column; justify-content:center; gap:4px; width:16px;
+  }
+  .hamburger-lines span{
+    display:block; height:2px; width:100%; border-radius:2px; background:currentColor;
   }
 
   .mobile-menu-backdrop{
