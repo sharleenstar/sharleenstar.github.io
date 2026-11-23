@@ -299,7 +299,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 132px; width:132px; height:96%;
+  flex:0 0 118px; width:118px; height:104%;
 }
 
 .center-book-3d{
@@ -309,7 +309,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .shelf-widget:hover .center-book-3d,
 .shelf-widget:focus-visible .center-book-3d{
-  transform:translateY(-10px) scale(1.12);
+  transform:translateY(-4px) scale(1);
 }
 
 .book-spine-face{
