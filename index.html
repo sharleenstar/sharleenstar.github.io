@@ -6,7 +6,7 @@
   <title>Notes from Star</title>
   <!-- Adaptive Light/Dark Mode SVG Star Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bfill:%235c2432%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23c98a92%7D%7D%3C/style%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 
 <body data-theme="home" data-mode="light">
@@ -22,18 +22,18 @@
     </button>
 
     <div class="side-brand">
-      <span class="star-mark"> ★  ☆  ★</span>
+      <span class="star-mark">★ ☆ ★</span>
       <span class="hand">menu</span>
     </div>
 
     <nav class="side-nav" role="tablist" id="side-nav-menu">
       <button role="tab" aria-selected="true" onclick="showTab('home', this)"><span class="nav-icon">✨</span><span class="nav-label">Home</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" data-section="diary" data-section-label="Diary" data-latest-title="Welcome to Notes from Star" data-latest-href="diary/first-post.html" onclick="showTab('diary', this)"><span class="nav-icon">✏️</span><span class="nav-label">Diary</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" data-section="books" data-section-label="Books" data-latest-title="Winter reading list & ratings" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" data-section="screen" data-section-label="Movies & TV" data-latest-title="Latest comfort rewatch & cinema notes" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies & TV</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" data-section="baking" data-section-label="Baking" data-latest-title="Sunday patisserie & bakes" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking & Recipes</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" data-section="books" data-section-label="Books" data-latest-title="Winter reading list &amp; ratings" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" data-section="screen" data-section-label="Movies &amp; TV" data-latest-title="Latest comfort rewatch &amp; cinema notes" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies &amp; TV</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" data-section="baking" data-section-label="Baking" data-latest-title="Sunday patisserie &amp; bakes" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking &amp; Recipes</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-21T11:00" data-section="engineering" data-section-label="Uni" data-latest-title="Surviving final year engineering" onclick="showTab('engineering', this)"><span class="nav-icon">⚙️</span><span class="nav-label">Engineering</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" data-section="hockey" data-section-label="Hockey" data-latest-title="Recent puck drop & team thoughts" onclick="showTab('hockey', this)"><span class="nav-icon">🏒</span><span class="nav-label">Ice Hockey</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" data-section="hockey" data-section-label="Hockey" data-latest-title="Recent puck drop &amp; team thoughts" onclick="showTab('hockey', this)"><span class="nav-icon">🏒</span><span class="nav-label">Ice Hockey</span></button>
     </nav>
 
     <div class="side-footer">
@@ -63,17 +63,38 @@
       </div>
 
       <div class="moodboard">
-        <!-- 1. CURRENTLY READING -> LINKS TO BOOKS TAB & CURRENT READ SPOTLIGHT -->
-        <a href="#books" class="scrap-photo scrap-link" onclick="event.preventDefault(); showTabByName('books', 'current-read-card');">
-          <div class="photo-frame">
-            <img src="images/moodboard-1.jpg" alt="Currently reading book aesthetic" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="photo-placeholder" style="display:none;">add book photo:<br><strong>images/moodboard-1.jpg</strong></div>
+        <!-- 1. CURRENTLY READING -> BOOKSHELF WITH HOVER BOOK COVER FLIP-OUT -->
+        <a href="#books" class="currently-widget shelf-widget" onclick="event.preventDefault(); showTabByName('books', 'current-read-card');" aria-label="Currently reading: Winter Read Title">
+          <div class="shelf-scene">
+            <div class="books-row">
+              <div class="spine-book sb-1" aria-hidden="true"><span>NOVEL</span></div>
+              <div class="spine-book sb-2" aria-hidden="true"><span>POEMS</span></div>
+
+              <!-- Centre interactive book that flips out on hover to show cover art -->
+              <div class="center-book-slot">
+                <div class="center-book-3d">
+                  <div class="book-spine-face">
+                    <span>★ READ</span>
+                  </div>
+                  <div class="book-cover-face">
+                    <img src="images/current-book.jpg" alt="Current book cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <div class="book-cover-fallback" style="display:none;">
+                      <span>Winter<br>Read</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="spine-book sb-3" aria-hidden="true"><span>NOTES</span></div>
+              <div class="spine-book sb-4" aria-hidden="true"><span>2026</span></div>
+            </div>
+            <div class="wood-plank" aria-hidden="true"></div>
           </div>
-          <figcaption>reading: <strong>Winter Read Title</strong> ↗</figcaption>
+          <div class="widget-caption">reading: <strong>Winter Read Title</strong> ↗</div>
         </a>
 
-        <!-- 2. CURRENT LISTENING -> STANDALONE PINK TURNTABLE + SCROLLING SPOTIFY TICKER -->
-        <div class="record-player-widget" aria-label="Currently listening on Spotify">
+        <!-- 2. CURRENT LISTENING -> PINK TURNTABLE WITH BLACK SPINNING VINYL & STILL CENTER ALBUM ART -->
+        <div class="currently-widget record-player-widget" aria-label="Currently listening on Spotify">
           <div class="rp-deck">
             <span class="rp-screw rp-tl" aria-hidden="true"></span>
             <span class="rp-screw rp-tr" aria-hidden="true"></span>
@@ -81,10 +102,13 @@
             <span class="rp-screw rp-br" aria-hidden="true"></span>
 
             <div class="rp-platter">
-              <div class="rp-vinyl is-spinning" aria-hidden="true">
-                <div class="rp-grooves"></div>
-                <div class="rp-label"><span>STAR<br>SPIN</span></div>
-                <div class="rp-spindle"></div>
+              <!-- Outer black vinyl spins -->
+              <div class="rp-vinyl is-spinning" aria-hidden="true"></div>
+              <!-- Center album art stays completely still -->
+              <div class="rp-album-center">
+                <img src="images/album-art.jpg" alt="Album art" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="rp-album-fallback" style="display:none;"><span>STAR<br>FM</span></div>
+                <span class="rp-spindle" aria-hidden="true"></span>
               </div>
             </div>
 
@@ -97,30 +121,53 @@
 
             <div class="rp-controls" aria-hidden="true">
               <span class="rp-knob"></span>
+              <span class="rp-knob rp-knob-sm"></span>
               <span class="rp-slider"></span>
             </div>
           </div>
 
-          <!-- Replace href with your Spotify song or podcast link & update the scrolling text -->
           <a href="https://open.spotify.com/track/3PzsbWSQdLCKDLxn7YZfkM?si=d5d9d93483bb4136" target="_blank" rel="noopener noreferrer" class="rp-ticker-bar" title="Open on Spotify">
             <span class="rp-eq" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="rp-marquee">
               <span class="rp-marquee-track">
-                <span>♫ Now Playing: I'm On Fire — Bruce Springsteen  •  Spotify</span>
-                <span aria-hidden="true">♫ Now Playing: I'm On Fire — Bruce Springsteen  •  Spotify</span>
+                <span>♫ Now Playing: I'm On Fire — Bruce Springsteen &nbsp;•&nbsp; Spotify</span>
+                <span aria-hidden="true">♫ Now Playing: I'm On Fire — Bruce Springsteen &nbsp;•&nbsp; Spotify</span>
               </span>
             </span>
             <span class="rp-link-arrow" aria-hidden="true">↗</span>
           </a>
         </div>
 
-        <!-- 3. CURRENTLY WATCHING -> LINKS TO MOVIES & TV LATEST REVIEW -->
-        <a href="#screen" class="scrap-photo scrap-link" onclick="event.preventDefault(); showTabByName('screen', 'latest-screen-review');">
-          <div class="photo-frame">
-            <img src="images/moodboard-3.jpg" alt="Currently watching film or show aesthetic" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="photo-placeholder" style="display:none;">add watch photo:<br><strong>images/moodboard-3.jpg</strong></div>
+        <!-- 3. CURRENTLY WATCHING -> RETRO BOX TV WITH FLICKERING TITLE SCREEN -->
+        <a href="#screen" class="currently-widget tv-widget" onclick="event.preventDefault(); showTabByName('screen', 'latest-screen-review');" aria-label="Currently watching: Latest Watch Title">
+          <div class="retro-tv-body">
+            <div class="tv-antennas" aria-hidden="true">
+              <span class="ant-left"></span>
+              <span class="ant-right"></span>
+            </div>
+            <div class="tv-main-row">
+              <div class="tv-screen-bezel">
+                <div class="tv-crt-screen">
+                  <img src="images/watching-screen.jpg" alt="Current show or movie title screen" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                  <div class="tv-screen-fallback" style="display:none;">
+                    <span>NOW SHOWING<br>★ ★ ★</span>
+                  </div>
+                  <div class="tv-scanlines" aria-hidden="true"></div>
+                </div>
+              </div>
+              <div class="tv-side-panel" aria-hidden="true">
+                <span class="tv-dial"></span>
+                <span class="tv-dial"></span>
+                <div class="tv-vents">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+              </div>
+            </div>
+            <div class="tv-feet" aria-hidden="true">
+              <span></span><span></span>
+            </div>
           </div>
-          <figcaption>watching: <strong>Latest Watch Title</strong> ↗</figcaption>
+          <div class="widget-caption">watching: <strong>Latest Watch Title</strong> ↗</div>
         </a>
       </div>
 
@@ -128,9 +175,9 @@
         <h3>Latest Updates</h3>
         <ul class="notes-list" id="latest-updates-list">
           <li><a href="diary/first-post.html">Welcome to Notes from Star</a> <span>Diary</span></li>
-          <li><a href="#books" onclick="event.preventDefault(); showTabByName('books')">Winter reading list & ratings</a> <span>Books</span></li>
-          <li><a href="#screen" onclick="event.preventDefault(); showTabByName('screen')">Latest comfort rewatch & cinema notes</a> <span>Movies & TV</span></li>
-          <li><a href="#baking" onclick="event.preventDefault(); showTabByName('baking')">Sunday patisserie & bakes</a> <span>Baking</span></li>
+          <li><a href="#books" onclick="event.preventDefault(); showTabByName('books')">Winter reading list &amp; ratings</a> <span>Books</span></li>
+          <li><a href="#screen" onclick="event.preventDefault(); showTabByName('screen')">Latest comfort rewatch &amp; cinema notes</a> <span>Movies &amp; TV</span></li>
+          <li><a href="#baking" onclick="event.preventDefault(); showTabByName('baking')">Sunday patisserie &amp; bakes</a> <span>Baking</span></li>
         </ul>
       </div>
 
@@ -184,7 +231,7 @@
         </div>
         <h3>Current Read Title Here</h3>
         <div class="stars">★★★★<span class="off">★</span></div>
-        <p><strong>Author:</strong> Author Name  •  <strong>Progress:</strong> Chapter / Page #</p>
+        <p><strong>Author:</strong> Author Name &nbsp;•&nbsp; <strong>Progress:</strong> Chapter / Page #</p>
         <p>Add a short note on why you picked this up, your current thoughts, and a favourite line so far.</p>
       </div>
 
@@ -555,7 +602,6 @@
     }
   });
 </script>
-
 
 </body>
 </html>
