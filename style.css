@@ -299,7 +299,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 132px; width:132px; height:112%;
+  flex:0 0 132px; width:132px; height:102%;
 }
 
 .center-book-3d{
@@ -325,7 +325,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .book-spine-face .spine-title{
   writing-mode:vertical-rl; transform:rotate(180deg);
-  font-family:var(--serif); font-size:.66rem; font-weight:700; letter-spacing:.08em;
+  font-family:var(--serif); font-size:.56rem; font-weight:700; letter-spacing:.08em;
   color:inherit;
 }
 .book-spine-face .foil-band{
