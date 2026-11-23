@@ -1,209 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Notes from Star</title>
-
-<!-- 🎨 All styling lives in style.css (shared by every page) -->
- <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://w3.org' viewBox='0 0 100 100'><text y='.9em' font-size='90'>★</text></svg>">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes from Star</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23273e57'/%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z' fill='%23eed6d8' stroke='%23fffdf9' stroke-width='2'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<header>
-  <span class="hand">~ a little corner of the internet ~</span>
-  <h1>Notes from Star</h1>  <!-- ✏️ CHANGE YOUR BLOG NAME HERE -->
-</header>
 
-<!-- ============ 10. NAVIGATION TABS ============
-     Each data-tab must match a <section id="..."> below. -->
-<nav role="tablist" id="tabs">
-  <button role="tab" data-tab="home">Home</button>
-  <button role="tab" data-tab="books">Bookshelf</button>
-  <button role="tab" data-tab="screen">Screen Time</button>
-  <button role="tab" data-tab="diary">Diary</button>
-  <button role="tab" data-tab="eng">Engineering</button>
-  <button role="tab" data-tab="hockey">Ice Hockey</button>
-</nav>
-
-<main class="wrap">
-
-<!-- ============ HOME ============ -->
-<section id="home">
-  <div class="welcome">
-    <div class="card blush">
-      <h2>Welcome!</h2>
-      <!-- ✏️ WRITE YOUR WELCOME MESSAGE -->
-      <p>This is my scrapbook of everything I'm into: late-night reads, movies on repeat, diary scribbles, engineering notes between lectures, and way too many hockey opinions. Grab a coffee, kick off your boots, and stay a while.</p>
+<div class="layout">
+  <aside class="sidebar" aria-label="Site Navigation">
+    <div class="side-brand">
+      <span class="star-mark">✦ ⋆ ✦</span>
+      <h2>Notes from Star</h2>
+      <span class="hand">winter edition</span>
     </div>
-  </div>
 
-  <h2 class="section-title">Current Obsessions</h2>
-  <div class="section-sub">what's living rent-free in my head</div>
-  <ul class="chips" id="obsessions" style="justify-content:center"></ul>
-</section>
+    <nav class="side-nav" role="tablist">
+      <button role="tab" aria-selected="true" onclick="showTab('home', this)">Home <span>✦</span></button>
+      <button role="tab" aria-selected="false" onclick="showTab('diary', this)">Diary <span>✎</span></button>
+      <button role="tab" aria-selected="false" onclick="showTab('books', this)">Bookshelf <span>♡</span></button>
+      <button role="tab" aria-selected="false" onclick="showTab('screen', this)">Movies &amp; TV <span>▸</span></button>
+      <button role="tab" aria-selected="false" onclick="showTab('engineering', this)">Engineering <span>⚙</span></button>
+      <button role="tab" aria-selected="false" onclick="showTab('hockey', this)">Ice Hockey <span>❄</span></button>
+    </nav>
 
-<!-- ============ BOOKSHELF ============ -->
-<section id="books">
-  <h2 class="section-title">The Bookshelf</h2>
-  <div class="section-sub">current reads &amp; star ratings</div>
-  <div class="grid" id="bookGrid"></div>
-</section>
+    <div class="side-footer">
+      <div class="visitor-badge">visitors: <span id="gc-views">...</span></div>
+    </div>
+  </aside>
 
-<!-- ============ SCREEN TIME ============ -->
-<section id="screen">
-  <h2 class="section-title">Screen Time</h2>
-  <div class="section-sub">movies &amp; tv i've watched</div>
-  <div class="grid" id="screenGrid"></div>
-</section>
+  <main class="main-content">
+    <header class="masthead">
+      <span class="hand">~ a little winter corner of the internet ~</span>
+      <h1>Notes from Star</h1>
+    </header>
 
-<!-- ============ DIARY ============ -->
-<section id="diary">
-  <h2 class="section-title">Dear Diary</h2>
-  <div class="section-sub">newest entries first</div>
-  <div id="diaryList"></div>
-</section>
+    <section id="home" class="active">
+      <div class="card">
+        <div class="postage-stamp">WINTER<br>★ 2026 ★<br>POST</div>
+        <h3>Welcome to my digital commonplace book</h3>
+        <p>This is my scrapbook of everything I'm into right now: late-night reads, comfort films on repeat, diary scribbles, final-year engineering notes between lectures, and way too many ice hockey opinions. Grab a warm drink, kick off your boots, and stay a while.</p>
+      </div>
 
-<!-- ============ ENGINEERING ============ -->
-<section id="eng">
-  <h2 class="section-title">Engineering</h2>
-  <div class="section-sub">uni life &amp; notes</div>
-  <div class="grid" id="engGrid" style="grid-template-columns:repeat(auto-fill,minmax(300px,1fr))"></div>
-</section>
+      <div class="moodboard">
+        <figure class="scrap-photo">
+          <div class="photo-frame">
+            <img src="images/moodboard-1.jpg" alt="Winter aesthetic moodboard 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="photo-placeholder" style="display:none;">add Pinterest photo:<br><strong>images/moodboard-1.jpg</strong></div>
+          </div>
+          <figcaption>cozy winter mornings</figcaption>
+        </figure>
 
-<!-- ============ ICE HOCKEY ============ -->
-<section id="hockey">
-  <h2 class="section-title">Ice Hockey</h2>
-  <div class="section-sub">games watched &amp; team notes</div>
-  <h3 class="hand" style="font-size:2rem;text-align:center">Games Watched</h3>
-  <div id="gameList" style="max-width:720px;margin:0 auto 40px"></div>
-  <h3 class="hand" style="font-size:2rem;text-align:center">Team Notes</h3>
-  <div class="grid" id="teamGrid" style="margin-top:20px"></div>
-</section>
+        <figure class="scrap-photo">
+          <div class="photo-frame">
+            <img src="images/moodboard-2.jpg" alt="Winter aesthetic moodboard 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="photo-placeholder" style="display:none;">add Pinterest photo:<br><strong>images/moodboard-2.jpg</strong></div>
+          </div>
+          <figcaption>pink &amp; denim mood</figcaption>
+        </figure>
 
-</main>
+        <figure class="scrap-photo">
+          <div class="photo-frame">
+            <img src="images/moodboard-3.jpg" alt="Winter aesthetic moodboard 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="photo-placeholder" style="display:none;">add Pinterest photo:<br><strong>images/moodboard-3.jpg</strong></div>
+          </div>
+          <figcaption>rink nights &amp; study desks</figcaption>
+        </figure>
+      </div>
 
-<footer>
-  <p>made with much love ♡</p>
-  <div class="visitor-badge">
-    visitors: <span id="gc-views">...</span>
-  </div>
-</footer>
+      <div class="bits-grid">
+        <div class="sticky-note">
+          <h3>Currently...</h3>
+          <ul class="sticky-list">
+            <li><strong>Reading:</strong> Add your current book here</li>
+            <li><strong>Watching:</strong> Comfort winter rewatch</li>
+            <li><strong>Drinking:</strong> Iced vanilla oat latte / hot choc</li>
+            <li><strong>Uni Mood:</strong> Final year countdown &amp; thesis mode</li>
+          </ul>
+        </div>
+
+        <div class="index-card">
+          <h3>Latest Notes</h3>
+          <ul class="notes-list">
+            <li><a href="diary/first-post.html">Welcome to Notes from Star</a> <span>Nov 2026</span></li>
+            <li><a href="#books" onclick="showTabByName('books')">Winter reading list &amp; ratings</a> <span>Books</span></li>
+            <li><a href="#hockey" onclick="showTabByName('hockey')">Recent puck drop &amp; team thoughts</a> <span>Hockey</span></li>
+            <li><a href="#engineering" onclick="showTabByName('engineering')">Surviving final year engineering</a> <span>Uni</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="stubs-row">
+        <div class="ticket-stub">
+          <div>
+            <span class="stub-tag">★ game night stub ★</span>
+            <div class="stub-main">Ice Hockey Watchlist</div>
+            <div style="font-size:.88rem;">Section 104 • Hot chocolate in hand</div>
+          </div>
+          <div class="stub-side">ADMIT<br>ONE<br>❄</div>
+        </div>
+
+        <div class="library-card">
+          <div class="library-card-head">
+            <span>Star's Library Card</span>
+            <span>No. 022</span>
+          </div>
+          <div class="library-row"><span>DATE DUE</span><span>TITLE</span></div>
+          <div class="library-row"><span>NOV 30</span><span>Current Winter Read</span></div>
+          <div class="library-row"><span>DEC 14</span><span>Next on the TBR Pile</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="diary">
+      <h2 class="section-title">Dear Diary</h2>
+      <p class="section-sub">newest entries first</p>
+
+      <article class="card entry">
+        <div class="meta"><span>November 2026</span><span>#01</span></div>
+        <h3><a href="diary/first-post.html" style="text-decoration:none;">Starting my little corner of the internet</a></h3>
+        <p>Notes on finishing university at 22, building this site from scratch, and wanting a cozy place to log books, hockey games, and everyday life without algorithms.</p>
+        <a href="diary/first-post.html">Read full entry →</a>
+      </article>
+    </section>
+
+    <section id="books">
+      <h2 class="section-title">The Bookshelf</h2>
+      <p class="section-sub">current reads &amp; star ratings</p>
+      <div class="grid">
+        <div class="card">
+          <span class="tag">Reading Now</span>
+          <h3 style="margin-top:10px;">Book Title Here</h3>
+          <div class="stars">★★★★<span class="off">★</span></div>
+          <p>Write a few cozy thoughts about what you're reading right now.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="screen">
+      <h2 class="section-title">Screen Time</h2>
+      <p class="section-sub">movies &amp; tv i've watched</p>
+      <div class="grid">
+        <div class="card blush">
+          <span class="tag">Rewatch</span>
+          <h3 style="margin-top:10px;">Show or Movie Title</h3>
+          <div class="stars">★★★★★</div>
+          <p>Your mini review and favorite comfort scenes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="engineering">
+      <h2 class="section-title">Engineering</h2>
+      <p class="section-sub">uni life, projects &amp; notes</p>
+      <div class="card frost">
+        <span class="tag">Final Year</span>
+        <h3 style="margin-top:10px;">Life as a 22-year-old girl in engineering</h3>
+        <p>Things I've learned surviving labs, group projects, and getting ready to graduate.</p>
+      </div>
+    </section>
+
+    <section id="hockey">
+      <h2 class="section-title">Ice Hockey</h2>
+      <p class="section-sub">games watched &amp; team notes</p>
+      <div class="card">
+        <div class="game">
+          <span class="tag">Watched</span>
+          <span class="score">Home Team 4 — 2 Away Team</span>
+          <span class="meta">Overtime thriller</span>
+        </div>
+        <p style="margin-top:10px;">Add your favorite plays, goalie saves, and team notes here.</p>
+      </div>
+    </section>
+
+    <footer>made with much love ♡</footer>
+  </main>
+</div>
 
 <script>
-  // Fetches your total site views from GoatCounter and displays it in the badge
-  fetch('https://goatcounter.com')
+  function showTab(sectionId, btn) {
+    document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
+    document.getElementById(sectionId).classList.add('active');
+    document.querySelectorAll('.side-nav button').forEach(b => b.setAttribute('aria-selected', 'false'));
+    if (btn) btn.setAttribute('aria-selected', 'true');
+  }
+  function showTabByName(sectionId) {
+    const btns = Array.from(document.querySelectorAll('.side-nav button'));
+    const match = btns.find(b => b.getAttribute('onclick').includes("'" + sectionId + "'"));
+    showTab(sectionId, match);
+  }
+</script>
+
+<script>
+  fetch('https://sharleenstar.goatcounter.com/counter//.json')
     .then(r => r.json())
     .then(data => document.getElementById('gc-views').textContent = data.count)
     .catch(() => document.getElementById('gc-views').textContent = '1');
 </script>
-<script data-goatcounter="https://goatcounter.com" async src="//gc.zgo.at/count.js"></script>
-
-
-<script>
-/* =====================================================================
-   ✏️ YOUR CONTENT LIVES HERE - this is the only part you need to edit!
-   To add something: copy one {...} line, paste it under the others
-   (keep the comma between items!), and change the words.
-   Photos: put image files in an "images" folder and use  img:"images/name.jpg"
-   Want a card to open a full post? Add  link:"diary/your-post.html"  to it.
-   Leave img:"" to show the emoji placeholder in "icon" instead.
-   Ratings are 1 to 5. Dates use YYYY-MM-DD so diary sorting works.
-   ===================================================================== */
-
-/* ---- HOME: current obsessions ---- */
-const obsessions = [
-  "diet coke", "dirty dancing", "take me home (4 christmas)"
-];
-
-/* ---- BOOKSHELF ---- */
-const books = [
-  { title:"Light Bringer", author:"Pierce Brown", rating:5, status:"Currently reading", note:"Cannot put it down.", img:"", icon:"📖" },
-];
-
-/* ---- SCREEN TIME: type is "Movie" or "TV" ---- */
-const screenLog = [
-  { title:"Yellowjackets", type:"TV", date:"2026-11-02", rating:5, note:"Gagged.", img:"", icon:"🎬" },
-
-];
-
-/* ---- DIARY: newest sorted to top automatically ---- */
-const diary = [
-  { date:"2026-11-20", mood:"🌸", title:"Finally, Friday", link:"diary/my-first-post.html",
-    text:"Handed in my lab report, bought a pastry as a reward, and watched the sunset from the library steps. Small wins count." }
-];
-
-/* ---- ENGINEERING: uni life & notes ---- */
-const engineering = [
-  { title:"Surviving the lab hours", tag:"Uni life", date:"2026-11-05",
-    text:"Bring a cardigan (labs are freezing), snacks, and a friend who understands the circuit diagram." }
-];
-
-/* ---- ICE HOCKEY: games watched ---- */
-const games = [
-  { date:"2026-11-18", teams:"Bruins vs Canadiens", score:"3 - 2 (OT)", note:"Overtime winner, I screamed." }
-];
-
-/* ---- ICE HOCKEY: team notes ---- */
-const teams = [
-  { team:"Boston Bruins", icon:"🐻", note:"My team. Love the grit, always play with heart." }
-];
-
-/* =====================================================================
-   🔧 BELOW THIS LINE: the code that builds the pages. You can ignore it!
-   ===================================================================== */
-const $ = id => document.getElementById(id);
-const stars = n => '<span class="stars" aria-label="'+n+' out of 5 stars">' +
-  '★'.repeat(n) + '<span class="off">' + '★'.repeat(5-n) + '</span></span>';
-const photo = i => i.img ? '<div class="photo"><img src="'+i.img+'" alt="'+i.title+'"></div>'
-                          : '<div class="photo">'+(i.icon||'📷')+'</div>';
-const nice = d => new Date(d+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-const ttl = i => i.link ? '<a class="post-link" href="'+i.link+'">'+i.title+'</a>' : i.title;
-const newest = (a,b) => b.date.localeCompare(a.date);
-
-$('obsessions').innerHTML = obsessions.map(o => '<li>'+o+'</li>').join('');
-
-$('bookGrid').innerHTML = books.map(b =>
-  '<figure class="polaroid">'+photo(b)+'<figcaption><div class="title">'+ttl(b)+'</div>'+
-  '<div class="meta">'+b.author+' · '+b.status+'</div>'+stars(b.rating)+
-  '<div class="note">'+b.note+'</div></figcaption></figure>').join('');
-
-$('screenGrid').innerHTML = [...screenLog].sort(newest).map(s =>
-  '<figure class="polaroid">'+photo(s)+'<figcaption><div class="title">'+ttl(s)+'</div>'+
-  '<div class="meta">'+s.type+' · '+nice(s.date)+'</div>'+stars(s.rating)+
-  '<div class="note">'+s.note+'</div></figcaption></figure>').join('');
-
-$('diaryList').innerHTML = [...diary].sort(newest).map((e,i) =>
-  '<article class="card '+(i%2?'sand':'blush')+' entry"><div class="meta"><span>'+nice(e.date)+'</span><span>'+e.mood+'</span></div>'+
-  '<h3>'+ttl(e)+'</h3><p>'+e.text+'</p>'+(e.link?'<a class="meta post-link" href="'+e.link+'">Read the full post</a>':'')+'</article>').join('');
-
-$('engGrid').innerHTML = [...engineering].sort(newest).map(e =>
-  '<article class="card"><span class="tag">'+e.tag+'</span><h3 style="margin-top:8px">'+ttl(e)+'</h3>'+
-  '<div class="meta">'+nice(e.date)+'</div><p>'+e.text+'</p></article>').join('');
-
-$('gameList').innerHTML = [...games].sort(newest).map(g =>
-  '<div class="card game"><span class="meta">'+nice(g.date)+'</span><strong style="font-family:var(--serif);font-size:1.25rem">'+g.teams+'</strong>'+
-  '<span class="score">'+g.score+'</span><span style="flex-basis:100%">'+g.note+'</span></div>').join('');
-
-$('teamGrid').innerHTML = teams.map(t =>
-  '<figure class="polaroid">'+photo({title:t.team,icon:t.icon,img:t.img})+'<figcaption><div class="title">'+t.team+'</div>'+
-  '<div class="note">'+t.note+'</div></figcaption></figure>').join('');
-
-/* ---- Tab switching (also remembers the tab in the URL, e.g. #diary) ---- */
-const tabs = document.querySelectorAll('#tabs button');
-function show(name){
-  if(!$(name)) name = 'home';
-  document.querySelectorAll('main section').forEach(s => s.classList.toggle('active', s.id === name));
-  tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.tab === name));
-}
-tabs.forEach(b => b.addEventListener('click', () => { location.hash = b.dataset.tab; }));
-window.addEventListener('hashchange', () => show(location.hash.slice(1)));
-show(location.hash.slice(1));
-</script>
-
-    <script data-goatcounter="https://sharleenstar.goatcounter.com/count"
-            async src="//gc.zgo.at/count.js"></script>
-            
+<script data-goatcounter="https://sharleenstar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
