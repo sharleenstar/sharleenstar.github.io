@@ -421,26 +421,23 @@ footer{
   .mobile-menu-backdrop.is-open{display:block}
 
   .side-nav{
-    display:none; flex-direction:column; gap:7px;
+    display:none; flex-direction:column; gap:6px;
     position:fixed; top:64px; left:16px; right:auto; z-index:105;
-    width:min(265px, calc(100vw - 32px));
+    width:fit-content; min-width:190px; max-width:calc(100vw - 32px);
     max-height:calc(100vh - 90px); overflow-y:auto;
-    margin:0; padding:12px;
+    margin:0; padding:10px;
     background:var(--paper); border:1px solid #d5dfe8; border-radius:8px;
     box-shadow:0 14px 32px rgba(20, 28, 38, 0.24);
   }
   .side-nav.is-open{display:flex}
   .side-nav button, .side-nav a{
     width:100%; flex:none;
-    justify-content:flex-start; gap:10px;
-    padding:8px 12px;
+    display:inline-flex; align-items:center; justify-content:flex-start; gap:8px;
+    padding:7px 12px;
   }
-  .side-nav .nav-icon{
-    display:inline-flex; align-items:center; justify-content:center;
-    width:20px; flex-shrink:0;
-  }
+  .side-nav .nav-icon,
   .side-nav .nav-label{
-    flex:1; text-align:left;
+    flex:0 0 auto;
   }
 
   .mode-toggle{
