@@ -6,7 +6,7 @@
   <title>Notes from Star</title>
   <!-- Adaptive Light/Dark Mode SVG Star Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bfill:%235c2432%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23c98a92%7D%7D%3C/style%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=8">
+  <link rel="stylesheet" href="style.css?v=9">
 </head>
 
 <body data-theme="home" data-mode="light">
@@ -59,7 +59,7 @@
       <div class="card">
         <div class="postage-stamp">WINTER<br>EDITION</div>
         <h3>Welcome to my digital diary!</h3>
-        <p>A little bit of everything I'm into right now: late-night reads, comfort films, fresh bakes, life updates, and way too many hockey opinions. Grab a warm drink, snuggle up, and stay a while.</p>
+        <p>A bit about the things I'm into right now: late-night reads, comfort films, fresh bakes, life updates, and way too many hockey opinions.</p>
       </div>
 
       <div class="moodboard">
@@ -67,17 +67,27 @@
         <a href="#books" class="currently-widget shelf-widget" onclick="event.preventDefault(); showTabByName('books', 'current-read-card');" aria-label="Currently reading: Winter Read Title">
           <div class="shelf-scene">
             <div class="books-row">
-              <div class="spine-book sb-1" aria-hidden="true"><span>NOVEL</span></div>
-              <div class="spine-book sb-2" aria-hidden="true"><span>POEMS</span></div>
+              <div class="spine-book sb-1" aria-hidden="true">
+                <span class="foil-band">✦</span>
+                <span class="spine-title">BOOK ONE</span>
+                <span class="foil-band">✦</span>
+              </div>
+              <div class="spine-book sb-2" aria-hidden="true">
+                <span class="foil-band">✦</span>
+                <span class="spine-title">BOOK TWO</span>
+                <span class="foil-band">✦</span>
+              </div>
 
-              <!-- Centre interactive book that flips out on hover to show cover art -->
+              <!-- Centre interactive book that expands & flips out on hover to show cover art -->
               <div class="center-book-slot">
                 <div class="center-book-3d">
                   <div class="book-spine-face">
-                    <span>★ READ</span>
+                    <span class="foil-band">✦</span>
+                    <span class="spine-title">★ READ</span>
+                    <span class="foil-band">✦</span>
                   </div>
                   <div class="book-cover-face">
-                    <img src="images/current-book.jpg" alt="Current book cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                    <img id="current-book-cover-img" src="images/current-book.jpg" alt="Current book cover" crossorigin="anonymous" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                     <div class="book-cover-fallback" style="display:none;">
                       <span>Winter<br>Read</span>
                     </div>
@@ -85,8 +95,16 @@
                 </div>
               </div>
 
-              <div class="spine-book sb-3" aria-hidden="true"><span>NOTES</span></div>
-              <div class="spine-book sb-4" aria-hidden="true"><span>2026</span></div>
+              <div class="spine-book sb-3" aria-hidden="true">
+                <span class="foil-band">✦</span>
+                <span class="spine-title">BOOK FOUR</span>
+                <span class="foil-band">✦</span>
+              </div>
+              <div class="spine-book sb-4" aria-hidden="true">
+                <span class="foil-band">✦</span>
+                <span class="spine-title">BOOK FIVE</span>
+                <span class="foil-band">✦</span>
+              </div>
             </div>
             <div class="wood-plank" aria-hidden="true"></div>
           </div>
@@ -485,6 +503,75 @@
       chosen = 'dark';
     }
     applyColorMode(chosen || 'light');
+  })();
+</script>
+
+<script>
+  // Sample average/edge color of current-book.jpg so the expandable center book spine matches it
+  (function syncCurrentBookSpineColor() {
+    const img = document.getElementById('current-book-cover-img');
+    const spine = document.querySelector('.book-spine-face');
+    if (!img || !spine) return;
+
+    function applyColorFromImage() {
+      if (!img.complete || img.naturalWidth === 0) return;
+      try {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        if (!ctx) return;
+        const size = 24;
+        canvas.width = size;
+        canvas.height = size;
+        ctx.drawImage(img, 0, 0, size, size);
+        const data = ctx.getImageData(0, 0, size, size).data;
+
+        // Sample border/background pixels first, falling back to overall average
+        let rSum = 0, gSum = 0, bSum = 0, count = 0;
+        for (let y = 0; y < size; y++) {
+          for (let x = 0; x < size; x++) {
+            const isBorder = x < 3 || x >= size - 3 || y < 3 || y >= size - 3;
+            if (!isBorder) continue;
+            const idx = (y * size + x) * 4;
+            if (data[idx + 3] < 128) continue;
+            rSum += data[idx];
+            gSum += data[idx + 1];
+            bSum += data[idx + 2];
+            count++;
+          }
+        }
+
+        if (count === 0) {
+          for (let i = 0; i < data.length; i += 4) {
+            if (data[i + 3] < 128) continue;
+            rSum += data[i];
+            gSum += data[i + 1];
+            bSum += data[i + 2];
+            count++;
+          }
+        }
+
+        if (count > 0) {
+          const r = Math.round(rSum / count);
+          const g = Math.round(gSum / count);
+          const b = Math.round(bSum / count);
+          const darkR = Math.max(0, Math.round(r * 0.72));
+          const darkG = Math.max(0, Math.round(g * 0.72));
+          const darkB = Math.max(0, Math.round(b * 0.72));
+
+          spine.style.background = `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 0%, rgb(${darkR}, ${darkG}, ${darkB}) 100%)`;
+          spine.style.borderColor = `rgb(${darkR}, ${darkG}, ${darkB})`;
+
+          // Choose crisp light or dark ink for spine text depending on brightness
+          const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+          spine.style.color = luminance > 0.62 ? '#273e57' : '#fffdf9';
+        }
+      } catch (e) {
+        // Keep CSS fallback gradient if canvas is restricted (e.g., file:// CORS)
+      }
+    }
+
+    if (img.complete) applyColorFromImage();
+    img.addEventListener('load', applyColorFromImage);
   })();
 </script>
 
