@@ -28,12 +28,12 @@
 
     <nav class="side-nav" role="tablist" id="side-nav-menu">
       <button role="tab" aria-selected="true" onclick="showTab('home', this)"><span class="nav-icon">✨</span><span class="nav-label">Home</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" onclick="showTab('diary', this)"><span class="nav-icon">✏️</span><span class="nav-label">Diary</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies & TV</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking & Recipes</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-21T11:00" onclick="showTab('engineering', this)"><span class="nav-icon">⚙️</span><span class="nav-label">Engineering</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" onclick="showTab('hockey', this)"><span class="nav-icon">🏒</span><span class="nav-label">Ice Hockey</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" data-section="diary" data-section-label="Diary" data-latest-title="Welcome to Notes from Star" data-latest-href="diary/first-post.html" onclick="showTab('diary', this)"><span class="nav-icon">✏️</span><span class="nav-label">Diary</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" data-section="books" data-section-label="Books" data-latest-title="Winter reading list & ratings" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" data-section="screen" data-section-label="Movies & TV" data-latest-title="Latest comfort rewatch & cinema notes" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies & TV</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" data-section="baking" data-section-label="Baking" data-latest-title="Sunday patisserie & bakes" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking & Recipes</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-21T11:00" data-section="engineering" data-section-label="Uni" data-latest-title="Surviving final year engineering" onclick="showTab('engineering', this)"><span class="nav-icon">⚙️</span><span class="nav-label">Engineering</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" data-section="hockey" data-section-label="Hockey" data-latest-title="Recent puck drop & team thoughts" onclick="showTab('hockey', this)"><span class="nav-icon">🏒</span><span class="nav-label">Ice Hockey</span></button>
     </nav>
 
     <div class="side-footer">
@@ -99,29 +99,15 @@
         </a>
       </div>
 
-      <div class="bits-grid">
-        <div class="sticky-note">
-          <h3>Currently...</h3>
-          <ul class="sticky-list">
-            <li><strong>Reading:</strong> Add your current book here</li>
-            <li><strong>Watching:</strong> Comfort winter rewatch</li>
-            <li><strong>Baking:</strong> Cinnamon brioche rolls &amp; brown butter cookies</li>
-            <li><strong>Drinking:</strong> Iced vanilla oat latte / hot choc</li>
-            <li><strong>Uni Mood:</strong> Final year countdown &amp; thesis mode</li>
-          </ul>
-        </div>
-
         <div class="index-card">
-          <h3>Latest Notes</h3>
-          <ul class="notes-list">
-            <li><a href="diary/first-post.html">Welcome to Notes from Star</a> <span>Nov 2026</span></li>
-            <li><a href="#books" onclick="showTabByName('books')">Winter reading list &amp; ratings</a> <span>Books</span></li>
-            <li><a href="#baking" onclick="showTabByName('baking')">Sunday patisserie &amp; bakes</a> <span>Baking</span></li>
-            <li><a href="#hockey" onclick="showTabByName('hockey')">Recent puck drop &amp; team thoughts</a> <span>Hockey</span></li>
-            <li><a href="#engineering" onclick="showTabByName('engineering')">Surviving final year engineering</a> <span>Uni</span></li>
+          <h3>Latest Updates</h3>
+          <ul class="notes-list" id="latest-updates-list">
+            <li><a href="diary/first-post.html">Welcome to Notes from Star</a> <span>Diary</span></li>
+            <li><a href="#books" onclick="event.preventDefault(); showTabByName('books')">Winter reading list & ratings</a> <span>Books</span></li>
+            <li><a href="#screen" onclick="event.preventDefault(); showTabByName('screen')">Latest comfort rewatch & cinema notes</a> <span>Movies & TV</span></li>
+            <li><a href="#baking" onclick="event.preventDefault(); showTabByName('baking')">Sunday patisserie & bakes</a> <span>Baking</span></li>
           </ul>
         </div>
-      </div>
 
       <div class="stubs-row">
         <div class="ticket-stub">
@@ -508,10 +494,42 @@
 
     // Re-append them in the sorted order
     otherBtns.forEach(btn => nav.appendChild(btn));
+
+    // Populate "Latest Updates" with the 4 most recently updated sections
+    const latestList = document.getElementById("latest-updates-list");
+    if (latestList) {
+      const topFour = otherBtns.slice(0, 4);
+      latestList.innerHTML = "";
+
+      topFour.forEach(btn => {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        const sectionId = btn.dataset.section || "";
+        const title = btn.dataset.latestTitle || (btn.querySelector(".nav-label")?.textContent || sectionId);
+        const tagText = btn.dataset.sectionLabel || sectionId;
+        const customHref = btn.dataset.latestHref;
+
+        link.textContent = title;
+        if (customHref) {
+          link.href = customHref;
+        } else {
+          link.href = "#" + sectionId;
+          link.addEventListener("click", (e) => {
+            e.preventDefault();
+            showTabByName(sectionId);
+          });
+        }
+
+        const badge = document.createElement("span");
+        badge.textContent = tagText;
+
+        li.appendChild(link);
+        li.appendChild(badge);
+        latestList.appendChild(li);
+      });
+    }
   });
 </script>
-
-
 
 
 </body>
