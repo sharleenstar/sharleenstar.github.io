@@ -22,8 +22,8 @@
     </button>
 
     <div class="side-brand">
-      <span class="star-mark">✦ ⋆ ✦</span>
-      <span class="hand">winter edition</span>
+      <span class="star-mark"> ★  ☆  ★</span>
+      <span class="hand">menu</span>
     </div>
 
     <nav class="side-nav" role="tablist" id="side-nav-menu">
@@ -57,35 +57,46 @@
     <!-- ==================== HOME ==================== -->
     <section id="home" class="active">
       <div class="card">
-        <div class="postage-stamp">WINTER<br>2026<br>POST</div>
+        <div class="postage-stamp">WINTER<br>EDITION</div>
         <h3>Welcome to my digital diary!</h3>
         <p>A little bit of everything I'm into right now: late-night reads, comfort films, fresh bakes, life updates, and way too many hockey opinions. Grab a warm drink, snuggle up, and stay a while.</p>
       </div>
 
       <div class="moodboard">
-        <figure class="scrap-photo">
+        <!-- 1. CURRENTLY READING -> LINKS TO BOOKS TAB & CURRENT READ SPOTLIGHT -->
+        <a href="#books" class="scrap-photo scrap-link" onclick="event.preventDefault(); showTabByName('books', 'current-read-card');">
           <div class="photo-frame">
-            <img src="images/moodboard-1.jpg" alt="Winter aesthetic moodboard 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="photo-placeholder" style="display:none;">add Pinterest photo:<br><strong>images/moodboard-1.jpg</strong></div>
+            <img src="images/moodboard-1.jpg" alt="Currently reading book aesthetic" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="photo-placeholder" style="display:none;">add book photo:<br><strong>images/moodboard-1.jpg</strong></div>
           </div>
-          <figcaption>cozy winter mornings</figcaption>
-        </figure>
+          <figcaption>reading: <strong>Winter Read Title</strong> ↗</figcaption>
+        </a>
 
-        <figure class="scrap-photo">
-          <div class="photo-frame">
-            <img src="images/moodboard-2.jpg" alt="Winter aesthetic moodboard 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="photo-placeholder" style="display:none;">add Pinterest photo:<br><strong>images/moodboard-2.jpg</strong></div>
+        <!-- 2. CURRENT LISTENING -> SPOTIFY LINK + SPINNING RECORD PLAYER -->
+        <div class="scrap-photo vinyl-polaroid">
+          <div class="photo-frame vinyl-stage">
+            <div class="turntable" aria-hidden="true">
+              <div class="vinyl-disc is-spinning">
+                <div class="vinyl-label">STAR<br>FM</div>
+              </div>
+              <div class="tonearm"></div>
+            </div>
           </div>
-          <figcaption>pink &amp; denim mood</figcaption>
-        </figure>
+          <figcaption class="vinyl-caption">
+            <span>listening: <strong>Song or Podcast</strong></span>
+            <!-- Replace href="#" with your actual Spotify track or episode link -->
+            <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="spotify-pill">open on spotify ↗</a>
+          </figcaption>
+        </div>
 
-        <figure class="scrap-photo">
+        <!-- 3. CURRENTLY WATCHING -> LINKS TO MOVIES & TV LATEST REVIEW -->
+        <a href="#screen" class="scrap-photo scrap-link" onclick="event.preventDefault(); showTabByName('screen', 'latest-screen-review');">
           <div class="photo-frame">
-            <img src="images/moodboard-3.jpg" alt="Winter aesthetic moodboard 3" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="photo-placeholder" style="display:none;">add Pinterest photo:<br><strong>images/moodboard-3.jpg</strong></div>
+            <img src="images/moodboard-3.jpg" alt="Currently watching film or show aesthetic" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="photo-placeholder" style="display:none;">add watch photo:<br><strong>images/moodboard-3.jpg</strong></div>
           </div>
-          <figcaption>rink nights &amp; study desks</figcaption>
-        </figure>
+          <figcaption>watching: <strong>Latest Watch Title</strong> ↗</figcaption>
+        </a>
       </div>
 
       <div class="bits-grid">
@@ -155,6 +166,17 @@
         <p class="section-sub">aged paper, dog-eared pages &amp; star ratings</p>
       </div>
 
+      <div id="current-read-card" class="card book-card current-read-spotlight">
+        <div class="book-card-top">
+          <span class="tag">Current Read ★</span>
+          <span class="ex-libris">Open Book • Winter Edition</span>
+        </div>
+        <h3>Current Read Title Here</h3>
+        <div class="stars">★★★★<span class="off">★</span></div>
+        <p><strong>Author:</strong> Author Name  •  <strong>Progress:</strong> Chapter / Page #</p>
+        <p>Add a short note on why you picked this up, your current thoughts, and a favourite line so far.</p>
+      </div>
+
       <div class="grid">
         <div class="card book-card">
           <div class="book-card-top">
@@ -195,6 +217,16 @@
           <h3 style="margin-top:12px;">Show or Movie Title</h3>
           <div class="stars">★★★★★</div>
           <p>Your mini review, cinematography notes, and favorite comfort scenes.</p>
+        </div>
+
+        <div id="latest-screen-review" class="card cinema-card">
+          <div class="ticket-header">
+            <span class="tag">LATEST REVIEW</span>
+            <span class="seat-no">ROW G • SEAT 12</span>
+          </div>
+          <h3 style="margin-top:12px;">Latest Show or Movie Title</h3>
+          <div class="stars">★★★★★</div>
+          <p>Your latest mini review, favourite scene, and overall rating.</p>
         </div>
 
         <div class="card cinema-card">
@@ -406,10 +438,16 @@
     if (btn) btn.setAttribute('aria-selected', 'true');
     document.body.setAttribute('data-theme', sectionId);
   }
-  function showTabByName(sectionId) {
+  function showTabByName(sectionId, targetId) {
     const btns = Array.from(document.querySelectorAll('.side-nav button'));
     const match = btns.find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + sectionId + "'"));
     showTab(sectionId, match);
+    if (targetId) {
+      requestAnimationFrame(() => {
+        const el = document.getElementById(targetId);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
   }
 </script>
 
