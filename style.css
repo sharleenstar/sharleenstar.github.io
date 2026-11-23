@@ -1,15 +1,94 @@
-@import url('https://googleapis.com');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
-/* ============ 1. WINTER BLUE, CREAM & DUSTY ROSE PALETTE ============ */
+/* ============ 1. WINTER BLUE, CREAM & DUSTY ROSE BASE PALETTE ============ */
 :root{
   --blush:#eed6d8;  --blush-deep:#c98a92;
   --cream:#f6f8fa;  --paper:#fffdf9;
   --denim:#4a6b8c;  --denim-dark:#273e57;
   --frost:#dce6f0;  --slate:#6b7c8f;
   --ink:#2f3842;
+
+  /* Section-specific twist variables (default: Home / Diary) */
+  --section-paper:#fffdf9;
+  --section-border:#d5dfe8;
+  --section-outline:#dce6f0;
+  --section-accent:#273e57;
+  --section-accent-soft:#c98a92;
+  --section-badge-bg:#273e57;
+  --section-badge-fg:#fffdf9;
+  --section-pattern:none;
+  --section-pattern-size:auto;
+
   --serif:'Cormorant Garamond',Georgia,serif;
   --hand:'Caveat','Segoe Script',cursive;
   --body:'Lora',Georgia,serif;
+  --mono:'JetBrains Mono',monospace;
+}
+
+/* ============ 1B. COHESIVE SECTION TWISTS ============ */
+/* Bookshelf: Vintage Romance, Reds/Pinks & Old Parchment Paper */
+body[data-theme="books"]{
+  --section-paper:#f9f1e4;
+  --section-border:#d8b7b2;
+  --section-outline:#ebd8cf;
+  --section-accent:#6e2636;
+  --section-accent-soft:#b85d6f;
+  --section-badge-bg:#6e2636;
+  --section-badge-fg:#fdf6ec;
+  --section-pattern:radial-gradient(rgba(110, 38, 54, 0.05) 1px, transparent 1px);
+  --section-pattern-size:16px 16px;
+}
+
+/* Movies & TV: Old Vintage Cinema Theatre (Cream, Crimson Velvet & Marquee Gold) */
+body[data-theme="screen"]{
+  --section-paper:#fcf6ea;
+  --section-border:#d4af5a;
+  --section-outline:#e8d39c;
+  --section-accent:#7a1c24;
+  --section-accent-soft:#c59638;
+  --section-badge-bg:#7a1c24;
+  --section-badge-fg:#fcf6ea;
+}
+
+/* Baking & Recipes: Warm Patisserie, Beige/Cream, Croissants & Pastry Crust */
+body[data-theme="baking"]{
+  --section-paper:#fbf3e6;
+  --section-border:#dec3a1;
+  --section-outline:#efe0ca;
+  --section-accent:#7c4d2b;
+  --section-accent-soft:#c68b59;
+  --section-badge-bg:#7c4d2b;
+  --section-badge-fg:#fffaf2;
+  --section-pattern:radial-gradient(rgba(198, 139, 89, 0.09) 1.2px, transparent 1.2px);
+  --section-pattern-size:20px 20px;
+}
+
+/* Engineering: Blueprint Grid + Sleek Futuristic Lab Accent */
+body[data-theme="engineering"]{
+  --section-paper:#f3f8fc;
+  --section-border:#9ebbd4;
+  --section-outline:#cce0f0;
+  --section-accent:#1b3b5c;
+  --section-accent-soft:#2b8cbe;
+  --section-badge-bg:#1b3b5c;
+  --section-badge-fg:#e6f4ff;
+  --section-pattern:
+    linear-gradient(90deg, rgba(43, 140, 190, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(43, 140, 190, 0.08) 1px, transparent 1px);
+  --section-pattern-size:18px 18px;
+}
+
+/* Ice Hockey: Cool Rink Frost Blues & Crisp Arena Accents */
+body[data-theme="hockey"]{
+  --section-paper:#f2f8fd;
+  --section-border:#a8c8e4;
+  --section-outline:#d6e8f7;
+  --section-accent:#1d4870;
+  --section-accent-soft:#5899cc;
+  --section-badge-bg:#1d4870;
+  --section-badge-fg:#f4faff;
+  --section-pattern:linear-gradient(180deg, rgba(168, 200, 228, 0.14) 0%, transparent 100%);
+  --section-pattern-size:100% 100%;
 }
 
 *{box-sizing:border-box}
@@ -17,16 +96,17 @@ html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--ink); font-family:var(--body); line-height:1.75;
   background-color:#eef3f8;
-  /* Winter blue & ivory gingham background */
+  /* Persistent Winter blue & ivory gingham background */
   background-image:
     linear-gradient(90deg, rgba(74, 107, 140, 0.08) 50%, transparent 50%),
     linear-gradient(rgba(74, 107, 140, 0.08) 50%, transparent 50%);
-  background-size: 36px 36px;
+  background-size:36px 36px;
+  transition:background-color .25s ease;
 }
 
-h1,h2,h3,h4{font-family:var(--serif);line-height:1.15;margin:0 0 .4em;color:var(--denim-dark)}
+h1,h2,h3,h4{font-family:var(--serif);line-height:1.15;margin:0 0 .4em;color:var(--section-accent)}
 .hand{font-family:var(--hand);font-weight:600;color:var(--denim)}
-a{color:var(--denim-dark)}
+a{color:var(--section-accent)}
 
 /* ============ 2. LAYOUT WITH PERSISTENT LEFT SIDEBAR ============ */
 .layout{
@@ -51,20 +131,20 @@ a{color:var(--denim-dark)}
 
 .side-brand{text-align:center; border-bottom:1px dashed #cfdbe6; padding-bottom:14px; margin-bottom:16px}
 .side-brand .star-mark{font-size:1.3rem; color:var(--blush-deep); display:block; margin-bottom:2px}
-.side-brand h2{font-size:1.55rem; margin:0}
+.side-brand h2{font-size:1.55rem; margin:0; color:var(--denim-dark)}
 .side-brand .hand{font-size:1.2rem; color:var(--slate)}
 
 .side-nav{display:flex; flex-direction:column; gap:8px}
 .side-nav button, .side-nav a{
   display:flex; align-items:center; justify-content:space-between; width:100%; text-align:left;
-  font-family:var(--serif); font-size:1.1rem; font-weight:600; letter-spacing:.02em;
+  font-family:var(--serif); font-size:1.08rem; font-weight:600; letter-spacing:.02em;
   padding:8px 14px; color:var(--denim-dark); background:var(--cream); text-decoration:none;
   border:1px solid #cfdbe6; border-left:4px solid var(--denim); border-radius:2px 6px 6px 2px;
   cursor:pointer; transition:all .16s ease;
 }
 .side-nav button:hover, .side-nav a:hover{background:var(--frost); transform:translateX(3px)}
 .side-nav button[aria-selected="true"], .side-nav a.active{
-  background:var(--denim-dark); color:var(--paper); border-color:var(--denim-dark); border-left-color:var(--blush-deep);
+  background:var(--section-accent); color:var(--paper); border-color:var(--section-accent); border-left-color:var(--section-accent-soft);
 }
 
 .side-footer{margin-top:18px; padding-top:14px; border-top:1px dashed #cfdbe6; text-align:center}
@@ -79,40 +159,49 @@ a{color:var(--denim-dark)}
 .main-content{min-width:0}
 header.masthead{text-align:center; padding:10px 10px 26px}
 header.masthead .hand{font-size:1.45rem; display:block; color:var(--blush-deep); transform:rotate(-1deg)}
-header.masthead h1{font-size:clamp(2.5rem,5.5vw,4rem); font-weight:600; letter-spacing:.02em; margin:2px 0}
+header.masthead h1{font-size:clamp(2.5rem,5.5vw,4rem); font-weight:600; letter-spacing:.02em; margin:2px 0; color:var(--denim-dark)}
 
 section{display:none}
-section.active{display:block}
-.section-title{text-align:center; font-size:clamp(2rem,4vw,2.7rem); font-weight:600}
-.section-sub{text-align:center; font-family:var(--hand); font-size:1.4rem; margin:-4px 0 28px; color:var(--slate)}
+section.active{display:block; animation:fadeIn .22s ease}
+@keyframes fadeIn{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}
+
+.section-title{text-align:center; font-size:clamp(2rem,4vw,2.7rem); font-weight:600; color:var(--section-accent)}
+.section-sub{text-align:center; font-family:var(--hand); font-size:1.4rem; margin:-4px 0 26px; color:var(--slate)}
 
 /* ============ 4. EDITORIAL PAPER CARDS ============ */
 .card{
-  background:var(--paper); padding:26px 28px; margin-bottom:26px; position:relative;
-  border-radius:3px; border:1px solid #d5dfe8;
+  background-color:var(--section-paper);
+  background-image:var(--section-pattern);
+  background-size:var(--section-pattern-size);
+  padding:26px 28px; margin-bottom:26px; position:relative;
+  border-radius:3px; border:1px solid var(--section-border);
   box-shadow:0 4px 16px rgba(39,62,87,.07);
-  outline:1px solid var(--frost); outline-offset:-7px;
+  outline:1px solid var(--section-outline); outline-offset:-7px;
+  transition:background-color .25s ease, border-color .25s ease;
 }
 .card.blush{background:#faf0f1; border-color:#e4c5c9; outline-color:#f2dcdf}
 .card.frost{background:#f2f6fa; border-color:#cfdbe6; outline-color:#e3ecf4}
-.meta{font-family:var(--hand); font-size:1.25rem; color:var(--slate)}
-.tag{display:inline-block; font-family:var(--serif); font-size:.85rem; font-weight:600; letter-spacing:.05em; text-transform:uppercase; background:var(--denim-dark); color:var(--paper); padding:2px 10px; border-radius:2px}
+.meta{font-family:var(--hand); font-size:1.25rem; color:var(--slate); display:flex; justify-content:space-between}
+.tag{
+  display:inline-block; font-family:var(--serif); font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
+  background:var(--section-badge-bg); color:var(--section-badge-fg); padding:2px 10px; border-radius:2px;
+}
 
 /* ============ 5. PINTEREST WINTER MOODBOARD COLLAGE ============ */
 .moodboard{
-  display:grid; grid-template-columns:repeat(3, 1fr); gap:20px; margin:26px 0 32px;
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:20px;
+  margin:26px auto 32px; align-items:stretch;
 }
 .scrap-photo{
   background:#fff; padding:9px 9px 14px; margin:0; position:relative;
   border:1px solid #dce4ec; box-shadow:0 5px 15px rgba(39,62,87,.11);
-  transition:transform .2s ease;
+  display:flex; flex-direction:column; transition:transform .2s ease;
 }
-.scrap-photo:nth-child(1){transform:rotate(-1.4deg)}
-.scrap-photo:nth-child(2){transform:rotate(1.1deg); margin-top:8px}
-.scrap-photo:nth-child(3){transform:rotate(-.7deg)}
+.scrap-photo:nth-child(1){transform:rotate(-1.2deg)}
+.scrap-photo:nth-child(2){transform:rotate(1deg)}
+.scrap-photo:nth-child(3){transform:rotate(-.6deg)}
 .scrap-photo:hover{transform:rotate(0) translateY(-3px); z-index:2}
 
-/* Realistic translucent masking tape */
 .scrap-photo::before{
   content:""; position:absolute; top:-11px; left:50%; width:76px; height:22px; margin-left:-38px;
   background:rgba(214, 226, 238, 0.85); transform:rotate(-2deg);
@@ -120,15 +209,14 @@ section.active{display:block}
 }
 .scrap-photo:nth-child(2)::before{background:rgba(238, 214, 216, 0.88); transform:rotate(2.5deg)}
 
-/* Scalloped / stamp photo inner frame */
 .photo-frame{
-  aspect-ratio:4/5; overflow:hidden; position:relative;
+  width:100%; height:240px; overflow:hidden; position:relative;
   background:linear-gradient(135deg, var(--frost), var(--blush));
-  display:grid; place-items:center; text-align:center; padding:12px;
+  display:grid; place-items:center; text-align:center; padding:0;
   border:1px dashed rgba(74,107,140,.35);
 }
-.photo-frame img{width:100%; height:100%; object-fit:cover; display:block}
-.photo-placeholder{font-family:var(--hand); font-size:1.25rem; color:var(--denim-dark); line-height:1.3}
+.photo-frame img{width:100%; height:240px; object-fit:cover; display:block}
+.photo-placeholder{font-family:var(--hand); font-size:1.25rem; color:var(--denim-dark); line-height:1.3; padding:12px}
 .scrap-photo figcaption{padding-top:10px; text-align:center; font-family:var(--hand); font-size:1.25rem; color:var(--slate)}
 
 /* ============ 6. LIVED-IN SCRAPBOOK BITS (STICKY NOTE, INDEX CARD, TICKET) ============ */
@@ -136,7 +224,6 @@ section.active{display:block}
   display:grid; grid-template-columns:1.1fr 1fr; gap:24px; margin-bottom:28px;
 }
 
-/* Sticky Note Widget */
 .sticky-note{
   background:#fdf3f4; padding:22px 24px; position:relative;
   border:1px solid #e6c6ca; box-shadow:3px 5px 14px rgba(39,62,87,.09);
@@ -151,7 +238,6 @@ section.active{display:block}
 .sticky-list li:last-child{border-bottom:none}
 .sticky-list strong{font-family:var(--serif); font-size:1.08rem; color:var(--denim-dark)}
 
-/* Lined Index Card for Latest Notes */
 .index-card{
   background:var(--paper); padding:20px 24px; position:relative;
   border:1px solid #cfdbe6; border-top:14px solid var(--denim);
@@ -165,7 +251,6 @@ section.active{display:block}
 .notes-list a:hover{background:var(--blush)}
 .notes-list span{font-family:var(--hand); font-size:1.15rem; color:var(--slate); white-space:nowrap}
 
-/* Vintage Hockey Ticket Stub & Library Due-Date Card Row */
 .stubs-row{
   display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-bottom:26px;
 }
@@ -190,7 +275,6 @@ section.active{display:block}
 }
 .library-row{display:flex; justify-content:space-between; font-size:.92rem; border-bottom:1px solid #e5dec9; padding:3px 0}
 
-/* Postage Stamp Decoration */
 .postage-stamp{
   float:right; margin:0 0 10px 16px; width:74px; height:86px;
   background:var(--frost); border:3px dotted var(--paper); outline:1px solid var(--denim);
@@ -199,7 +283,116 @@ section.active{display:block}
   transform:rotate(4deg);
 }
 
-/* ============ 7. GRIDS, BOOKS, DIARY & HOCKEY ============ */
-.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:24px}
-.stars{color:var(--blush-deep); font-size:1.15rem; letter-spacing:2px}
+/* ============ 7. SECTION-SPECIFIC PERSONALIZED TWISTS ============ */
+.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:24px}
+.stars{color:var(--section-accent-soft); font-size:1.15rem; letter-spacing:2px; margin-bottom:6px}
 .stars .off{color:#dce3ea}
+
+/* --- Bookshelf: Vintage Romance & Old Paper --- */
+.books-banner{
+  background:var(--section-paper); border:1px solid var(--section-border);
+  outline:1px solid var(--section-outline); outline-offset:-6px;
+  padding:18px 20px 8px; margin-bottom:24px; text-align:center; border-radius:3px;
+}
+.banner-ornament{display:block; color:var(--section-accent-soft); font-size:1.2rem; letter-spacing:6px; margin-bottom:4px}
+.books-banner .section-sub{margin-bottom:12px; color:#8c4a58}
+.book-card{border-left:5px solid #6e2636; box-shadow:4px 6px 16px rgba(110,38,54,.08)}
+.book-card-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
+.ex-libris{font-family:var(--hand); font-size:1.15rem; color:#8c4a58}
+
+/* --- Movies & TV: Old Vintage Cinema Marquee --- */
+.cinema-marquee{
+  background:#7a1c24; color:#fcf6ea; padding:18px 22px 14px; margin-bottom:26px;
+  border:3px double #d4af5a; border-radius:4px; text-align:center;
+  box-shadow:0 6px 18px rgba(122,28,36,.18);
+}
+.marquee-lights{
+  font-family:var(--serif); font-size:.85rem; letter-spacing:.18em; color:#f3d27a; margin-bottom:6px;
+}
+.cinema-marquee .section-title{color:#fcf6ea}
+.cinema-marquee .section-sub{color:#f3d27a; margin-bottom:6px}
+.cinema-card{border:2px double #c59638; outline:1px dashed #d4af5a; outline-offset:-7px}
+.ticket-header{
+  display:flex; justify-content:space-between; align-items:center;
+  border-bottom:1px dashed #c59638; padding-bottom:8px;
+}
+.seat-no{font-family:var(--mono); font-size:.78rem; color:#7a1c24; font-weight:600}
+
+/* --- Baking & Recipes: Cozy Patisserie & Warm Biscuit Tones --- */
+.bakery-header{
+  background:#fbf3e6; border:1px solid #dec3a1; border-radius:4px;
+  outline:1px dashed #c68b59; outline-offset:-6px;
+  padding:20px 22px 10px; margin-bottom:26px; text-align:center;
+}
+.bakery-stamp{
+  display:inline-block; font-family:var(--serif); font-size:.82rem; font-weight:700;
+  letter-spacing:.1em; color:#7c4d2b; background:#f3e3cb;
+  padding:3px 12px; border:1px solid #dec3a1; border-radius:20px; margin-bottom:8px;
+}
+.bakery-header .section-sub{color:#9a6740; margin-bottom:10px}
+.recipe-grid{display:flex; flex-direction:column; gap:24px}
+.recipe-card{border-top:4px solid #c68b59}
+.recipe-top{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px}
+.recipe-badges{display:flex; flex-wrap:wrap; gap:8px}
+.recipe-badges span{
+  font-family:var(--serif); font-size:.88rem; font-weight:600; color:#7c4d2b;
+  background:#f4e6d2; border:1px solid #dec3a1; padding:2px 10px; border-radius:14px;
+}
+.recipe-intro{font-style:italic; color:#5e4636; margin-top:0}
+.recipe-cols{display:grid; grid-template-columns:1fr 1.35fr; gap:22px; margin-top:14px; padding-top:14px; border-top:1px dashed #dec3a1}
+.recipe-ingredients h4, .recipe-method h4{font-size:1.15rem; color:#7c4d2b; text-transform:uppercase; letter-spacing:.05em}
+.recipe-ingredients ul, .recipe-method ol{margin:6px 0 0; padding-left:20px; font-size:.95rem}
+.recipe-ingredients li, .recipe-method li{margin-bottom:5px}
+
+/* --- Engineering: Blueprint Grid & Futuristic Technical HUD --- */
+.eng-hud-header{
+  background:#f3f8fc;
+  background-image:
+    linear-gradient(90deg, rgba(43, 140, 190, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(43, 140, 190, 0.08) 1px, transparent 1px);
+  background-size:18px 18px;
+  border:1px solid #9ebbd4; border-left:5px solid #2b8cbe;
+  padding:16px 22px 10px; margin-bottom:24px; border-radius:3px;
+}
+.hud-status{
+  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  font-family:var(--mono); font-size:.75rem; color:#2b8cbe; letter-spacing:.06em;
+  border-bottom:1px solid #cce0f0; padding-bottom:6px; margin-bottom:10px;
+}
+.eng-hud-header .section-sub{color:#3c6e91; margin-bottom:10px}
+.eng-card{border-left:4px solid #2b8cbe; box-shadow:0 4px 18px rgba(43,140,190,.1)}
+.eng-card-meta{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px}
+.eng-coords{font-family:var(--mono); font-size:.78rem; color:#2b8cbe}
+.eng-specs{
+  display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; padding-top:10px;
+  border-top:1px dashed #9ebbd4; font-family:var(--mono); font-size:.8rem; color:#1b3b5c;
+}
+
+/* --- Ice Hockey: Rink Frost & Scoreboard --- */
+.rink-banner{
+  background:linear-gradient(135deg, #e3f0fb 0%, #f5faff 50%, #dcebfa 100%);
+  border:1px solid #a8c8e4; border-top:4px solid #1d4870; border-bottom:4px solid #c94a5a;
+  padding:18px 20px 10px; margin-bottom:24px; text-align:center; border-radius:4px;
+}
+.rink-faceoff{font-family:var(--serif); font-weight:700; font-size:.9rem; letter-spacing:.12em; color:#1d4870; margin-bottom:4px}
+.rink-banner .section-sub{color:#3b6b96; margin-bottom:10px}
+.hockey-card{border-left:5px solid #1d4870}
+.scoreboard-strip{
+  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;
+  background:#e6f1fb; border:1px solid #b5d1ea; padding:10px 14px; border-radius:4px;
+}
+.scoreboard-teams{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:1.25rem; color:#1d4870}
+.scoreboard-teams strong{background:#1d4870; color:#fff; padding:1px 8px; border-radius:3px; font-family:var(--mono); font-size:1.05rem}
+.vs-pill{font-size:.8rem; font-weight:700; color:#5899cc}
+.rink-clock{font-family:var(--mono); font-size:.82rem; font-weight:600; color:#1d4870}
+
+footer{text-align:center; padding-top:24px; font-family:var(--hand); font-size:1.35rem; color:var(--slate)}
+
+/* ============ 8. RESPONSIVE MOBILE LAYOUT ============ */
+@media (max-width: 860px){
+  .layout{grid-template-columns:1fr; gap:20px; padding:18px 16px 48px}
+  .sidebar{position:static}
+  .side-nav{flex-direction:row; flex-wrap:wrap}
+  .side-nav button, .side-nav a{width:auto; flex:1 1 calc(50% - 8px)}
+  .moodboard, .bits-grid, .stubs-row, .recipe-cols{grid-template-columns:1fr}
+}
