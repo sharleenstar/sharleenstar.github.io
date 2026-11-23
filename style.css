@@ -299,7 +299,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 132px; width:132px; height:102%;
+  flex:0 0 132px; width:132px; height:96%;
 }
 
 .center-book-3d{
