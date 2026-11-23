@@ -1,98 +1,102 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,500&family=Caveat:wght@500;700&family=Lora:wght@400;500&display=swap');
+@import url('https://googleapis.com');
 
-/* ============ 1. COLOURS & FONTS (change these to re-theme everything) ============ */
+/* ============ 1. WINTER BLUE & DUSTY ROSE PALETTE ============ */
 :root{
-  --blush:#f4d3d3;  --blush-deep:#e8aeb4;
-  --cream:#fbf4e6;  --paper:#fffaf0;
-  --denim:#5a7ca3;  --denim-dark:#3d5a80;
-  --sand:#dcc29b;   --sand-dark:#b89868;
-  --ink:#5a4538;
+  --blush:#eed6d8;  --blush-deep:#c98a92;
+  --cream:#f6f8fa;  --paper:#fffdf9;
+  --denim:#4a6b8c;  --denim-dark:#273e57;
+  --frost:#dce6f0;  --slate:#6b7c8f;
+  --ink:#2f3842;
   --serif:'Cormorant Garamond',Georgia,serif;
   --hand:'Caveat','Segoe Script',cursive;
   --body:'Lora',Georgia,serif;
 }
 
-/* ============ 2. PAGE + PAPER TEXTURE ============ */
+/* ============ 2. PAGE + SUBTLE WINTER GINGHAM BACKGROUND ============ */
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0; color:var(--ink); font-family:var(--body); line-height:1.7;
-  background-color:var(--cream);
-  /* paper grain made from an inline SVG noise filter - no image files needed */
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .35 0 0 0 0 .25 0 0 0 .13 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  margin:0; color:var(--ink); font-family:var(--body); line-height:1.75;
+  background-color:#eef3f8;
+  /* Soft winter blue gingham check */
+  background-image:
+    linear-gradient(90deg, rgba(74, 107, 140, 0.08) 50%, transparent 50%),
+    linear-gradient(rgba(74, 107, 140, 0.08) 50%, transparent 50%);
+  background-size: 36px 36px;
 }
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px 60px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 22px 60px}
 h1,h2,h3{font-family:var(--serif);line-height:1.15;margin:0 0 .4em}
-.hand{font-family:var(--hand);font-weight:700;color:var(--denim)}
+.hand{font-family:var(--hand);font-weight:600;color:var(--denim)}
 a{color:var(--denim-dark)}
 
-/* ============ 3. HEADER + NAV TABS ============ */
-header{text-align:center;padding:46px 20px 10px}
-header h1{font-size:clamp(2.4rem,7vw,4.4rem);font-weight:700;color:var(--denim-dark);letter-spacing:.01em}
-header .hand{font-size:1.7rem;display:block;transform:rotate(-2deg);color:var(--blush-deep)}
-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:26px 0 34px}
+/* ============ 3. HEADER + REFINED NAV TABS ============ */
+header{text-align:center;padding:48px 20px 14px}
+header h1{font-size:clamp(2.5rem,6vw,4.2rem);font-weight:600;color:var(--denim-dark);letter-spacing:.02em}
+header .hand{font-size:1.45rem;display:block;transform:rotate(-1deg);color:var(--blush-deep);margin-bottom:4px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:24px 0 36px}
 nav button{
-  font-family:var(--hand);font-size:1.45rem;font-weight:700;cursor:pointer;
-  padding:2px 20px 4px;color:var(--denim-dark);background:var(--paper);
-  border:2px dashed var(--denim);border-radius:14px 14px 4px 4px;
-  transition:transform .15s, background .15s;
+  font-family:var(--serif);font-size:1.15rem;font-weight:600;letter-spacing:.03em;cursor:pointer;
+  padding:6px 18px;color:var(--denim-dark);background:var(--paper);
+  border:1px solid var(--denim);border-radius:4px;
+  box-shadow:0 2px 6px rgba(39,62,87,.06);
+  transition:all .18s ease;
 }
-nav button:nth-child(odd){transform:rotate(-1.5deg)}
-nav button:nth-child(even){transform:rotate(1.2deg)}
-nav button:hover{background:var(--blush)}
-nav button[aria-selected="true"]{background:var(--denim);color:var(--cream);border-style:solid;transform:rotate(0) translateY(2px)}
-nav button:focus-visible{outline:3px solid var(--blush-deep);outline-offset:3px}
+nav button:hover{background:var(--frost);border-color:var(--denim-dark)}
+nav button[aria-selected="true"]{background:var(--denim-dark);color:var(--paper);border-color:var(--denim-dark)}
+nav button:focus-visible{outline:2px solid var(--blush-deep);outline-offset:3px}
 
 /* ============ 4. SECTIONS ============ */
 section{display:none}
 section.active{display:block}
-.section-title{text-align:center;font-size:clamp(2rem,5vw,3rem);color:var(--denim-dark)}
-.section-sub{text-align:center;font-family:var(--hand);font-size:1.5rem;margin:-6px 0 30px;color:var(--sand-dark)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:34px 26px}
+.section-title{text-align:center;font-size:clamp(2rem,4.5vw,2.8rem);font-weight:600;color:var(--denim-dark)}
+.section-sub{text-align:center;font-family:var(--hand);font-size:1.4rem;margin:-4px 0 30px;color:var(--slate)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:30px 24px}
 
-/* ============ 5. PAPER CARD (stitched denim border) ============ */
+/* ============ 5. EDITORIAL PAPER CARD ============ */
 .card{
-  background:var(--paper);padding:22px 24px;margin-bottom:26px;position:relative;
-  border-radius:4px;box-shadow:0 3px 10px rgba(90,69,56,.15);
-  outline:2px dashed var(--denim);outline-offset:-9px;
+  background:var(--paper);padding:26px 28px;margin-bottom:26px;position:relative;
+  border-radius:3px;border:1px solid #d5dfe8;
+  box-shadow:0 4px 16px rgba(39,62,87,.07);
+  outline:1px solid var(--frost);outline-offset:-7px;
 }
-.card.blush{background:var(--blush)}
-.card.sand{background:#f1e3c8}
-.card h3{font-size:1.7rem;color:var(--denim-dark)}
-.meta{font-family:var(--hand);font-size:1.3rem;color:var(--sand-dark);line-height:1.2}
-.tag{display:inline-block;font-family:var(--hand);font-size:1.15rem;background:var(--denim);color:var(--cream);padding:0 12px;border-radius:12px;transform:rotate(-2deg)}
+.card.blush{background:#faf0f1;border-color:#e4c5c9;outline-color:#f2dcdf}
+.card.sand{background:#f2f6fa;border-color:#cfdbe6;outline-color:#e3ecf4}
+.card h3{font-size:1.65rem;font-weight:600;color:var(--denim-dark)}
+.meta{font-family:var(--hand);font-size:1.25rem;color:var(--slate);line-height:1.2}
+.tag{display:inline-block;font-family:var(--serif);font-size:.9rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;background:var(--denim-dark);color:var(--paper);padding:2px 10px;border-radius:2px}
 
-/* ============ 6. TAPED POLAROID ============ */
+/* ============ 6. SUBTLE SCRAPBOOK FRAMES ============ */
 .polaroid{
-  background:#fff;padding:12px 12px 16px;margin:0;position:relative;
-  box-shadow:0 5px 14px rgba(90,69,56,.25);transition:transform .2s;
+  background:#fff;padding:10px 10px 16px;margin:0;position:relative;
+  border:1px solid #e2e8ee;
+  box-shadow:0 4px 14px rgba(39,62,87,.1);transition:transform .2s ease, box-shadow .2s ease;
 }
-.polaroid:nth-child(3n+1){transform:rotate(-2.5deg)}
-.polaroid:nth-child(3n+2){transform:rotate(1.8deg)}
-.polaroid:nth-child(3n){transform:rotate(-.8deg)}
-.polaroid:hover{transform:rotate(0) scale(1.03);z-index:2}
-/* the washi tape strip */
+.polaroid:nth-child(3n+1){transform:rotate(-.8deg)}
+.polaroid:nth-child(3n+2){transform:rotate(.6deg)}
+.polaroid:nth-child(3n){transform:rotate(-.3deg)}
+.polaroid:hover{transform:rotate(0) translateY(-3px);box-shadow:0 8px 20px rgba(39,62,87,.14);z-index:2}
+/* Translucent vellum tape strip */
 .polaroid::before{
-  content:"";position:absolute;top:-13px;left:50%;width:92px;height:26px;margin-left:-46px;
-  transform:rotate(-3deg);opacity:.85;
-  background:repeating-linear-gradient(45deg,var(--blush-deep) 0 8px,var(--blush) 8px 16px);
+  content:"";position:absolute;top:-11px;left:50%;width:78px;height:22px;margin-left:-39px;
+  transform:rotate(-2deg);opacity:.75;
+  background:rgba(214, 226, 238, 0.85);border-left:1px dashed rgba(74,107,140,.3);border-right:1px dashed rgba(74,107,140,.3);
 }
-.polaroid:nth-child(even)::before{background:repeating-linear-gradient(90deg,var(--sand) 0 7px,#efdfc0 7px 14px);transform:rotate(3deg)}
-.photo{aspect-ratio:1/1;background:linear-gradient(135deg,var(--blush),var(--sand));display:grid;place-items:center;font-size:3.4rem;overflow:hidden}
+.polaroid:nth-child(even)::before{background:rgba(238, 214, 216, 0.85);transform:rotate(2deg)}
+.photo{aspect-ratio:4/5;background:linear-gradient(135deg,var(--frost),var(--blush));display:grid;place-items:center;font-size:3rem;overflow:hidden}
 .photo img{width:100%;height:100%;object-fit:cover;display:block}
-.polaroid figcaption{padding-top:10px;text-align:center}
+.polaroid figcaption{padding-top:12px;text-align:center}
 .polaroid .title{font-family:var(--serif);font-weight:700;font-size:1.2rem;line-height:1.2;color:var(--denim-dark)}
-.polaroid .note{font-size:.88rem;line-height:1.45;margin-top:4px}
-.stars{color:var(--blush-deep);font-size:1.25rem;letter-spacing:2px}
-.stars .off{color:#e6dccb}
+.polaroid .note{font-size:.88rem;line-height:1.5;margin-top:4px;color:var(--ink)}
+.stars{color:var(--blush-deep);font-size:1.15rem;letter-spacing:2px}
+.stars .off{color:#dce3ea}
 
 /* ============ 7. HOME ============ */
 .welcome{display:grid;grid-template-columns:240px 1fr;gap:34px;align-items:center;margin-bottom:34px}
-.welcome .polaroid{transform:rotate(-3deg)}
-.chips{display:flex;flex-wrap:wrap;gap:12px;padding:0;margin:0;list-style:none}
-.chips li{font-family:var(--hand);font-size:1.5rem;background:var(--paper);border:2px solid var(--denim);padding:0 16px;border-radius:30px;box-shadow:3px 3px 0 var(--blush-deep)}
-.chips li:nth-child(even){transform:rotate(1.5deg);background:var(--blush)}
-.chips li:nth-child(3n){transform:rotate(-1.5deg);background:#f1e3c8}
+.welcome .polaroid{transform:rotate(-1deg)}
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.chips li{font-family:var(--serif);font-size:1.05rem;font-weight:600;background:var(--paper);border:1px solid var(--denim);color:var(--denim-dark);padding:4px 14px;border-radius:20px}
+.chips li:nth-child(even){background:#faf0f1;border-color:var(--blush-deep)}
+.chips li:nth-child(3n){background:var(--frost);border-color:var(--denim)}
 
 /* ============ 8. DIARY ============ */
 .entry{max-width:700px;margin:0 auto 30px}
@@ -102,33 +106,40 @@ section.active{display:block}
 .game{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline}
 .game .score{font-family:var(--serif);font-weight:700;font-size:1.5rem;color:var(--denim-dark)}
 
-footer{text-align:center;font-family:var(--hand);font-size:1.4rem;color:var(--sand-dark);padding:20px}
+/* ============ 10. FOOTER + PUBLIC VISITOR BADGE ============ */
+footer{text-align:center;font-family:var(--hand);font-size:1.35rem;color:var(--slate);padding:24px 10px}
+.visitor-badge{
+  display:inline-block;margin-top:6px;padding:3px 14px;
+  font-family:var(--serif);font-size:.95rem;font-weight:600;letter-spacing:.04em;
+  color:var(--denim-dark);background:var(--paper);
+  border:1px solid var(--denim);border-radius:3px;
+  box-shadow:0 2px 6px rgba(39,62,87,.08);
+}
 
 @media(max-width:640px){.welcome{grid-template-columns:1fr}.welcome .polaroid{max-width:260px;margin:0 auto}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 
-/* ============ 11. LINKS TO FULL POSTS (used on index.html cards) ============ */
-.post-link{color:inherit;text-decoration:none;background:linear-gradient(var(--blush-deep),var(--blush-deep)) 0 100%/100% 3px no-repeat;transition:background-size .15s}
+/* ============ 11. LINKS TO FULL POSTS ============ */
+.post-link{color:inherit;text-decoration:none;background:linear-gradient(var(--blush-deep),var(--blush-deep)) 0 100%/100% 2px no-repeat;transition:background-size .15s}
 .post-link:hover{background-size:100% 100%}
-.post-link:focus-visible{outline:3px solid var(--blush-deep);outline-offset:3px}
+.post-link:focus-visible{outline:2px solid var(--blush-deep);outline-offset:3px}
 
-/* ============ 12. INDIVIDUAL POST PAGES (post-template.html) ============ */
+/* ============ 12. INDIVIDUAL POST PAGES ============ */
 .back-btn{
-  display:inline-block;margin:26px 0 6px;font-family:var(--hand);font-size:1.5rem;font-weight:700;
-  padding:2px 20px 4px;color:var(--denim-dark);background:var(--paper);text-decoration:none;
-  border:2px dashed var(--denim);border-radius:14px;transform:rotate(-1.5deg);transition:background .15s;
+  display:inline-block;margin:26px 0 6px;font-family:var(--serif);font-size:1.1rem;font-weight:600;
+  padding:5px 16px;color:var(--denim-dark);background:var(--paper);text-decoration:none;
+  border:1px solid var(--denim);border-radius:4px;transition:background .15s;
 }
-.back-btn:hover{background:var(--blush)}
-.back-btn:focus-visible{outline:3px solid var(--blush-deep);outline-offset:3px}
+.back-btn:hover{background:var(--frost)}
+.back-btn:focus-visible{outline:2px solid var(--blush-deep);outline-offset:3px}
 .post{max-width:720px;margin:0 auto}
 .post-head{text-align:center;margin-bottom:34px}
-.post-head h1{font-size:clamp(2.2rem,6vw,3.4rem);color:var(--denim-dark)}
-.post-head .meta{font-size:1.5rem}
-.post .polaroid{max-width:340px;margin:0 auto 38px;transform:rotate(-2deg)}
+.post-head h1{font-size:clamp(2.2rem,5.5vw,3.2rem);color:var(--denim-dark)}
+.post-head .meta{font-size:1.35rem}
+.post .polaroid{max-width:340px;margin:0 auto 38px;transform:rotate(-.8deg)}
 .post .polaroid:hover{transform:rotate(0)}
-.post-body{padding:30px 34px}
-.post-body p{margin:0 0 1.1em}
+.post-body{padding:32px 36px}
+.post-body p{margin:0 0 1.15em}
 .post-body p:last-child{margin-bottom:0}
-.post-body h2{font-size:1.9rem;color:var(--denim-dark);margin-top:1.2em}
+.post-body h2{font-size:1.85rem;color:var(--denim-dark);margin-top:1.2em}
 .post-body img{max-width:100%;height:auto}
-
