@@ -72,21 +72,46 @@
           <figcaption>reading: <strong>Winter Read Title</strong> ↗</figcaption>
         </a>
 
-        <!-- 2. CURRENT LISTENING -> SPOTIFY LINK + SPINNING RECORD PLAYER -->
-        <div class="scrap-photo vinyl-polaroid">
-          <div class="photo-frame vinyl-stage">
-            <div class="turntable" aria-hidden="true">
-              <div class="vinyl-disc is-spinning">
-                <div class="vinyl-label">STAR<br>FM</div>
+        <!-- 2. CURRENT LISTENING -> STANDALONE PINK TURNTABLE + SCROLLING SPOTIFY TICKER -->
+        <div class="record-player-widget" aria-label="Currently listening on Spotify">
+          <div class="rp-deck">
+            <span class="rp-screw rp-tl" aria-hidden="true"></span>
+            <span class="rp-screw rp-tr" aria-hidden="true"></span>
+            <span class="rp-screw rp-bl" aria-hidden="true"></span>
+            <span class="rp-screw rp-br" aria-hidden="true"></span>
+
+            <div class="rp-platter">
+              <div class="rp-vinyl is-spinning" aria-hidden="true">
+                <div class="rp-grooves"></div>
+                <div class="rp-label"><span>STAR<br>SPIN</span></div>
+                <div class="rp-spindle"></div>
               </div>
-              <div class="tonearm"></div>
+            </div>
+
+            <div class="rp-arm-assembly" aria-hidden="true">
+              <div class="rp-arm-base"></div>
+              <div class="rp-arm-bar">
+                <div class="rp-headshell"></div>
+              </div>
+            </div>
+
+            <div class="rp-controls" aria-hidden="true">
+              <span class="rp-knob"></span>
+              <span class="rp-slider"></span>
             </div>
           </div>
-          <figcaption class="vinyl-caption">
-            <span>listening: <strong>Song or Podcast</strong></span>
-            <!-- Replace href="#" with your actual Spotify track or episode link -->
-            <a href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="spotify-pill">open on spotify ↗</a>
-          </figcaption>
+
+          <!-- Replace href with your Spotify song or podcast link & update the scrolling text -->
+          <a href="https://open.spotify.com/track/3PzsbWSQdLCKDLxn7YZfkM?si=d5d9d93483bb4136" target="_blank" rel="noopener noreferrer" class="rp-ticker-bar" title="Open on Spotify">
+            <span class="rp-eq" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="rp-marquee">
+              <span class="rp-marquee-track">
+                <span>♫ Now Playing: I'm On Fire — Bruce Springsteen  •  Spotify</span>
+                <span aria-hidden="true">♫ Now Playing: I'm On Fire — Bruce Springsteen  •  Spotify</span>
+              </span>
+            </span>
+            <span class="rp-link-arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
 
         <!-- 3. CURRENTLY WATCHING -> LINKS TO MOVIES & TV LATEST REVIEW -->

@@ -223,63 +223,195 @@ section.active{display:block; animation:fadeIn .22s ease}
   width:100%; max-width:100%; height:100%; object-fit:cover; display:block;
 }
 
-/* Record player tile */
-.vinyl-stage{
-  background:radial-gradient(circle at 30% 25%, #f9ecee 0%, #e4edf5 100%);
+/* ============ STANDALONE PINK RECORD PLAYER & SPOTIFY TICKER ============ */
+.record-player-widget{
+  display:flex; flex-direction:column; justify-content:space-between;
+  background:#f4c7ce;
+  border:1px solid #dca4ae;
+  border-radius:10px;
+  padding:10px;
+  box-shadow:0 6px 16px rgba(39, 62, 87, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  transform:rotate(0.8deg);
+  transition:transform .2s ease, box-shadow .2s ease;
 }
-.turntable{
-  position:relative; width:132px; height:112px;
-  display:flex; align-items:center; justify-content:flex-start;
+.record-player-widget:hover{
+  transform:rotate(0deg) translateY(-3px);
+  box-shadow:0 10px 22px rgba(39, 62, 87, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.65);
 }
-.vinyl-disc{
-  width:104px; height:104px; border-radius:50%;
-  background:
-    repeating-radial-gradient(circle at center,
-      #232931 0px, #232931 3px,
-      #343d48 4px, #232931 6px);
-  border:2px solid #181c22;
-  box-shadow:0 4px 10px rgba(39, 62, 87, 0.22);
+
+.rp-deck{
+  position:relative;
+  width:100%; aspect-ratio:1 / 1;
+  background:linear-gradient(145deg, #f8d4da 0%, #eebcc5 100%);
+  border:1px solid #dfa8b2;
+  border-radius:8px;
   display:grid; place-items:center;
+  overflow:hidden;
 }
-.vinyl-disc.is-spinning{
-  animation:spinRecord 5.5s linear infinite;
+
+.rp-screw{
+  position:absolute; width:7px; height:7px; border-radius:50%;
+  background:#d89da8; border:1px solid #c58591;
+  box-shadow:inset 0 1px 1px rgba(255,255,255,.6);
 }
-.vinyl-label{
-  width:34px; height:34px; border-radius:50%;
-  background:var(--blush); border:1.5px solid var(--blush-deep);
-  color:var(--denim-dark);
-  font-family:var(--serif); font-size:.62rem; font-weight:700; line-height:1.05;
-  display:grid; place-items:center; text-align:center;
+.rp-tl{top:7px; left:7px}
+.rp-tr{top:7px; right:7px}
+.rp-bl{bottom:7px; left:7px}
+.rp-br{bottom:7px; right:7px}
+
+.rp-platter{
+  width:72%; aspect-ratio:1 / 1;
+  border-radius:50%;
+  background:#e3b3bc;
+  padding:5px;
+  box-shadow:inset 0 2px 6px rgba(60, 28, 36, 0.22);
+  display:grid; place-items:center;
+  margin-right:10%;
 }
-.tonearm{
-  position:absolute; top:10px; right:8px;
-  width:38px; height:5px; border-radius:4px;
-  background:linear-gradient(90deg, #b8c4d0, #7c8e9f);
-  transform:rotate(28deg); transform-origin:right center;
-  box-shadow:0 2px 4px rgba(0,0,0,.18);
+
+.rp-vinyl{
+  position:relative;
+  width:100%; height:100%;
+  border-radius:50%;
+  background:
+    conic-gradient(from 35deg,
+      rgba(255,255,255,.22) 0deg,
+      transparent 45deg,
+      rgba(255,255,255,.14) 140deg,
+      transparent 220deg,
+      rgba(255,255,255,.22) 310deg,
+      transparent 360deg),
+    radial-gradient(circle at center,
+      #d8a1ab 0%, #c88d98 44%,
+      #dfacb5 46%, #c48894 58%,
+      #dca7b1 60%, #bd808c 75%,
+      #d9a2ac 77%, #b87b87 96%,
+      #e6b8c1 100%);
+  display:grid; place-items:center;
+  box-shadow:0 3px 8px rgba(45, 20, 26, 0.25);
 }
-.tonearm::after{
-  content:""; position:absolute; right:-5px; top:-5px;
-  width:14px; height:14px; border-radius:50%;
-  background:var(--denim-dark);
+.rp-vinyl.is-spinning{
+  animation:rpSpin 6s linear infinite;
 }
-@keyframes spinRecord{
+@keyframes rpSpin{
   from{transform:rotate(0deg)}
   to{transform:rotate(360deg)}
 }
 
-.vinyl-caption{
-  display:flex; flex-direction:column; align-items:center; gap:4px;
+.rp-label{
+  width:34%; aspect-ratio:1 / 1;
+  border-radius:50%;
+  background:#d5dce2;
+  border:1px solid #bcc5ce;
+  display:grid; place-items:center; text-align:center;
+  color:#4c5863;
+  font-family:var(--serif); font-size:.62rem; font-weight:700; line-height:1.05;
 }
-.spotify-pill{
-  display:inline-block;
-  font-family:var(--serif); font-size:.86rem; font-weight:700;
-  color:var(--denim-dark); background:var(--blush);
-  border:1px solid var(--blush-deep); border-radius:999px;
-  padding:2px 10px; text-decoration:none;
-  transition:transform .15s ease, filter .15s ease;
+
+.rp-spindle{
+  position:absolute; width:6px; height:6px; border-radius:50%;
+  background:#8f9aa6; border:1px solid #fff;
 }
-.spotify-pill:hover{filter:brightness(.97); transform:translateY(-1px)}
+
+/* Tonearm positioned like a classic pink turntable */
+.rp-arm-assembly{
+  position:absolute; top:11%; right:9%;
+  width:34%; height:68%;
+  pointer-events:none;
+}
+.rp-arm-base{
+  position:absolute; top:0; right:4px;
+  width:24px; height:24px; border-radius:50%;
+  background:#2a2d34; border:2px solid #494e59;
+  box-shadow:0 2px 5px rgba(0,0,0,.25);
+}
+.rp-arm-bar{
+  position:absolute; top:12px; right:14px;
+  width:5px; height:78%;
+  background:linear-gradient(90deg, #d7dde3, #7c8591, #e5ebf0);
+  border-radius:4px;
+  transform:rotate(26deg);
+  transform-origin:top center;
+  box-shadow:1px 2px 4px rgba(0,0,0,.22);
+}
+.rp-headshell{
+  position:absolute; bottom:-4px; left:-4px;
+  width:13px; height:18px;
+  background:#23262c; border-radius:2px;
+  transform:rotate(-18deg);
+  box-shadow:0 2px 4px rgba(0,0,0,.3);
+}
+
+/* Small corner controls */
+.rp-controls{
+  position:absolute; bottom:8px; left:10px;
+  display:flex; align-items:center; gap:8px;
+}
+.rp-knob{
+  width:14px; height:14px; border-radius:50%;
+  background:linear-gradient(135deg, #f3c6ce, #c98f9a);
+  border:1px solid #b57a86;
+}
+.rp-slider{
+  width:22px; height:7px; border-radius:2px;
+  background:#363a42;
+}
+
+/* Scrolling song title bar along the bottom */
+.rp-ticker-bar{
+  margin-top:8px;
+  display:flex; align-items:center; gap:7px;
+  padding:5px 9px;
+  background:var(--paper);
+  border:1px solid #dca4ae;
+  border-radius:6px;
+  text-decoration:none;
+  color:var(--denim-dark);
+  font-family:var(--hand); font-size:1.15rem; line-height:1.1;
+  overflow:hidden;
+  transition:background-color .18s ease, border-color .18s ease;
+}
+.rp-ticker-bar:hover{
+  background:var(--cream);
+  border-color:var(--blush-deep);
+}
+
+.rp-eq{
+  display:inline-flex; align-items:flex-end; gap:2px; height:12px; flex-shrink:0;
+}
+.rp-eq span{
+  width:2.5px; height:100%; border-radius:2px; background:var(--blush-deep);
+  animation:rpEq 0.9s ease-in-out infinite alternate;
+}
+.rp-eq span:nth-child(2){animation-delay:.25s}
+.rp-eq span:nth-child(3){animation-delay:.5s}
+@keyframes rpEq{
+  0%{height:30%}
+  100%{height:100%}
+}
+
+.rp-marquee{
+  position:relative;
+  flex:1; min-width:0;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.rp-marquee-track{
+  display:inline-flex; gap:28px;
+  animation:rpScrollText 11s linear infinite;
+}
+.rp-ticker-bar:hover .rp-marquee-track{
+  animation-play-state:paused;
+}
+@keyframes rpScrollText{
+  0%{transform:translateX(0)}
+  100%{transform:translateX(-50%)}
+}
+
+.rp-link-arrow{
+  flex-shrink:0; font-family:var(--serif); font-size:.9rem; font-weight:700;
+  color:var(--denim);
+}
 
 .current-read-spotlight{
   border-left:5px solid var(--section-accent-soft);
@@ -487,7 +619,7 @@ footer{
     max-width:440px; width:calc(100% - 20px);
     margin:12px auto 36px; padding:16px 14px 40px;
   }
-  .main-content, .card, .moodboard, .scrap-photo, .photo-frame, img{
+  .main-content, .card, .moodboard, .scrap-photo, .record-player-widget, .photo-frame, img{
     max-width:100%;
   }
   .card{padding:18px 16px}
@@ -847,4 +979,29 @@ body[data-mode="dark"] .spotify-pill{
   background:#3b2931;
   color:#fae6ea;
   border-color:#8c5864;
+}
+
+body[data-mode="dark"] .record-player-widget{
+  background:#4d2d37;
+  border-color:#7c4a59;
+  box-shadow:0 8px 20px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 220, 228, 0.16);
+}
+body[data-mode="dark"] .rp-deck{
+  background:linear-gradient(145deg, #5a3540 0%, #42252e 100%);
+  border-color:#7a4857;
+}
+body[data-mode="dark"] .rp-platter{
+  background:#371f27;
+  box-shadow:inset 0 2px 6px rgba(0, 0, 0, 0.45);
+}
+body[data-mode="dark"] .rp-ticker-bar{
+  background:#1c232d;
+  border-color:#7c4a59;
+  color:#f5dce2;
+}
+body[data-mode="dark"] .rp-ticker-bar:hover{
+  background:#252f3d;
+}
+body[data-mode="dark"] .rp-link-arrow{
+  color:#e8b4be;
 }
