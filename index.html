@@ -19,15 +19,16 @@
       <span class="hand">winter edition</span>
     </div>
 
-    <nav class="side-nav" role="tablist">
-      <button role="tab" aria-selected="true" onclick="showTab('home', this)">Home <span>✦</span></button>
-      <button role="tab" aria-selected="false" onclick="showTab('diary', this)">Diary <span>✎</span></button>
-      <button role="tab" aria-selected="false" onclick="showTab('books', this)">Bookshelf <span>♡</span></button>
-      <button role="tab" aria-selected="false" onclick="showTab('screen', this)">Movies &amp; TV <span>▸</span></button>
-      <button role="tab" aria-selected="false" onclick="showTab('baking', this)">Baking &amp; Recipes <span>🥐</span></button>
-      <button role="tab" aria-selected="false" onclick="showTab('engineering', this)">Engineering <span>⚙</span></button>
-      <button role="tab" aria-selected="false" onclick="showTab('hockey', this)">Ice Hockey <span>🏒</span></button>
-    </nav>
+<nav class="side-nav" role="tablist" id="sideNav">
+  <button role="tab" aria-selected="true" onclick="showTab('home', this)">Home <span>✨</span></button>
+  <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" onclick="showTab('diary', this)">Diary <span>✏️</span></button>
+  <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" onclick="showTab('books', this)">Bookshelf <span>📚</span></button>
+  <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" onclick="showTab('screen', this)">Movies &amp; TV <span>🍿</span></button>
+  <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" onclick="showTab('baking', this)">Baking &amp; Recipes <span>🥐</span></button>
+  <button role="tab" aria-selected="false" data-updated="2026-11-21T11:00" onclick="showTab('engineering', this)">Engineering <span>⚙️</span></button>
+  <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" onclick="showTab('hockey', this)">Ice Hockey <span>🏒</span></button>
+</nav>
+
 
   <div class="side-footer">
     <button type="button" class="mode-toggle" id="mode-toggle-btn" onclick="toggleDarkMode()" aria-pressed="false" aria-label="Switch to Dark Mode" title="Switch to Dark Mode">
@@ -409,5 +410,29 @@
     .catch(() => document.getElementById('gc-views').textContent = '1');
 </script>
 <script data-goatcounter="https://sharleenstar.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const nav = document.getElementById("sideNav");
+    const buttons = Array.from(nav.querySelectorAll("button"));
+    
+    // Keep 'Home' pinned at the top
+    const [homeBtn, ...otherBtns] = buttons;
+
+    // Sort remaining buttons from newest timestamp to oldest
+    otherBtns.sort((a, b) => {
+      const timeA = Date.parse(a.dataset.updated) || 0;
+      const timeB = Date.parse(b.dataset.updated) || 0;
+      return timeB - timeA;
+    });
+
+    // Re-append them in the sorted order
+    otherBtns.forEach(btn => nav.appendChild(btn));
+  });
+</script>
+
+
+
+
 </body>
 </html>
