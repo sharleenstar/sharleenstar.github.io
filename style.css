@@ -112,11 +112,11 @@ a{color:var(--section-accent)}
 .layout{
   max-width:1220px; margin:28px auto 54px; padding:32px 32px 54px;
   display:grid; grid-template-columns:235px 1fr; gap:34px; align-items:start;
-  /* Pale blush-cream scrapbook sheet framing all content over the outer gingham */
-  background:linear-gradient(180deg, #fdf7f7 0%, #fbf5f3 100%);
-  border:1px solid #e6cfd3; border-radius:8px;
-  box-shadow:0 12px 34px rgba(39, 62, 87, 0.11);
-  outline:1px solid rgba(255, 253, 249, 0.85); outline-offset:-6px;
+  /* Soft muted dusty-rose & oatmeal mat so white/ivory cards pop without glare */
+  background:linear-gradient(180deg, #efe2e1 0%, #eadbd8 100%);
+  border:1px solid #d5bcc0; border-radius:8px;
+  box-shadow:0 12px 34px rgba(39, 62, 87, 0.13);
+  outline:1px solid rgba(255, 253, 249, 0.65); outline-offset:-6px;
 }
 
 .sidebar{
@@ -162,9 +162,16 @@ a{color:var(--section-accent)}
 
 /* ============ 3. MAIN CONTENT HEADER & SECTIONS ============ */
 .main-content{min-width:0}
-header.masthead{text-align:center; padding:10px 10px 26px}
-header.masthead .hand{font-size:1.45rem; display:block; color:var(--blush-deep); transform:rotate(-1deg)}
+header.masthead{text-align:center; padding:6px 10px 24px}
+header.masthead .hand{font-size:1.45rem; display:block; color:#9e626b; transform:rotate(-1deg); margin-bottom:6px}
 header.masthead h1{font-size:clamp(2.5rem,5.5vw,4rem); font-weight:600; letter-spacing:.02em; margin:2px 0; color:var(--denim-dark)}
+.logo-title{display:flex; justify-content:center; align-items:center; margin:0}
+.site-logo{
+  max-width:min(440px, 88%); height:auto; display:block;
+  filter:drop-shadow(0 3px 8px rgba(39, 62, 87, 0.12));
+  transition:transform .2s ease;
+}
+.site-logo:hover{transform:scale(1.015)}
 
 section{display:none}
 section.active{display:block; animation:fadeIn .22s ease}
