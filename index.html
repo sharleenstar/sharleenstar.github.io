@@ -12,7 +12,7 @@
 <body>
 <header>
   <span class="hand">~ a little corner of the internet ~</span>
-  <h1>Sandy Boots &amp; Slapshots</h1>  <!-- ✏️ CHANGE YOUR BLOG NAME HERE -->
+  <h1>Notes from Star</h1>  <!-- ✏️ CHANGE YOUR BLOG NAME HERE -->
 </header>
 
 <!-- ============ 10. NAVIGATION TABS ============
@@ -31,13 +31,8 @@
 <!-- ============ HOME ============ -->
 <section id="home">
   <div class="welcome">
-    <figure class="polaroid">
-      <!-- 📸 To add your photo: replace the emoji div with <div class="photo"><img src="images/me.jpg" alt="Me"></div> -->
-      <div class="photo">🤠</div>
-      <figcaption><span class="hand" style="font-size:1.6rem">hi, it's me!</span></figcaption>
-    </figure>
     <div class="card blush">
-      <h2>Welcome, y'all 🌊</h2>
+      <h2>Welcome!</h2>
       <!-- ✏️ WRITE YOUR WELCOME MESSAGE -->
       <p>This is my scrapbook of everything I'm into: late-night reads, movies on repeat, diary scribbles, engineering notes between lectures, and way too many hockey opinions. Grab a coffee, kick off your boots, and stay a while.</p>
     </div>
@@ -88,7 +83,7 @@
 
 </main>
 
-<footer>made with love, sunscreen &amp; too much coffee ♡</footer>
+<footer>made with much love ♡</footer>
 
 <script>
 /* =====================================================================
@@ -103,50 +98,40 @@
 
 /* ---- HOME: current obsessions ---- */
 const obsessions = [
-  "iced vanilla lattes", "Fleetwood Mac", "pearl snap shirts",
-  "sunset beach walks", "Taylor Swift Folklore", "thrifted cowboy boots"
+  "diet coke", "dirty dancing", "take me home (4 christmas)"
 ];
 
 /* ---- BOOKSHELF ---- */
 const books = [
-  { title:"Beach Read", author:"Emily Henry", rating:5, status:"Currently reading", note:"Cannot put it down.", img:"", icon:"📖" },
-  { title:"Pride and Prejudice", author:"Jane Austen", rating:5, status:"Finished", note:"Obviously a comfort re-read.", img:"", icon:"💌" },
-  { title:"Your next book", author:"Author name", rating:4, status:"Want to read", note:"Add your thoughts!", img:"", icon:"📚" }
+  { title:"Light Bringer", author:"Pierce Brown", rating:5, status:"Currently reading", note:"Cannot put it down.", img:"", icon:"📖" },
 ];
 
 /* ---- SCREEN TIME: type is "Movie" or "TV" ---- */
 const screenLog = [
-  { title:"Little Women", type:"Movie", date:"2026-11-02", rating:5, note:"Cried. Twice.", img:"", icon:"🎬" },
-  { title:"Heated Rivalry", type:"TV", date:"2026-11-15", rating:5, note:"Hockey AND feelings.", img:"", icon:"📺" },
-  { title:"Mamma Mia!", type:"Movie", date:"2026-10-20", rating:4, note:"Sunday afternoon classic.", img:"", icon:"🌼" }
+  { title:"Yellowjackets", type:"TV", date:"2026-11-02", rating:5, note:"Gagged.", img:"", icon:"🎬" },
+
 ];
 
 /* ---- DIARY: newest sorted to top automatically ---- */
 const diary = [
   { date:"2026-11-20", mood:"🌸", title:"Finally, Friday", link:"diary/my-first-post.html",
-    text:"Handed in my lab report, bought a pastry as a reward, and watched the sunset from the library steps. Small wins count." },
-  { date:"2026-11-10", mood:"☕", title:"Exam season has entered the chat",
-    text:"Colour-coded notes, three highlighters, and a playlist called 'study but make it cinematic'. We are so back." }
+    text:"Handed in my lab report, bought a pastry as a reward, and watched the sunset from the library steps. Small wins count." }
 ];
 
 /* ---- ENGINEERING: uni life & notes ---- */
 const engineering = [
-  { title:"Thermodynamics cheat sheet", tag:"Notes", date:"2026-11-12",
-    text:"First law: energy is conserved. Second law: you'll never get 100% efficiency, and neither will my sleep schedule." },
   { title:"Surviving the lab hours", tag:"Uni life", date:"2026-11-05",
     text:"Bring a cardigan (labs are freezing), snacks, and a friend who understands the circuit diagram." }
 ];
 
 /* ---- ICE HOCKEY: games watched ---- */
 const games = [
-  { date:"2026-11-18", teams:"Bruins vs Canadiens", score:"3 - 2 (OT)", note:"Overtime winner, I screamed." },
-  { date:"2026-11-09", teams:"Rangers vs Devils",   score:"4 - 1",      note:"Dominant third period." }
+  { date:"2026-11-18", teams:"Bruins vs Canadiens", score:"3 - 2 (OT)", note:"Overtime winner, I screamed." }
 ];
 
 /* ---- ICE HOCKEY: team notes ---- */
 const teams = [
-  { team:"Boston Bruins", icon:"🐻", note:"My team. Love the grit, always play with heart." },
-  { team:"Your next team", icon:"🏒", note:"Players to watch, favourite jerseys, hot takes..." }
+  { team:"Boston Bruins", icon:"🐻", note:"My team. Love the grit, always play with heart." }
 ];
 
 /* =====================================================================
