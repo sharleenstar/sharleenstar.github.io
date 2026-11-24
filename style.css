@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap');
 
 /* ============ 1. WINTER BLUE, CREAM & DUSTY ROSE BASE PALETTE ============ */
 :root{
@@ -236,9 +236,12 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 /* ============ 5. HOME "CURRENTLY" SHELF, RECORD PLAYER & RETRO TV ============ */
 .moodboard{
-  display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:22px;
-  max-width:740px;
-  margin:18px auto 28px; align-items:stretch;
+  display:grid;
+  grid-template-columns:minmax(0, 1.16fr) minmax(0, 0.78fr) minmax(0, 1.06fr);
+  gap:20px;
+  max-width:760px;
+  margin:18px auto 28px;
+  align-items:center;
 }
 
 .currently-widget{
@@ -281,7 +284,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 }
 
 .books-row{
-  display:flex; align-items:flex-end; justify-content:center; gap:5px;
+  display:flex; align-items:flex-end; justify-content:center; gap:6px;
   width:100%; height:90%;
   padding:0 2px;
   transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
@@ -293,7 +296,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 }
 
 .spine-book{
-  flex:1 1 18px; min-width:9px; max-width:22px; height:84%;
+  flex:1 1 24px; min-width:11px; max-width:30px; height:84%;
   border-radius:3px 3px 1px 1px;
   display:flex; flex-direction:column; align-items:center; justify-content:space-between;
   padding:5px 1px;
@@ -330,14 +333,14 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 /* Centre book expands wide enough to show the full cover art cleanly on hover */
 .center-book-slot{
   position:relative;
-  flex:0 0 32px; width:32px; height:94%;
+  flex:0 0 40px; width:40px; height:94%;
   perspective:800px;
   z-index:6;
   transition:flex-basis .36s cubic-bezier(.22,.68,.32,1.15), width .36s cubic-bezier(.22,.68,.32,1.15), height .36s cubic-bezier(.22,.68,.32,1.15);
 }
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 134px; width:134px; height:98%;
+  flex:0 0 148px; width:148px; height:98%;
 }
 
 .center-book-3d{
@@ -413,8 +416,11 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 .record-player-widget{
   background:#cfa4aa;
   border:1px solid #b5848c;
-  border-radius:10px;
-  padding:10px;
+  border-radius:9px;
+  padding:7px;
+  width:84%;
+  justify-self:center;
+  align-self:center;
   box-shadow:0 6px 16px rgba(39, 62, 87, 0.12), inset 0 1px 0 rgba(255, 253, 249, 0.45);
 }
 
@@ -550,15 +556,16 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 }
 
 .rp-ticker-bar{
-  margin-top:8px;
-  display:flex; align-items:center; gap:7px;
-  padding:5px 9px;
+  margin-top:6px;
+  display:flex; align-items:center; gap:6px;
+  padding:5px 8px;
   background:var(--paper);
-  border:1px solid #d99aa6;
+  border:1px solid #b5848c;
   border-radius:6px;
   text-decoration:none;
   color:var(--denim-dark);
-  font-family:var(--hand); font-size:1.12rem; line-height:1.1;
+  font-family:'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size:.66rem; font-weight:600; letter-spacing:-0.01em; line-height:1.2;
   overflow:hidden;
   transition:background-color .18s ease, border-color .18s ease;
 }
