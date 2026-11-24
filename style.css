@@ -235,12 +235,19 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 }
 
 /* ============ 5. HOME "CURRENTLY" SHELF, RECORD PLAYER & RETRO TV ============ */
+.moodboard-box{
+  background:var(--paper);
+  border:1px solid #d5dfe8;
+  border-radius:8px;
+  padding:16px 18px 18px;
+  margin:18px auto 28px;
+  box-shadow:0 4px 16px rgba(39, 62, 87, 0.07);
+}
 .moodboard{
   display:grid;
-  grid-template-columns:minmax(0, 1.16fr) minmax(0, 0.78fr) minmax(0, 1.06fr);
-  gap:20px;
-  max-width:760px;
-  margin:18px auto 28px;
+  grid-template-columns:minmax(0, 1.15fr) minmax(0, 0.92fr) minmax(0, 0.92fr);
+  gap:18px;
+  margin:0;
   align-items:center;
 }
 
@@ -275,7 +282,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .shelf-scene{
   position:relative;
-  width:100%; height:100%; min-height:215px;
+  width:100%; height:100%; min-height:225px;
   display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
   background:transparent;
   border:none;
@@ -285,7 +292,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .books-row{
   display:flex; align-items:flex-end; justify-content:center; gap:6px;
-  width:100%; height:90%;
+  width:100%; height:94%;
   padding:0 2px;
   transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
 }
@@ -296,7 +303,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 }
 
 .spine-book{
-  flex:1 1 24px; min-width:11px; max-width:30px; height:84%;
+  flex:1 1 24px; min-width:11px; max-width:30px; height:88%;
   border-radius:3px 3px 1px 1px;
   display:flex; flex-direction:column; align-items:center; justify-content:space-between;
   padding:5px 1px;
@@ -330,17 +337,17 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 .sb-3{height:86%; background:linear-gradient(180deg, #7d2d3e 0%, #581c29 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
 .sb-4{height:78%; background:linear-gradient(180deg, #536f8a 0%, #384e63 100%); border-top:1.5px solid #e6c273; border-bottom:1.5px solid #e6c273}
 
-/* Centre book expands wide enough to show the full cover art cleanly on hover */
+/* Centre book expands tall & wide to match the hand-drawn cover box cleanly */
 .center-book-slot{
   position:relative;
-  flex:0 0 40px; width:40px; height:94%;
+  flex:0 0 42px; width:42px; height:98%;
   perspective:800px;
   z-index:6;
   transition:flex-basis .36s cubic-bezier(.22,.68,.32,1.15), width .36s cubic-bezier(.22,.68,.32,1.15), height .36s cubic-bezier(.22,.68,.32,1.15);
 }
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 148px; width:148px; height:98%;
+  flex:0 0 144px; width:144px; height:102%;
 }
 
 .center-book-3d{
@@ -418,15 +425,14 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
   border:1px solid #b5848c;
   border-radius:9px;
   padding:7px;
-  width:84%;
+  width:92%;
   justify-self:center;
-  align-self:center;
   box-shadow:0 6px 16px rgba(39, 62, 87, 0.12), inset 0 1px 0 rgba(255, 253, 249, 0.45);
 }
 
 .rp-deck{
   position:relative;
-  width:100%; aspect-ratio:1 / 1;
+  width:100%; aspect-ratio:1.14 / 1;
   background:linear-gradient(145deg, #dab3b9 0%, #c4959d 100%);
   border:1px solid #b5848c;
   border-radius:8px;
@@ -610,7 +616,9 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
   border:none;
   outline:none;
   box-shadow:none;
-  padding:14px 2px 2px;
+  padding:12px 2px 2px;
+  width:92%;
+  justify-self:center;
   cursor:pointer;
 }
 
@@ -857,10 +865,14 @@ footer{
   .card{padding:18px 16px}
 
   /* Keep the 3 currently widgets compact & never oversized on narrow screens */
+  .moodboard-box{
+    padding:14px 12px 16px;
+    margin:16px auto 24px;
+  }
   .moodboard{
     grid-template-columns:1fr;
-    max-width:255px;
-    margin:18px auto 26px;
+    max-width:245px;
+    margin:0 auto;
     gap:18px;
   }
 
@@ -1047,6 +1059,12 @@ body[data-mode="dark"] .side-nav{
 body[data-mode="dark"] header.masthead .hand{color:#e2a8b2}
 body[data-mode="dark"] .site-logo{filter:drop-shadow(0 3px 10px rgba(0, 0, 0, 0.45))}
 
+
+body[data-mode="dark"] .moodboard-box{
+  background:#1c232d;
+  border-color:#344354;
+  box-shadow:0 6px 18px rgba(0, 0, 0, 0.35);
+}
 body[data-mode="dark"] .shelf-widget,
 body[data-mode="dark"] .tv-widget,
 body[data-mode="dark"] .shelf-scene{
