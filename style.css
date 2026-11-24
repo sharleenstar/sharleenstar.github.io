@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@600;700&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=JetBrains+Mono:wght@400;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap');
 
 /* ============ 1. WINTER BLUE, CREAM & DUSTY ROSE BASE PALETTE ============ */
 :root{
@@ -26,65 +26,6 @@
 }
 
 /* ============ 1B. COHESIVE SECTION TWISTS ============ */
-body[data-theme="books"]{
-  --section-paper:#f9f1e4;
-  --section-border:#d8b7b2;
-  --section-outline:#ebd8cf;
-  --section-accent:#6e2636;
-  --section-accent-soft:#b85d6f;
-  --section-badge-bg:#6e2636;
-  --section-badge-fg:#fdf6ec;
-  --section-pattern:radial-gradient(rgba(110, 38, 54, 0.05) 1px, transparent 1px);
-  --section-pattern-size:16px 16px;
-}
-
-body[data-theme="screen"]{
-  --section-paper:#fcf6ea;
-  --section-border:#d4af5a;
-  --section-outline:#e8d39c;
-  --section-accent:#7a1c24;
-  --section-accent-soft:#c59638;
-  --section-badge-bg:#7a1c24;
-  --section-badge-fg:#fcf6ea;
-}
-
-body[data-theme="baking"]{
-  --section-paper:#fbf3e6;
-  --section-border:#dec3a1;
-  --section-outline:#efe0ca;
-  --section-accent:#7c4d2b;
-  --section-accent-soft:#c68b59;
-  --section-badge-bg:#7c4d2b;
-  --section-badge-fg:#fffaf2;
-  --section-pattern:radial-gradient(rgba(198, 139, 89, 0.09) 1.2px, transparent 1.2px);
-  --section-pattern-size:20px 20px;
-}
-
-body[data-theme="engineering"]{
-  --section-paper:#f3f8fc;
-  --section-border:#9ebbd4;
-  --section-outline:#cce0f0;
-  --section-accent:#1b3b5c;
-  --section-accent-soft:#2b8cbe;
-  --section-badge-bg:#1b3b5c;
-  --section-badge-fg:#e6f4ff;
-  --section-pattern:
-    linear-gradient(90deg, rgba(43, 140, 190, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(43, 140, 190, 0.08) 1px, transparent 1px);
-  --section-pattern-size:18px 18px;
-}
-
-body[data-theme="hockey"]{
-  --section-paper:#f2f8fd;
-  --section-border:#a8c8e4;
-  --section-outline:#d6e8f7;
-  --section-accent:#1d4870;
-  --section-accent-soft:#5899cc;
-  --section-badge-bg:#1d4870;
-  --section-badge-fg:#f4faff;
-  --section-pattern:linear-gradient(180deg, rgba(168, 200, 228, 0.14) 0%, transparent 100%);
-  --section-pattern-size:100% 100%;
-}
 
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -190,6 +131,103 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .card.blush{background:#faf0f1; border-color:#e4c5c9; outline-color:#f2dcdf}
 .card.frost{background:#f2f6fa; border-color:#cfdbe6; outline-color:#e3ecf4}
+
+/* ---- 4B. WELCOME CARD VINTAGE GLIMMERING CHRISTMAS LIGHTS ---- */
+.welcome-lights-wrap{
+  position:relative;
+  margin-bottom:26px;
+  padding:8px 8px 10px;
+}
+.welcome-lights-wrap .welcome-card{
+  margin-bottom:0;
+  position:relative;
+  z-index:1;
+}
+.christmas-lights-svg{
+  position:absolute;
+  inset:-6px -6px -8px -6px;
+  width:calc(100% + 12px);
+  height:calc(100% + 14px);
+  pointer-events:none;
+  z-index:3;
+  overflow:visible;
+}
+.christmas-lights-svg .light-cord{
+  stroke:#23282e;
+  stroke-width:2.2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.christmas-lights-svg .socket{
+  fill:#2c3239;
+}
+.christmas-lights-svg .bulb{
+  animation:vintageBulbTwinkle var(--dur, 3.2s) ease-in-out var(--d, 0s) infinite;
+}
+.christmas-lights-svg .bulb-amber .glass{
+  fill:#ffcf48;
+  filter:drop-shadow(0 0 5px rgba(255, 198, 52, 0.9)) drop-shadow(0 0 11px rgba(255, 174, 25, 0.65));
+}
+.christmas-lights-svg .bulb-red .glass{
+  fill:#ff3b4e;
+  filter:drop-shadow(0 0 5px rgba(255, 55, 76, 0.9)) drop-shadow(0 0 11px rgba(235, 30, 52, 0.65));
+}
+.christmas-lights-svg .bulb-green .glass{
+  fill:#26d97f;
+  filter:drop-shadow(0 0 5px rgba(38, 217, 127, 0.88)) drop-shadow(0 0 11px rgba(20, 185, 102, 0.6));
+}
+.christmas-lights-svg .bulb-blue .glass{
+  fill:#33a8ff;
+  filter:drop-shadow(0 0 5px rgba(51, 168, 255, 0.9)) drop-shadow(0 0 11px rgba(28, 138, 235, 0.65));
+}
+
+@keyframes vintageBulbTwinkle{
+  0%, 100%{
+    opacity:0.96;
+    filter:brightness(1.05);
+  }
+  22%{
+    opacity:0.62;
+    filter:brightness(0.75);
+  }
+  30%{
+    opacity:1;
+    filter:brightness(1.45);
+  }
+  38%{
+    opacity:0.85;
+    filter:brightness(0.95);
+  }
+  72%{
+    opacity:0.55;
+    filter:brightness(0.7);
+  }
+  79%{
+    opacity:1;
+    filter:brightness(1.5);
+  }
+  86%{
+    opacity:0.9;
+    filter:brightness(1);
+  }
+}
+
+body[data-mode="dark"] .christmas-lights-svg .light-cord{
+  stroke:#12161c;
+}
+body[data-mode="dark"] .christmas-lights-svg .bulb-amber .glass{
+  filter:drop-shadow(0 0 7px rgba(255, 207, 72, 1)) drop-shadow(0 0 16px rgba(255, 174, 25, 0.85));
+}
+body[data-mode="dark"] .christmas-lights-svg .bulb-red .glass{
+  filter:drop-shadow(0 0 7px rgba(255, 59, 78, 1)) drop-shadow(0 0 16px rgba(235, 30, 52, 0.85));
+}
+body[data-mode="dark"] .christmas-lights-svg .bulb-green .glass{
+  filter:drop-shadow(0 0 7px rgba(38, 217, 127, 1)) drop-shadow(0 0 16px rgba(20, 185, 102, 0.8));
+}
+body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
+  filter:drop-shadow(0 0 7px rgba(51, 168, 255, 1)) drop-shadow(0 0 16px rgba(28, 138, 235, 0.85));
+}
+
 .meta{font-family:var(--hand); font-size:1.25rem; color:var(--slate); display:flex; justify-content:space-between}
 .tag{
   display:inline-block; font-family:var(--serif); font-size:.82rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase;
@@ -221,31 +259,30 @@ section.active{display:block; animation:fadeIn .22s ease}
   text-underline-offset:3px;
 }
 
-/* ---- 5A. BOOKSHELF WITH GOLD FOIL SPINES & HOVER FLIP-OUT CURRENT BOOK COVER ---- */
+/* ---- 5A. BORDERLESS BOOKSHELF MATCHING RECORD PLAYER HEIGHT ---- */
 .shelf-widget{
-  background:var(--paper);
-  border:1px solid #d5dfe8;
-  border-radius:8px;
-  padding:12px 10px 10px;
-  box-shadow:0 5px 15px rgba(39, 62, 87, 0.09);
-  outline:1px solid var(--frost); outline-offset:-5px;
+  background:transparent;
+  border:none;
+  outline:none;
+  box-shadow:none;
+  padding:0;
+  cursor:pointer;
 }
 
 .shelf-scene{
   position:relative;
-  width:100%; aspect-ratio:1 / 1;
+  width:100%; height:100%; min-height:245px;
   display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
-  background:linear-gradient(180deg, #f5f8fc 0%, #eaeff5 100%);
-  border:1px dashed rgba(74, 107, 140, 0.28);
-  border-radius:6px;
-  padding:14px 6px 10px;
+  background:transparent;
+  border:none;
+  padding:8px 2px 4px;
   overflow:visible;
 }
 
 .books-row{
-  display:flex; align-items:flex-end; justify-content:center; gap:4px;
-  width:100%; height:78%;
-  padding:0 4px;
+  display:flex; align-items:flex-end; justify-content:center; gap:5px;
+  width:100%; height:90%;
+  padding:0 2px;
   transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
 }
 
@@ -325,7 +362,7 @@ section.active{display:block; animation:fadeIn .22s ease}
 }
 .book-spine-face .spine-title{
   writing-mode:vertical-rl; transform:rotate(180deg);
-  font-family:var(--serif); font-size:.56rem; font-weight:700; letter-spacing:.08em;
+  font-family:var(--serif); font-size:.66rem; font-weight:700; letter-spacing:.08em;
   color:inherit;
 }
 .book-spine-face .foil-band{
@@ -559,14 +596,14 @@ section.active{display:block; animation:fadeIn .22s ease}
   color:var(--denim);
 }
 
-/* ---- 5C. RETRO BOX TV WITH FLICKERING TITLE SCREEN ---- */
+/* ---- 5C. BORDERLESS RETRO BOX TV BUTTON + CINEMA TITLE BELOW ---- */
 .tv-widget{
-  background:var(--paper);
-  border:1px solid #d5dfe8;
-  border-radius:8px;
-  padding:12px 10px 10px;
-  box-shadow:0 5px 15px rgba(39, 62, 87, 0.09);
-  outline:1px solid var(--frost); outline-offset:-5px;
+  background:transparent;
+  border:none;
+  outline:none;
+  box-shadow:none;
+  padding:14px 2px 2px;
+  cursor:pointer;
 }
 
 .retro-tv-body{
@@ -574,11 +611,34 @@ section.active{display:block; animation:fadeIn .22s ease}
   background:linear-gradient(180deg, #b88463 0%, #996749 100%);
   border:2px solid #754b32;
   border-radius:12px;
-  padding:9px 9px 11px;
+  padding:9px 9px 10px;
   display:flex; flex-direction:column; justify-content:space-between; gap:7px;
   position:relative;
-  box-shadow:inset 0 2px 0 rgba(255, 232, 214, 0.35), 0 4px 10px rgba(39, 62, 87, 0.16);
-  margin:auto 0;
+  box-shadow:inset 0 2px 0 rgba(255, 232, 214, 0.35), 0 6px 14px rgba(39, 62, 87, 0.18);
+  margin:0;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.tv-widget:hover .retro-tv-body,
+.tv-widget:focus-visible .retro-tv-body{
+  box-shadow:inset 0 2px 0 rgba(255, 232, 214, 0.45), 0 10px 20px rgba(39, 62, 87, 0.24);
+}
+
+.tv-cinema-title{
+  margin-top:10px;
+  padding:4px 6px;
+  text-align:center;
+  font-family:'Cinzel', var(--serif);
+  font-size:.82rem;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--denim-dark);
+  line-height:1.25;
+  text-shadow:0 1px 0 rgba(255, 253, 249, 0.7);
+}
+body[data-mode="dark"] .tv-cinema-title{
+  color:#f5d78c;
+  text-shadow:0 0 8px rgba(245, 215, 140, 0.35);
 }
 
 .tv-antennas{
@@ -699,11 +759,6 @@ section.active{display:block; animation:fadeIn .22s ease}
   width:14px; height:5px; background:#5e3a24; border-radius:0 0 3px 3px;
 }
 
-.current-read-spotlight{
-  border-left:5px solid var(--section-accent-soft);
-  margin-bottom:24px;
-}
-
 /* ============ 6. LIVED-IN SCRAPBOOK BITS ============ */
 .bits-grid{
   display:grid; grid-template-columns:1.1fr 1fr; gap:24px; margin-bottom:28px;
@@ -768,103 +823,7 @@ section.active{display:block; animation:fadeIn .22s ease}
   transform:rotate(4deg);
 }
 
-/* ============ 7. SECTION-SPECIFIC PERSONALIZED TWISTS ============ */
-.grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:24px}
-.stars{color:var(--section-accent-soft); font-size:1.15rem; letter-spacing:2px; margin-bottom:6px}
-.stars .off{color:#dce3ea}
-
-.books-banner{
-  background:var(--section-paper); border:1px solid var(--section-border);
-  outline:1px solid var(--section-outline); outline-offset:-6px;
-  padding:18px 20px 8px; margin-bottom:24px; text-align:center; border-radius:3px;
-}
-.banner-ornament{display:block; color:var(--section-accent-soft); font-size:1.2rem; letter-spacing:6px; margin-bottom:4px}
-.books-banner .section-sub{margin-bottom:12px; color:#8c4a58}
-.book-card{border-left:5px solid #6e2636; box-shadow:4px 6px 16px rgba(110,38,54,.08)}
-.book-card-top{display:flex; justify-content:space-between; align-items:center; margin-bottom:10px}
-.ex-libris{font-family:var(--hand); font-size:1.15rem; color:#8c4a58}
-
-.cinema-marquee{
-  background:#7a1c24; color:#fcf6ea; padding:18px 22px 14px; margin-bottom:26px;
-  border:3px double #d4af5a; border-radius:4px; text-align:center;
-  box-shadow:0 6px 18px rgba(122,28,36,.18);
-}
-.marquee-lights{
-  font-family:var(--serif); font-size:.85rem; letter-spacing:.18em; color:#f3d27a; margin-bottom:6px;
-}
-.cinema-marquee .section-title{color:#fcf6ea}
-.cinema-marquee .section-sub{color:#f3d27a; margin-bottom:6px}
-.cinema-card{border:2px double #c59638; outline:1px dashed #d4af5a; outline-offset:-7px}
-.ticket-header{
-  display:flex; justify-content:space-between; align-items:center;
-  border-bottom:1px dashed #c59638; padding-bottom:8px;
-}
-.seat-no{font-family:var(--mono); font-size:.78rem; color:#7a1c24; font-weight:600}
-
-.bakery-header{
-  background:#fbf3e6; border:1px solid #dec3a1; border-radius:4px;
-  outline:1px dashed #c68b59; outline-offset:-6px;
-  padding:20px 22px 10px; margin-bottom:26px; text-align:center;
-}
-.bakery-stamp{
-  display:inline-block; font-family:var(--serif); font-size:.82rem; font-weight:700;
-  letter-spacing:.1em; color:#7c4d2b; background:#f3e3cb;
-  padding:3px 12px; border:1px solid #dec3a1; border-radius:20px; margin-bottom:8px;
-}
-.bakery-header .section-sub{color:#9a6740; margin-bottom:10px}
-.recipe-grid{display:flex; flex-direction:column; gap:24px}
-.recipe-card{border-top:4px solid #c68b59}
-.recipe-top{display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px}
-.recipe-badges{display:flex; flex-wrap:wrap; gap:8px}
-.recipe-badges span{
-  font-family:var(--serif); font-size:.88rem; font-weight:600; color:#7c4d2b;
-  background:#f4e6d2; border:1px solid #dec3a1; padding:2px 10px; border-radius:14px;
-}
-.recipe-intro{font-style:italic; color:#5e4636; margin-top:0}
-.recipe-cols{display:grid; grid-template-columns:1fr 1.35fr; gap:22px; margin-top:14px; padding-top:14px; border-top:1px dashed #dec3a1}
-.recipe-ingredients h4, .recipe-method h4{font-size:1.15rem; color:#7c4d2b; text-transform:uppercase; letter-spacing:.05em}
-.recipe-ingredients ul, .recipe-method ol{margin:6px 0 0; padding-left:20px; font-size:.95rem}
-.recipe-ingredients li, .recipe-method li{margin-bottom:5px}
-
-.eng-hud-header{
-  background:#f3f8fc;
-  background-image:
-    linear-gradient(90deg, rgba(43, 140, 190, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(43, 140, 190, 0.08) 1px, transparent 1px);
-  background-size:18px 18px;
-  border:1px solid #9ebbd4; border-left:5px solid #2b8cbe;
-  padding:16px 22px 10px; margin-bottom:24px; border-radius:3px;
-}
-.hud-status{
-  display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
-  font-family:var(--mono); font-size:.75rem; color:#2b8cbe; letter-spacing:.06em;
-  border-bottom:1px solid #cce0f0; padding-bottom:6px; margin-bottom:10px;
-}
-.eng-hud-header .section-sub{color:#3c6e91; margin-bottom:10px}
-.eng-card{border-left:4px solid #2b8cbe; box-shadow:0 4px 18px rgba(43,140,190,.1)}
-.eng-card-meta{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px}
-.eng-coords{font-family:var(--mono); font-size:.78rem; color:#2b8cbe}
-.eng-specs{
-  display:flex; flex-wrap:wrap; gap:14px; margin-top:14px; padding-top:10px;
-  border-top:1px dashed #9ebbd4; font-family:var(--mono); font-size:.8rem; color:#1b3b5c;
-}
-
-.rink-banner{
-  background:linear-gradient(135deg, #e3f0fb 0%, #f5faff 50%, #dcebfa 100%);
-  border:1px solid #a8c8e4; border-top:4px solid #1d4870; border-bottom:4px solid #c94a5a;
-  padding:18px 20px 10px; margin-bottom:24px; text-align:center; border-radius:4px;
-}
-.rink-faceoff{font-family:var(--serif); font-weight:700; font-size:.9rem; letter-spacing:.12em; color:#1d4870; margin-bottom:4px}
-.rink-banner .section-sub{color:#3b6b96; margin-bottom:10px}
-.hockey-card{border-left:5px solid #1d4870}
-.scoreboard-strip{
-  display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:12px;
-  background:#e6f1fb; border:1px solid #b5d1ea; padding:10px 14px; border-radius:4px;
-}
-.scoreboard-teams{display:flex; align-items:center; gap:10px; font-family:var(--serif); font-size:1.25rem; color:#1d4870}
-.scoreboard-teams strong{background:#1d4870; color:#fff; padding:1px 8px; border-radius:3px; font-family:var(--mono); font-size:1.05rem}
-.vs-pill{font-size:.8rem; font-weight:700; color:#5899cc}
-.rink-clock{font-family:var(--mono); font-size:.82rem; font-weight:600; color:#1d4870}
+/* ============ 7. SECTION-SPECIFIC STYLES LOADED PER FOLDER (<section>/section.css) ============ */
 
 footer{
   text-align:center; padding-top:24px;
@@ -962,7 +921,7 @@ footer{
     width:40px; height:40px;
   }
 
-  .bits-grid, .stubs-row, .recipe-cols{grid-template-columns:1fr}
+  .bits-grid, .stubs-row
 }
 
 /* ============ 9. DARK MODE TOGGLE & COZY NIGHT PALETTE ============ */
@@ -1005,60 +964,6 @@ body[data-mode="dark"]{
     linear-gradient(90deg, rgba(114, 152, 191, 0.08) 50%, transparent 50%),
     linear-gradient(rgba(114, 152, 191, 0.08) 50%, transparent 50%);
   background-size:36px 36px;
-}
-
-body[data-mode="dark"][data-theme="books"]{
-  --section-paper:#291f24;
-  --section-border:#5e3c46;
-  --section-outline:#3f2a31;
-  --section-accent:#f0c4cc;
-  --section-accent-soft:#d48394;
-  --section-badge-bg:#5c2432;
-  --section-badge-fg:#fceef1;
-}
-
-body[data-mode="dark"][data-theme="screen"]{
-  --section-paper:#261d22;
-  --section-border:#7d6431;
-  --section-outline:#4a3b22;
-  --section-accent:#f5d78c;
-  --section-accent-soft:#dfb252;
-  --section-badge-bg:#6b1922;
-  --section-badge-fg:#fcf2dc;
-}
-
-body[data-mode="dark"][data-theme="baking"]{
-  --section-paper:#29221c;
-  --section-border:#6e5239;
-  --section-outline:#453425;
-  --section-accent:#edd0b0;
-  --section-accent-soft:#cf9766;
-  --section-badge-bg:#633d22;
-  --section-badge-fg:#fdf3e7;
-}
-
-body[data-mode="dark"][data-theme="engineering"]{
-  --section-paper:#192533;
-  --section-border:#3c6382;
-  --section-outline:#284259;
-  --section-accent:#9fd2f5;
-  --section-accent-soft:#4aa3d8;
-  --section-badge-bg:#214361;
-  --section-badge-fg:#e6f5ff;
-  --section-pattern:
-    linear-gradient(90deg, rgba(74, 163, 216, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(74, 163, 216, 0.08) 1px, transparent 1px);
-  --section-pattern-size:18px 18px;
-}
-
-body[data-mode="dark"][data-theme="hockey"]{
-  --section-paper:#1a2938;
-  --section-border:#466d91;
-  --section-outline:#2c465e;
-  --section-accent:#a8d4f7;
-  --section-accent-soft:#69aee3;
-  --section-badge-bg:#1f486e;
-  --section-badge-fg:#f0f8ff;
 }
 
 body[data-mode="dark"] .layout{
@@ -1135,15 +1040,12 @@ body[data-mode="dark"] header.masthead .hand{color:#e2a8b2}
 body[data-mode="dark"] .site-logo{filter:drop-shadow(0 3px 10px rgba(0, 0, 0, 0.45))}
 
 body[data-mode="dark"] .shelf-widget,
-body[data-mode="dark"] .tv-widget{
-  background:#1c232d;
-  border-color:#344354;
-  outline-color:#293645;
-  box-shadow:0 6px 18px rgba(0, 0, 0, 0.35);
-}
+body[data-mode="dark"] .tv-widget,
 body[data-mode="dark"] .shelf-scene{
-  background:linear-gradient(180deg, #242e3b 0%, #19212b 100%);
-  border-color:#3b4d63;
+  background:transparent;
+  border:none;
+  outline:none;
+  box-shadow:none;
 }
 
 body[data-mode="dark"] .record-player-widget{
@@ -1225,23 +1127,10 @@ body[data-mode="dark"] .recipe-intro{color:#d8c4b0}
 body[data-mode="dark"] .recipe-cols{border-top-color:#4f3b2b}
 body[data-mode="dark"] .recipe-ingredients h4,
 body[data-mode="dark"] .recipe-method h4{color:#f0c79c}
-
-body[data-mode="dark"] .eng-hud-header{
-  background-color:#192533;
-  background-image:
-    linear-gradient(90deg, rgba(110, 186, 235, 0.08) 1px, transparent 1px),
-    linear-gradient(rgba(110, 186, 235, 0.08) 1px, transparent 1px);
-  background-size:18px 18px;
-}
 body[data-mode="dark"] .hud-status,
 body[data-mode="dark"] .eng-coords{color:#7cc2f0}
 body[data-mode="dark"] .eng-hud-header .section-sub{color:#9cc9e6}
 body[data-mode="dark"] .eng-specs{border-top-color:#355673; color:#cbe4f5}
-
-body[data-mode="dark"] .rink-banner{
-  background:linear-gradient(135deg, #1b2f42 0%, #22384d 50%, #192b3d 100%);
-  border-color:#43698c;
-}
 body[data-mode="dark"] .rink-faceoff,
 body[data-mode="dark"] .rink-banner .section-sub,
 body[data-mode="dark"] .rink-clock{color:#b7dbf7}
