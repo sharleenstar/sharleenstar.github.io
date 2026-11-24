@@ -243,7 +243,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
   background:var(--paper);
   border:1px solid #d5dfe8;
   border-radius:8px;
-  padding:18px 22px 20px;
+  padding:26px 28px 28px;
   margin:22px auto 30px;
   box-shadow:0 4px 16px rgba(39, 62, 87, 0.07);
 }
@@ -251,36 +251,37 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
   position:absolute;
   inset:0;
   pointer-events:none;
-  z-index:4;
+  z-index:2;
 }
 .mb-star{
   position:absolute;
-  color:#7cb4e4;
-  font-size:.86rem;
+  color:#8ec2ed;
+  font-size:.76rem;
   line-height:1;
-  text-shadow:0 0 6px rgba(124, 180, 228, 0.55);
   user-select:none;
 }
-/* Top edge stars */
-.s-t1{top:-7px; left:12%}
-.s-t2{top:-7px; left:31%}
-.s-t3{top:-7px; left:50%; transform:translateX(-50%)}
-.s-t4{top:-7px; left:69%}
-.s-t5{top:-7px; left:88%}
-/* Bottom edge stars */
-.s-b1{bottom:-7px; left:12%}
-.s-b2{bottom:-7px; left:31%}
-.s-b3{bottom:-7px; left:50%; transform:translateX(-50%)}
-.s-b4{bottom:-7px; left:69%}
-.s-b5{bottom:-7px; left:88%}
-/* Left vertical edge stars */
-.s-l1{left:-8px; top:18%}
-.s-l2{left:-8px; top:50%; transform:translateY(-50%)}
-.s-l3{left:-8px; bottom:18%}
-/* Right vertical edge stars */
-.s-r1{right:-8px; top:18%}
-.s-r2{right:-8px; top:50%; transform:translateY(-50%)}
-.s-r3{right:-8px; bottom:18%}
+/* Top stars inside the white box */
+.s-t1{top:8px; left:14%}
+.s-t2{top:8px; left:32%}
+.s-t3{top:8px; left:50%; transform:translateX(-50%)}
+.s-t4{top:8px; left:68%}
+.s-t5{top:8px; left:86%}
+/* Bottom stars inside the white box */
+.s-b1{bottom:8px; left:14%}
+.s-b2{bottom:8px; left:32%}
+.s-b3{bottom:8px; left:50%; transform:translateX(-50%)}
+.s-b4{bottom:8px; left:68%}
+.s-b5{bottom:8px; left:86%}
+/* Left vertical side stars inside the white box */
+.s-l1{left:10px; top:16%}
+.s-l2{left:10px; top:39%}
+.s-l3{left:10px; top:62%}
+.s-l4{left:10px; top:84%}
+/* Right vertical side stars inside the white box */
+.s-r1{right:10px; top:16%}
+.s-r2{right:10px; top:39%}
+.s-r3{right:10px; top:62%}
+.s-r4{right:10px; top:84%}
 
 .moodboard{
   display:grid;
@@ -321,17 +322,17 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .shelf-scene{
   position:relative;
-  width:100%; height:100%; min-height:225px;
+  width:100%; height:205px;
   display:flex; flex-direction:column; justify-content:flex-end; align-items:center;
   background:transparent;
   border:none;
-  padding:6px 2px 2px;
+  padding:4px 2px 2px;
   overflow:visible;
 }
 
 .books-row{
   display:flex; align-items:flex-end; justify-content:center; gap:6px;
-  width:100%; height:94%;
+  width:100%; height:186px;
   padding:0 2px;
   transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
 }
@@ -915,7 +916,7 @@ footer{
 
   /* Keep the 3 currently widgets compact & never oversized on narrow screens */
   .moodboard-box{
-    padding:14px 14px 16px;
+    padding:16px 26px 18px;
     margin:18px auto 24px;
   }
   .moodboard{
