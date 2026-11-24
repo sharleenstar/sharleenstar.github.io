@@ -124,30 +124,6 @@
       </div>
 
       <div class="moodboard-box">
-        <div class="moodboard-stars" aria-hidden="true">
-          <!-- Top stars inside the white box (hidden on small screens) -->
-          <span class="mb-star star-top s-t1">★</span>
-          <span class="mb-star star-top s-t2">★</span>
-          <span class="mb-star star-top s-t3">★</span>
-          <span class="mb-star star-top s-t4">★</span>
-          <span class="mb-star star-top s-t5">★</span>
-          <!-- Bottom stars inside the white box (hidden on small screens) -->
-          <span class="mb-star star-bottom s-b1">★</span>
-          <span class="mb-star star-bottom s-b2">★</span>
-          <span class="mb-star star-bottom s-b3">★</span>
-          <span class="mb-star star-bottom s-b4">★</span>
-          <span class="mb-star star-bottom s-b5">★</span>
-          <!-- Left vertical side stars inside the white box (visible on both large & small screens) -->
-          <span class="mb-star star-left s-l1">★</span>
-          <span class="mb-star star-left s-l2">★</span>
-          <span class="mb-star star-left s-l3">★</span>
-          <span class="mb-star star-left s-l4">★</span>
-          <!-- Right vertical side stars inside the white box (visible on both large & small screens) -->
-          <span class="mb-star star-right s-r1">★</span>
-          <span class="mb-star star-right s-r2">★</span>
-          <span class="mb-star star-right s-r3">★</span>
-          <span class="mb-star star-right s-r4">★</span>
-        </div>
       <div class="moodboard">
         <!-- 1. CURRENTLY READING -> BORDERLESS BOOKSHELF MATCHING RECORD PLAYER HEIGHT -->
         <a href="#books" class="currently-widget shelf-widget" onclick="event.preventDefault(); showTabByName('books', 'current-read-card');" aria-label="Currently reading: Winter Read Title">
@@ -167,7 +143,7 @@
               <!-- Centre interactive book that expands & flips out on hover to show cover art -->
               <div class="center-book-slot">
                 <div class="center-book-3d">
-                  <div class="book-spine-face">
+                  <div class="book-spine-face" style="--current-book-spine-color: #8b3648;">
                     <span class="foil-band">✦</span>
                     <span class="spine-title">★ READ</span>
                     <span class="foil-band">✦</span>
@@ -465,7 +441,7 @@
           const darkG = Math.max(0, Math.round(g * 0.72));
           const darkB = Math.max(0, Math.round(b * 0.72));
 
-          spine.style.background = `linear-gradient(180deg, rgb(${r}, ${g}, ${b}) 0%, rgb(${darkR}, ${darkG}, ${darkB}) 100%)`;
+          spine.style.background = `rgb(${r}, ${g}, ${b})`;
           spine.style.borderColor = `rgb(${darkR}, ${darkG}, ${darkB})`;
 
           // Choose crisp light or dark ink for spine text depending on brightness

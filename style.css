@@ -243,45 +243,12 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
   background:var(--paper);
   border:1px solid #d5dfe8;
   border-radius:8px;
-  padding:26px 28px 28px;
+  padding:22px 24px 24px;
   margin:22px auto 30px;
   box-shadow:0 4px 16px rgba(39, 62, 87, 0.07);
+  outline:1.5px dashed #b9cde0;
+  outline-offset:-8px;
 }
-.moodboard-stars{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  z-index:2;
-}
-.mb-star{
-  position:absolute;
-  color:#8ec2ed;
-  font-size:.76rem;
-  line-height:1;
-  user-select:none;
-}
-/* Top stars inside the white box */
-.s-t1{top:8px; left:14%}
-.s-t2{top:8px; left:32%}
-.s-t3{top:8px; left:50%; transform:translateX(-50%)}
-.s-t4{top:8px; left:68%}
-.s-t5{top:8px; left:86%}
-/* Bottom stars inside the white box */
-.s-b1{bottom:8px; left:14%}
-.s-b2{bottom:8px; left:32%}
-.s-b3{bottom:8px; left:50%; transform:translateX(-50%)}
-.s-b4{bottom:8px; left:68%}
-.s-b5{bottom:8px; left:86%}
-/* Left vertical side stars inside the white box */
-.s-l1{left:10px; top:16%}
-.s-l2{left:10px; top:39%}
-.s-l3{left:10px; top:62%}
-.s-l4{left:10px; top:84%}
-/* Right vertical side stars inside the white box */
-.s-r1{right:10px; top:16%}
-.s-r2{right:10px; top:39%}
-.s-r3{right:10px; top:62%}
-.s-r4{right:10px; top:84%}
 
 .moodboard{
   display:grid;
@@ -332,31 +299,24 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .books-row{
   display:flex; align-items:flex-end; justify-content:center; gap:6px;
-  width:100%; height:186px;
-  padding:0 2px;
+  width:94%; height:186px;
+  padding:0 4px;
   transition:gap .34s cubic-bezier(.22,.68,.32,1.15);
 }
 
 .shelf-widget:hover .books-row,
 .shelf-widget:focus-visible .books-row{
-  gap:6px;
+  gap:5px;
 }
 
 .spine-book{
-  flex:1 1 22px; min-width:10px; max-width:26px; height:86%;
+  flex:0 0 23px; width:23px; min-width:23px; max-width:23px; height:86%;
   border-radius:3px 3px 1px 1px;
   display:flex; flex-direction:column; align-items:center; justify-content:space-between;
   padding:5px 1px;
   box-shadow:inset -2px 0 4px rgba(0,0,0,.16), 0 2px 4px rgba(39,62,87,.12);
-  transition:flex-basis .34s cubic-bezier(.22,.68,.32,1.15), max-width .34s cubic-bezier(.22,.68,.32,1.15), min-width .34s cubic-bezier(.22,.68,.32,1.15), transform .28s ease, opacity .25s ease;
+  transition:transform .28s ease;
   overflow:hidden;
-}
-
-/* Side books slim down cleanly so the expanded cover has plenty of width */
-.shelf-widget:hover .spine-book,
-.shelf-widget:focus-visible .spine-book{
-  flex:0 1 8px; min-width:6px; max-width:9px;
-  opacity:.78;
 }
 
 .spine-book .spine-title{
@@ -380,13 +340,13 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 /* Centre book stands tall between side books and expands wide to show full cover on hover */
 .center-book-slot{
   position:relative;
-  flex:0 0 34px; width:34px; height:96%;
+  flex:0 0 32px; width:32px; height:96%;
   z-index:6;
   transition:flex-basis .34s cubic-bezier(.22,.68,.32,1.15), width .34s cubic-bezier(.22,.68,.32,1.15), height .34s cubic-bezier(.22,.68,.32,1.15);
 }
 .shelf-widget:hover .center-book-slot,
 .shelf-widget:focus-visible .center-book-slot{
-  flex:0 0 132px; width:132px; height:102%;
+  flex:0 0 124px; width:124px; height:102%;
 }
 
 .center-book-3d{
@@ -401,8 +361,8 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .book-spine-face{
   position:relative; width:100%; height:100%;
-  background:linear-gradient(180deg, #8b3648 0%, #5c1e2c 100%) !important;
-  border:1px solid #4d1723;
+  background:var(--current-book-spine-color, #8b3648);
+  border:1px solid rgba(0, 0, 0, 0.28);
   border-radius:3px 3px 1px 1px;
   padding:6px 2px;
   display:flex; flex-direction:column; align-items:center; justify-content:space-between;
@@ -909,14 +869,9 @@ footer{
   .christmas-lights-svg-mobile{
     display:block;
   }
-  .moodboard-stars .star-top,
-  .moodboard-stars .star-bottom{
-    display:none;
-  }
-
   /* Keep the 3 currently widgets compact & never oversized on narrow screens */
   .moodboard-box{
-    padding:16px 26px 18px;
+    padding:18px 18px 20px;
     margin:18px auto 24px;
   }
   .moodboard{
@@ -1113,6 +1068,7 @@ body[data-mode="dark"] .site-logo{filter:drop-shadow(0 3px 10px rgba(0, 0, 0, 0.
 body[data-mode="dark"] .moodboard-box{
   background:#1c232d;
   border-color:#344354;
+  outline-color:#4b627a;
   box-shadow:0 6px 18px rgba(0, 0, 0, 0.35);
 }
 body[data-mode="dark"] .shelf-widget,
