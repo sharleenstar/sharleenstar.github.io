@@ -497,27 +497,61 @@
     }
   }
 
-  function showTab(sectionId, btn) {
+  const VALID_SECTIONS = ['home', ...SECTION_FOLDERS];
+
+  function getInitialSection() {
+    const hash = window.location.hash.replace('#', '').trim();
+    if (VALID_SECTIONS.includes(hash)) return hash;
+    try {
+      const saved = sessionStorage.getItem('notes_active_section');
+      if (VALID_SECTIONS.includes(saved)) return saved;
+    } catch (e) {}
+    return 'home';
+  }
+
+  function showTab(sectionId, btn, updateUrl = true) {
+    if (!VALID_SECTIONS.includes(sectionId)) sectionId = 'home';
+
     document.querySelectorAll('main section').forEach(s => s.classList.remove('active'));
     const targetSection = document.getElementById(sectionId);
     if (targetSection) targetSection.classList.add('active');
+
     document.querySelectorAll('.side-nav button').forEach(b => b.setAttribute('aria-selected', 'false'));
-    if (btn) btn.setAttribute('aria-selected', 'true');
+    const activeBtn = btn || Array.from(document.querySelectorAll('.side-nav button'))
+      .find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + sectionId + "'"));
+    if (activeBtn) activeBtn.setAttribute('aria-selected', 'true');
+
     document.body.setAttribute('data-theme', sectionId);
     syncSectionStylesheet(sectionId);
     ensureSectionContent(sectionId);
+
+    try {
+      sessionStorage.setItem('notes_active_section', sectionId);
+    } catch (e) {}
+
+    if (updateUrl && window.history && window.history.replaceState) {
+      const newUrl = sectionId === 'home' ? window.location.pathname + window.location.search : '#' + sectionId;
+      window.history.replaceState(null, '', newUrl);
+    }
   }
 
   function showTabByName(sectionId, targetId) {
-    const btns = Array.from(document.querySelectorAll('.side-nav button'));
-    const match = btns.find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + sectionId + "'"));
-    showTab(sectionId, match);
+    showTab(sectionId, null, true);
     ensureSectionContent(sectionId, targetId);
   }
 
+  window.addEventListener('hashchange', () => {
+    const hash = window.location.hash.replace('#', '').trim();
+    if (VALID_SECTIONS.includes(hash)) {
+      showTab(hash, null, false);
+    } else if (!hash) {
+      showTab('home', null, false);
+    }
+  });
+
   document.addEventListener('DOMContentLoaded', () => {
-    const currentTheme = document.body.getAttribute('data-theme') || 'home';
-    syncSectionStylesheet(currentTheme);
+    const initialSection = getInitialSection();
+    showTab(initialSection, null, true);
   });
 </script>
 
