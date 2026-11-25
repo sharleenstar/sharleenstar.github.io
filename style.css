@@ -104,12 +104,30 @@ header.masthead{text-align:center; padding:6px 10px 24px}
 header.masthead .hand{font-size:1.45rem; display:block; color:#9e626b; transform:rotate(-1deg); margin-bottom:6px}
 header.masthead h1{font-size:clamp(2.5rem,5.5vw,4rem); font-weight:600; letter-spacing:.02em; margin:2px 0; color:var(--denim-dark)}
 .logo-title{display:flex; justify-content:center; align-items:center; margin:0}
-.site-logo{
-  max-width:min(440px, 88%); height:auto; display:block;
-  filter:drop-shadow(0 3px 8px rgba(39, 62, 87, 0.12));
-  transition:transform .2s ease;
+.site-logo {
+  width: min(440px, 88%);
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 3px 8px rgba(39, 62, 87, 0.12));
+  transition: transform 0.2s ease;
 }
-.site-logo:hover{transform:scale(1.015)}
+
+.site-logo:hover {
+  transform: scale(1.015);
+}
+
+/* Default (light mode): show light group, hide dark group */
+.site-logo .logo-variant-dark {
+  display: none;
+}
+
+body[data-mode="dark"] .site-logo .logo-variant-light {
+  display: none;
+}
+
+body[data-mode="dark"] .site-logo .logo-variant-dark {
+  display: inline;
+}
 
 section{display:none}
 section.active{display:block; animation:fadeIn .22s ease}

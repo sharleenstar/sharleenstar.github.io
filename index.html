@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Notes from Star</title>
+  <title>Starry Skies</title>
   <!-- Adaptive Light/Dark Mode SVG Star Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bfill:%235c2432%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23c98a92%7D%7D%3C/style%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css?v=10">
@@ -24,7 +24,7 @@
 
     <nav class="side-nav" role="tablist" id="side-nav-menu">
       <button role="tab" aria-selected="true" onclick="showTab('home', this)"><span class="nav-icon">✨</span><span class="nav-label">Home</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" data-section="diary" data-section-label="Diary" data-latest-title="Welcome to Notes from Star" data-latest-href="diary/first-post.html" onclick="showTab('diary', this)"><span class="nav-icon">✏️</span><span class="nav-label">Diary</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" data-section="diary" data-section-label="Diary" data-latest-title="Welcome to Starry Skies" data-latest-href="diary/first-post.html" onclick="showTab('diary', this)"><span class="nav-icon">✏️</span><span class="nav-label">Diary</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" data-section="books" data-section-label="Books" data-latest-title="Winter reading list &amp; ratings" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" data-section="screen" data-section-label="Movies &amp; TV" data-latest-title="Latest comfort rewatch &amp; cinema notes" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies &amp; TV</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" data-section="baking" data-section-label="Baking" data-latest-title="Sunday patisserie &amp; bakes" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking &amp; Recipes</span></button>
@@ -42,13 +42,32 @@
   <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="setMobileMenuOpen(false)"></div>
 
   <main class="main-content">
-    <header class="masthead">
-      <span class="hand">~ a personal blog ~</span>
-      <h1 class="logo-title">
-        <img id="site-logo-img" src="logo.png" data-light-src="logo.png" data-dark-src="logo-dark.png" alt="Notes from Star" class="site-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-        <span class="logo-fallback" style="display:none;">Notes from Star</span>
-      </h1>
-    </header>
+      <header class="masthead">
+        <span class="hand">~ a personal blog ~</span>
+        <h1 class="logo-title">
+          <svg id="site-logo-svg" class="site-logo" viewBox="0 0 1024 224" role="img" aria-label="Starry Skies">
+            <!-- Light mode (navy script + golden stars) -->
+            <g class="logo-variant logo-variant-light">
+              <g class="logo-letters" fill="#1b2f4a">
+                <!-- Replace or paste your light-mode "Starry Skies" letter paths here -->
+              </g>
+              <g class="logo-stars" fill="#bb9d55">
+                <!-- Replace or paste your light-mode golden star paths here -->
+              </g>
+            </g>
+
+            <!-- Dark mode (soft blush script + golden stars) -->
+            <g class="logo-variant logo-variant-dark">
+              <g class="logo-letters" fill="#aa9491">
+                <!-- Replace or paste your dark-mode "Starry Skies" letter paths here -->
+              </g>
+              <g class="logo-stars" fill="#ba9c54">
+                <!-- Replace or paste your dark-mode golden star paths here -->
+              </g>
+            </g>
+          </svg>
+        </h1>
+      </header>
 
     <!-- ==================== HOME ==================== -->
     <section id="home" class="active">
@@ -262,7 +281,7 @@
       <div class="index-card">
         <h3>Latest Updates</h3>
         <ul class="notes-list" id="latest-updates-list">
-          <li><a href="diary/first-post.html">Welcome to Notes from Star</a> <span>Diary</span></li>
+          <li><a href="diary/first-post.html">Welcome to Starry Skies</a> <span>Diary</span></li>
           <li><a href="#books" onclick="event.preventDefault(); showTabByName('books')">Winter reading list &amp; ratings</a> <span>Books</span></li>
           <li><a href="#screen" onclick="event.preventDefault(); showTabByName('screen')">Latest comfort rewatch &amp; cinema notes</a> <span>Movies &amp; TV</span></li>
           <li><a href="#baking" onclick="event.preventDefault(); showTabByName('baking')">Sunday patisserie &amp; bakes</a> <span>Baking</span></li>
