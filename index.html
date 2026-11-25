@@ -14,6 +14,13 @@
 
 <body data-theme="home" data-mode="light">
 
+<button type="button" class="top-back-btn" id="top-back-btn" onclick="returnToHomePage()" aria-label="Back to main page" title="Back to Home">
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M19 12H5"/>
+    <path d="M12 19l-7-7 7-7"/>
+  </svg>
+</button>
+
 <div class="layout">
   <aside class="sidebar" aria-label="Site Navigation">
     <button type="button" class="mobile-menu-toggle" id="mobile-menu-btn" onclick="toggleMobileMenu()" aria-expanded="false" aria-controls="side-nav-menu" aria-label="Toggle Menu" title="Menu">
@@ -27,11 +34,11 @@
     <nav class="side-nav" role="tablist" id="side-nav-menu">
       <button role="tab" aria-selected="true" onclick="showTab('home', this)"><span class="nav-icon">✨</span><span class="nav-label">Home</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-23T19:48" data-section="diary" data-section-label="Diary" data-latest-title="Welcome to Starry Skies" data-latest-href="diary/first-post.html" onclick="showTab('diary', this)"><span class="nav-icon">✏️</span><span class="nav-label">Diary</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" data-section="books" data-section-label="Books" data-latest-title="Winter reading list &amp; ratings" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" data-section="screen" data-section-label="Movies &amp; TV" data-latest-title="Latest comfort rewatch &amp; cinema notes" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies &amp; TV</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" data-section="baking" data-section-label="Baking" data-latest-title="Sunday patisserie &amp; bakes" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking &amp; Recipes</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T18:15" data-section="books" data-section-label="Books" data-latest-title="Winter reading list & ratings" onclick="showTab('books', this)"><span class="nav-icon">📚</span><span class="nav-label">Bookshelf</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-23T14:30" data-section="screen" data-section-label="Movies & TV" data-latest-title="Latest comfort rewatch & cinema notes" onclick="showTab('screen', this)"><span class="nav-icon">🍿</span><span class="nav-label">Movies & TV</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-22T20:00" data-section="baking" data-section-label="Baking" data-latest-title="Sunday patisserie & bakes" onclick="showTab('baking', this)"><span class="nav-icon">🥐</span><span class="nav-label">Baking & Recipes</span></button>
       <button role="tab" aria-selected="false" data-updated="2026-11-21T11:00" data-section="engineering" data-section-label="Uni" data-latest-title="Surviving final year engineering" onclick="showTab('engineering', this)"><span class="nav-icon">⚙️</span><span class="nav-label">Engineering</span></button>
-      <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" data-section="hockey" data-section-label="Hockey" data-latest-title="Recent puck drop &amp; team thoughts" onclick="showTab('hockey', this)"><span class="nav-icon">🏒</span><span class="nav-label">Ice Hockey</span></button>
+      <button role="tab" aria-selected="false" data-updated="2026-11-20T16:45" data-section="hockey" data-section-label="Hockey" data-latest-title="Recent puck drop & team thoughts" onclick="showTab('hockey', this)"><span class="nav-icon">🏒</span><span class="nav-label">Ice Hockey</span></button>
     </nav>
 
     <div class="side-footer">
@@ -55,12 +62,8 @@
     <!-- ==================== HOME ==================== -->
     <section id="home" class="active">
       <div class="welcome-lights-wrap">
-        <!-- Looped vintage cord & twinkling C9 Christmas bulbs framing the welcome card -->
         <svg class="christmas-lights-svg" viewBox="0 0 820 210" preserveAspectRatio="none" aria-hidden="true">
-          <!-- Neat, thin scalloped wire around the welcome card -->
           <path class="light-cord" d="M 16.0,14.0 C 52.0,24.0 92.0,24.0 128.0,14.0 C 156.0,22.0 196.0,23.0 188.0,13.0 C 180.0,4.0 172.0,23.0 212.0,22.0 C 228.0,18.0 236.0,14.0 240.0,14.0 C 276.0,24.0 316.0,24.0 352.0,14.0 C 380.0,22.0 420.0,23.0 412.0,13.0 C 404.0,4.0 396.0,23.0 436.0,22.0 C 452.0,18.0 460.0,14.0 464.0,14.0 C 500.0,24.0 540.0,24.0 576.0,14.0 C 604.0,22.0 644.0,23.0 636.0,13.0 C 628.0,4.0 620.0,23.0 660.0,22.0 C 676.0,18.0 684.0,14.0 688.0,14.0 C 724.0,24.0 768.0,24.0 804.0,14.0 C 812.0,42.0 812.0,76.0 804.0,104.0 C 812.0,132.0 812.0,168.0 804.0,196.0 C 768.0,206.0 724.0,206.0 688.0,196.0 C 660.0,204.0 620.0,205.0 628.0,195.0 C 636.0,186.0 644.0,205.0 604.0,204.0 C 588.0,200.0 580.0,196.0 576.0,196.0 C 540.0,206.0 500.0,206.0 464.0,196.0 C 436.0,204.0 396.0,205.0 404.0,195.0 C 412.0,186.0 420.0,205.0 380.0,204.0 C 364.0,200.0 356.0,196.0 352.0,196.0 C 316.0,206.0 276.0,206.0 240.0,196.0 C 212.0,204.0 172.0,205.0 180.0,195.0 C 188.0,186.0 196.0,205.0 156.0,204.0 C 140.0,200.0 132.0,196.0 128.0,196.0 C 92.0,206.0 52.0,206.0 16.0,196.0 C 8.0,168.0 8.0,132.0 16.0,104.0 C 8.0,76.0 8.0,42.0 16.0,14.0" fill="none"/>
-
-          <!-- Vintage C9 bulbs seated on the wire: up/down on top & bottom, left/right on left & right -->
           <g class="bulb bulb-amber" style="--d:0.1s; --dur:2.9s" transform="translate(38.0,18.8) rotate(0.0)"><rect x="-2.2" y="-2" width="4.4" height="3.8" rx="1" class="socket"/><path d="M-3.4,1.6 C-3.4,6.8 0,11 0,11 C0,11 3.4,6.8 3.4,1.6 Z" class="glass"/></g>
           <g class="bulb bulb-red" style="--d:0.8s; --dur:3.5s" transform="translate(97.6,20.0) rotate(180.0)"><rect x="-2.2" y="-2" width="4.4" height="3.8" rx="1" class="socket"/><path d="M-3.4,1.6 C-3.4,6.8 0,11 0,11 C0,11 3.4,6.8 3.4,1.6 Z" class="glass"/></g>
           <g class="bulb bulb-green" style="--d:1.5s; --dur:2.7s" transform="translate(159.2,19.7) rotate(0.0)"><rect x="-2.2" y="-2" width="4.4" height="3.8" rx="1" class="socket"/><path d="M-3.4,1.6 C-3.4,6.8 0,11 0,11 C0,11 3.4,6.8 3.4,1.6 Z" class="glass"/></g>
@@ -127,7 +130,6 @@
 
       <div class="moodboard-box">
       <div class="moodboard">
-        <!-- 1. CURRENTLY READING -> BORDERLESS BOOKSHELF MATCHING RECORD PLAYER HEIGHT -->
         <a href="#books" class="currently-widget shelf-widget" onclick="event.preventDefault(); showTabByName('books', 'current-read-card');" aria-label="Currently reading: Winter Read Title">
           <div class="shelf-scene">
             <div class="books-row">
@@ -142,7 +144,6 @@
                 <span class="foil-band">✦</span>
               </div>
 
-              <!-- Centre interactive book that expands & flips out on hover to show cover art -->
               <div class="center-book-slot">
                 <div class="center-book-3d">
                   <div class="book-spine-face" style="--current-book-spine-color: #8b3648;">
@@ -174,7 +175,6 @@
           </div>
         </a>
 
-        <!-- 2. CURRENT LISTENING -> DUSTY ROSE TURNTABLE WITH SPINNING VINYL & ALBUM ART -->
         <div class="currently-widget record-player-widget" aria-label="Currently listening on Spotify">
           <div class="rp-deck">
             <span class="rp-screw rp-tl" aria-hidden="true"></span>
@@ -209,15 +209,14 @@
             <span class="rp-eq" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="rp-marquee">
               <span class="rp-marquee-track">
-                <span>♫ Now Playing: I'm On Fire — Bruce Springsteen &nbsp;•&nbsp; Spotify</span>
-                <span aria-hidden="true">♫ Now Playing: I'm On Fire — Bruce Springsteen &nbsp;•&nbsp; Spotify</span>
+                <span>♫ Now Playing: I'm On Fire — Bruce Springsteen  •  Spotify</span>
+                <span aria-hidden="true">♫ Now Playing: I'm On Fire — Bruce Springsteen  •  Spotify</span>
               </span>
             </span>
             <span class="rp-link-arrow" aria-hidden="true">↗</span>
           </a>
         </div>
 
-        <!-- 3. CURRENTLY WATCHING -> BORDERLESS RETRO TV BUTTON + CINEMA TITLE BELOW -->
         <a href="#screen" class="currently-widget tv-widget" onclick="event.preventDefault(); showTabByName('screen', 'latest-screen-review');" aria-label="Currently watching:">
           <div class="retro-tv-body">
             <div class="tv-antennas" aria-hidden="true">
@@ -227,7 +226,6 @@
             <div class="tv-main-row">
               <div class="tv-screen-bezel">
                 <div class="tv-crt-screen">
-                  <!-- Supports a GIF (e.g. images/watching-screen.gif) or static image (images/watching-screen.jpg) -->
                   <img src="images/watching-screen.gif" data-fallback-img="images/watching-screen.jpg" alt="Current show or movie title screen" onerror="if (this.dataset.fallbackImg && this.src !== this.dataset.fallbackImg) { this.src = this.dataset.fallbackImg; this.dataset.fallbackImg = ''; } else { this.style.display='none'; this.nextElementSibling.style.display='grid'; }">
                   <div class="tv-screen-fallback" style="display:none;">
                     <span>NOW SHOWING<br>★ ★ ★</span>
@@ -265,9 +263,9 @@
         <h3>Latest Updates</h3>
         <ul class="notes-list" id="latest-updates-list">
           <li><a href="diary/first-post.html">Welcome to Starry Skies</a> <span>Diary</span></li>
-          <li><a href="#books" onclick="event.preventDefault(); showTabByName('books')">Winter reading list &amp; ratings</a> <span>Books</span></li>
-          <li><a href="#screen" onclick="event.preventDefault(); showTabByName('screen')">Latest comfort rewatch &amp; cinema notes</a> <span>Movies &amp; TV</span></li>
-          <li><a href="#baking" onclick="event.preventDefault(); showTabByName('baking')">Sunday patisserie &amp; bakes</a> <span>Baking</span></li>
+          <li><a href="#books" onclick="event.preventDefault(); showTabByName('books')">Winter reading list & ratings</a> <span>Books</span></li>
+          <li><a href="#screen" onclick="event.preventDefault(); showTabByName('screen')">Latest comfort rewatch & cinema notes</a> <span>Movies & TV</span></li>
+          <li><a href="#baking" onclick="event.preventDefault(); showTabByName('baking')">Sunday patisserie & bakes</a> <span>Baking</span></li>
         </ul>
       </div>
 
@@ -293,35 +291,12 @@
       </div>
     </section>
 
-    <!-- ==================== DIARY ==================== -->
-    <section id="diary">
-      <!-- Loaded dynamically from diary/section.html -->
-    </section>
-
-    <!-- ==================== BOOKSHELF (OLD PAPER & ROMANCE BURGUNDY/PINK) ==================== -->
-    <section id="books">
-      <!-- Loaded dynamically from books/section.html -->
-    </section>
-
-    <!-- ==================== MOVIES & TV (VINTAGE CINEMA THEATRE) ==================== -->
-    <section id="screen">
-      <!-- Loaded dynamically from screen/section.html -->
-    </section>
-
-    <!-- ==================== BAKING & RECIPES (PATISSERIE & WARM BAKERY) ==================== -->
-    <section id="baking">
-      <!-- Loaded dynamically from baking/section.html -->
-    </section>
-
-    <!-- ==================== ENGINEERING (BLUEPRINT & SLEEK FUTURISTIC LAB) ==================== -->
-    <section id="engineering">
-      <!-- Loaded dynamically from engineering/section.html -->
-    </section>
-
-    <!-- ==================== ICE HOCKEY (RINK FROST & SCOREBOARD) ==================== -->
-    <section id="hockey">
-      <!-- Loaded dynamically from hockey/section.html -->
-    </section>
+    <section id="diary"></section>
+    <section id="books"></section>
+    <section id="screen"></section>
+    <section id="baking"></section>
+    <section id="engineering"></section>
+    <section id="hockey"></section>
 
     <footer>
       <div class="visitor-badge">visitors: <span id="gc-views">...</span></div>
@@ -354,6 +329,11 @@
     }
   }
 
+  function returnToHomePage() {
+    showTab('home', null, true);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
   function applyColorMode(mode) {
     const cleanMode = mode === 'dark' ? 'dark' : 'light';
     document.body.setAttribute('data-mode', cleanMode);
@@ -377,6 +357,25 @@
     applyColorMode(next);
   }
 
+  function goBackToPrevious(fallbackUrl = '#home') {
+    if (document.referrer && document.referrer !== window.location.href) {
+      try {
+        const refUrl = new URL(document.referrer);
+        if (refUrl.origin === window.location.origin && window.history.length > 1) {
+          window.history.back();
+          return;
+        }
+      } catch (e) {}
+    }
+    if (window.history.length > 1) {
+      window.history.back();
+    } else if (fallbackUrl.startsWith('#')) {
+      showTab(fallbackUrl.slice(1), null, true);
+    } else {
+      window.location.href = fallbackUrl;
+    }
+  }
+
   (function initMode() {
     let chosen = null;
     try {
@@ -392,7 +391,6 @@
 </script>
 
 <script>
-  // Sample average/edge color of current-book.jpg so the expandable center book spine matches it
   (function syncCurrentBookSpineColor() {
     const img = document.getElementById('current-book-cover-img');
     const spine = document.querySelector('.book-spine-face');
@@ -410,7 +408,6 @@
         ctx.drawImage(img, 0, 0, size, size);
         const data = ctx.getImageData(0, 0, size, size).data;
 
-        // Sample border/background pixels first, falling back to overall average
         let rSum = 0, gSum = 0, bSum = 0, count = 0;
         for (let y = 0; y < size; y++) {
           for (let x = 0; x < size; x++) {
@@ -446,13 +443,10 @@
           spine.style.background = `rgb(${r}, ${g}, ${b})`;
           spine.style.borderColor = `rgb(${darkR}, ${darkG}, ${darkB})`;
 
-          // Choose crisp light or dark ink for spine text depending on brightness
           const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
           spine.style.color = luminance > 0.62 ? '#273e57' : '#fffdf9';
         }
-      } catch (e) {
-        // Keep CSS fallback gradient if canvas is restricted (e.g., file:// CORS)
-      }
+      } catch (e) {}
     }
 
     if (img.complete) applyColorFromImage();
@@ -486,9 +480,7 @@
           sectionEl.innerHTML = await res.text();
           loadedSectionHtml.add(sectionId);
         }
-      } catch (err) {
-        // Fallback if opened via file:// protocol without a local/static HTTP server
-      }
+      } catch (err) {}
     }
 
     if (targetId) {
@@ -602,20 +594,16 @@
     if (!nav) return;
     const buttons = Array.from(nav.querySelectorAll("button"));
 
-    // Keep 'Home' pinned at the top
     const [homeBtn, ...otherBtns] = buttons;
 
-    // Sort remaining buttons from newest timestamp to oldest
     otherBtns.sort((a, b) => {
       const timeA = Date.parse(a.dataset.updated) || 0;
       const timeB = Date.parse(b.dataset.updated) || 0;
       return timeB - timeA;
     });
 
-    // Re-append them in the sorted order
     otherBtns.forEach(btn => nav.appendChild(btn));
 
-    // Populate "Latest Updates" with the 4 most recently updated sections
     const latestList = document.getElementById("latest-updates-list");
     if (latestList) {
       const topFour = otherBtns.slice(0, 4);
