@@ -327,7 +327,7 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .spine-book .spine-title{
   writing-mode:vertical-rl; transform:rotate(180deg);
-  font-family:var(--mono); font-size:.46rem; font-weight:600; letter-spacing:.06em;
+  font-family:var(--mono); font-size:.56rem; font-weight:600; letter-spacing:.06em;
   color:#f5d88c;
   text-shadow:0 1px 1px rgba(0,0,0,.45);
   white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-height:70%;
@@ -646,18 +646,25 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 }
 
 .tv-cinema-title{
-  margin-top:10px;
+  position:absolute;
+  inset:auto 6px 8px;
+  z-index:2;
+  margin-top:0;
   padding:4px 6px;
   text-align:center;
   font-family:'Cinzel', var(--serif);
-  font-size:.82rem;
+  font-size:.66rem;
   font-weight:700;
   letter-spacing:.14em;
   text-transform:uppercase;
-  color:var(--denim-dark);
-  line-height:1.25;
-  text-shadow:0 1px 0 rgba(255, 253, 249, 0.7);
+  color:#f7edd2;
+  line-height:1.2;
+  pointer-events:none;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.92),
+    0 0 8px rgba(0, 0, 0, 0.75);
 }
+
 body[data-mode="dark"] .tv-cinema-title{
   color:#f5d78c;
   text-shadow:0 0 8px rgba(245, 215, 140, 0.35);
@@ -708,9 +715,11 @@ body[data-mode="dark"] .book-cover-face{
   background:radial-gradient(circle, #2a3e54 0%, #15202b 100%);
   color:#dce8f5; font-family:var(--mono); font-size:.66rem; letter-spacing:.06em; line-height:1.35;
 }
+
 .tv-scanlines{
-  position:absolute; inset:0; pointer-events:none;
+  position:absolute; inset:0; pointer-events:none; z-index:3;
   background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.15' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.22'/%3E%3C/svg%3E"),
     repeating-linear-gradient(
       to bottom,
       rgba(255, 255, 255, 0.06) 0px,
@@ -718,8 +727,9 @@ body[data-mode="dark"] .book-cover-face{
       rgba(0, 0, 0, 0.16) 2px,
       rgba(0, 0, 0, 0.16) 3px
     ),
-    radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.42) 100%);
+    radial-gradient(circle at center, transparent 58%, rgba(0, 0, 0, 0.45) 100%);
 }
+
 @keyframes crtFlicker{
   0%, 100%{opacity:1; filter:brightness(1) contrast(1.03)}
   48%{opacity:.97; filter:brightness(1.04) contrast(1.06)}
