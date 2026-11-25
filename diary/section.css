@@ -26,7 +26,7 @@ body[data-theme="diary"]{
   overflow:hidden;
 }
 
-/* Organic, asymmetrical fine-ink pencil drawings (Golden Retriever, Coastline, Horse) */
+/* Organic, asymmetrical fine-ink pencil drawings (Golden Retriever, Sailboat, Horse) */
 #diary .diary-sketches{
   position:absolute;
   inset:0;
@@ -40,16 +40,17 @@ body[data-theme="diary"]{
 }
 /* Asymmetrical placement floating organically around the margins rather than locked in corners */
 #diary .sketch-retriever{
-  top:155px;
+  top:138px;
   left:-6px;
-  width:205px;
+  width:215px;
   transform:rotate(-2deg);
 }
-#diary .sketch-coast{
-  top:22px;
-  right:18px;
-  width:225px;
-  opacity:0.22;
+#diary .sketch-boat{
+  top:12px;
+  right:14px;
+  width:185px;
+  opacity:0.23;
+  transform:rotate(2deg);
 }
 #diary .sketch-horse{
   bottom:18px;
@@ -469,9 +470,9 @@ body[data-mode="dark"] #diary .read-more-link{
     top:195px;
     opacity:0.18;
   }
-  #diary .sketch-coast{
-    width:160px;
-    opacity:0.16;
+  #diary .sketch-boat{
+    width:130px;
+    opacity:0.17;
   }
   #diary .sketch-horse{
     width:165px;
