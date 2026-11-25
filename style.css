@@ -392,12 +392,13 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
   border-radius:4px;
   overflow:hidden;
   background:#23181b;
-  border:2px solid #fffdf9;
+  border:2px solid var(--denim-dark);
   box-shadow:0 10px 22px rgba(39, 62, 87, 0.28);
   opacity:0;
   pointer-events:none;
   transition:opacity .24s ease;
 }
+
 .shelf-widget:hover .book-spine-face,
 .shelf-widget:focus-visible .book-spine-face{
   opacity:0;
@@ -660,6 +661,10 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 body[data-mode="dark"] .tv-cinema-title{
   color:#f5d78c;
   text-shadow:0 0 8px rgba(245, 215, 140, 0.35);
+}
+
+body[data-mode="dark"] .book-cover-face{
+  border-color:#fffdf9;
 }
 
 .tv-antennas{
