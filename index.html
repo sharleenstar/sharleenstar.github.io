@@ -8,6 +8,8 @@
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cstyle%3Epath%7Bfill:%235c2432%7D@media(prefers-color-scheme:dark)%7Bpath%7Bfill:%23c98a92%7D%7D%3C/style%3E%3Cpath d='M32 10 L37.5 25.5 L54 27 L41 37.5 L45 54 L32 45 L19 54 L23 37.5 L10 27 L26.5 25.5 Z'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="style.css?v=10">
   <link id="section-theme-css" rel="stylesheet" href="">
+  <link rel="preload" as="image" href="logo.png" fetchpriority="high">
+  <link rel="preload" as="image" href="logo-dark.png" fetchpriority="high">
 </head>
 
 <body data-theme="home" data-mode="light">
@@ -42,57 +44,11 @@
   <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="setMobileMenuOpen(false)"></div>
 
   <main class="main-content">
-    <header class="masthead">
+  <header class="masthead">
       <span class="hand">~ a personal blog ~</span>
       <h1 class="logo-title">
-        <svg id="site-logo-svg" class="site-logo" viewBox="0 0 1024 224" role="img" aria-label="Starry Skies">
-          <defs>
-            <!-- 4-point star sparkle template -->
-            <path id="star-4pt" d="M0 -14 C2.5 -4, 4 -2.5, 14 0 C4 2.5, 2.5 4, 0 14 C-2.5 4, -4 2.5, -14 0 C-4 -2.5, -2.5 -4, 0 -14 Z"/>
-          </defs>
-
-          <!-- Light mode variant -->
-          <g class="logo-variant logo-variant-light">
-            <text x="512" y="146" text-anchor="middle" fill="#1b2f4a"
-                  font-family="'Caveat', 'Segoe Script', cursive" font-size="136" font-weight="700" letter-spacing="1">
-              Starry Skies
-            </text>
-            <g fill="#bb9d55">
-              <use href="#star-4pt" transform="translate(36 82) scale(0.75)"/>
-              <use href="#star-4pt" transform="translate(54 148) scale(1.05)"/>
-              <use href="#star-4pt" transform="translate(524 54) scale(1.35)"/>
-              <use href="#star-4pt" transform="translate(562 168) scale(0.65)"/>
-              <use href="#star-4pt" transform="translate(946 44) scale(0.95)"/>
-              <use href="#star-4pt" transform="translate(992 160) scale(0.65)"/>
-              <circle cx="18" cy="102" r="3.5"/>
-              <circle cx="60" cy="44" r="4"/>
-              <circle cx="456" cy="36" r="4.5"/>
-              <circle cx="892" cy="72" r="3.5"/>
-              <circle cx="976" cy="186" r="3.5"/>
-            </g>
-          </g>
-
-          <!-- Dark mode variant -->
-          <g class="logo-variant logo-variant-dark">
-            <text x="512" y="146" text-anchor="middle" fill="#d8b4b8"
-                  font-family="'Caveat', 'Segoe Script', cursive" font-size="136" font-weight="700" letter-spacing="1">
-              Starry Skies
-            </text>
-            <g fill="#ba9c54">
-              <use href="#star-4pt" transform="translate(36 82) scale(0.75)"/>
-              <use href="#star-4pt" transform="translate(54 148) scale(1.05)"/>
-              <use href="#star-4pt" transform="translate(524 54) scale(1.35)"/>
-              <use href="#star-4pt" transform="translate(562 168) scale(0.65)"/>
-              <use href="#star-4pt" transform="translate(946 44) scale(0.95)"/>
-              <use href="#star-4pt" transform="translate(992 160) scale(0.65)"/>
-              <circle cx="18" cy="102" r="3.5"/>
-              <circle cx="60" cy="44" r="4"/>
-              <circle cx="456" cy="36" r="4.5"/>
-              <circle cx="892" cy="72" r="3.5"/>
-              <circle cx="976" cy="186" r="3.5"/>
-            </g>
-          </g>
-        </svg>
+        <img id="site-logo-img" src="logo.png" data-light-src="logo.png" data-dark-src="logo-dark.png" alt="Starry Skies" class="site-logo" decoding="async" fetchpriority="high" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <span class="logo-fallback" style="display:none;">Starry Skies</span>
       </h1>
     </header>
 
@@ -381,7 +337,21 @@
   const SUN_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.2M12 19.3v2.2M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2.5 12h2.2M19.3 12h2.2M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/></svg>`;
 
   function syncLogoWithMode(mode) {
-    document.body.setAttribute('data-mode', mode === 'dark' ? 'dark' : 'light');
+    const logoImg = document.getElementById('site-logo-img');
+    if (!logoImg) return;
+    const isPostSubpage = window.location.pathname.includes('/diary/') ||
+      (logoImg.getAttribute('data-light-src') || '').startsWith('../');
+    const prefix = isPostSubpage ? '../' : '';
+    const targetSrc = mode === 'dark'
+      ? (logoImg.getAttribute('data-dark-src') || `${prefix}logo-dark.png`)
+      : (logoImg.getAttribute('data-light-src') || `${prefix}logo.png`);
+    if (logoImg.getAttribute('src') !== targetSrc) {
+      logoImg.setAttribute('src', targetSrc);
+    }
+    logoImg.style.display = '';
+    if (logoImg.nextElementSibling) {
+      logoImg.nextElementSibling.style.display = 'none';
+    }
   }
 
   function applyColorMode(mode) {

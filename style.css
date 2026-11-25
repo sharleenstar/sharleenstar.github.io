@@ -105,7 +105,8 @@ header.masthead .hand{font-size:1.45rem; display:block; color:#9e626b; transform
 header.masthead h1{font-size:clamp(2.5rem,5.5vw,4rem); font-weight:600; letter-spacing:.02em; margin:2px 0; color:var(--denim-dark)}
 .logo-title{display:flex; justify-content:center; align-items:center; margin:0}
 .site-logo {
-  width: min(440px, 88%);
+  width: min(580px, 94%);
+  max-width: 100%;
   height: auto;
   display: block;
   filter: drop-shadow(0 3px 8px rgba(39, 62, 87, 0.12));
@@ -114,18 +115,6 @@ header.masthead h1{font-size:clamp(2.5rem,5.5vw,4rem); font-weight:600; letter-s
 
 .site-logo:hover {
   transform: scale(1.015);
-}
-
-.site-logo .logo-variant-dark {
-  display: none;
-}
-
-body[data-mode="dark"] .site-logo .logo-variant-light {
-  display: none;
-}
-
-body[data-mode="dark"] .site-logo .logo-variant-dark {
-  display: inline;
 }
 
 section{display:none}
