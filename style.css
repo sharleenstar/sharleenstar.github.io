@@ -647,7 +647,10 @@ body[data-mode="dark"] .christmas-lights-svg .bulb-blue .glass{
 
 .tv-cinema-title{
   position:absolute;
-  inset:auto 6px 8px;
+  top:50%;
+  left:6px;
+  right:6px;
+  transform:translateY(-50%);
   z-index:2;
   margin-top:0;
   padding:4px 6px;
