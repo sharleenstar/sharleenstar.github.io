@@ -42,32 +42,59 @@
   <div class="mobile-menu-backdrop" id="mobile-menu-backdrop" onclick="setMobileMenuOpen(false)"></div>
 
   <main class="main-content">
-      <header class="masthead">
-        <span class="hand">~ a personal blog ~</span>
-        <h1 class="logo-title">
-          <svg id="site-logo-svg" class="site-logo" viewBox="0 0 1024 224" role="img" aria-label="Starry Skies">
-            <!-- Light mode (navy script + golden stars) -->
-            <g class="logo-variant logo-variant-light">
-              <g class="logo-letters" fill="#1b2f4a">
-                <!-- Replace or paste your light-mode "Starry Skies" letter paths here -->
-              </g>
-              <g class="logo-stars" fill="#bb9d55">
-                <!-- Replace or paste your light-mode golden star paths here -->
-              </g>
-            </g>
+    <header class="masthead">
+      <span class="hand">~ a personal blog ~</span>
+      <h1 class="logo-title">
+        <svg id="site-logo-svg" class="site-logo" viewBox="0 0 1024 224" role="img" aria-label="Starry Skies">
+          <defs>
+            <!-- 4-point star sparkle template -->
+            <path id="star-4pt" d="M0 -14 C2.5 -4, 4 -2.5, 14 0 C4 2.5, 2.5 4, 0 14 C-2.5 4, -4 2.5, -14 0 C-4 -2.5, -2.5 -4, 0 -14 Z"/>
+          </defs>
 
-            <!-- Dark mode (soft blush script + golden stars) -->
-            <g class="logo-variant logo-variant-dark">
-              <g class="logo-letters" fill="#aa9491">
-                <!-- Replace or paste your dark-mode "Starry Skies" letter paths here -->
-              </g>
-              <g class="logo-stars" fill="#ba9c54">
-                <!-- Replace or paste your dark-mode golden star paths here -->
-              </g>
+          <!-- Light mode variant -->
+          <g class="logo-variant logo-variant-light">
+            <text x="512" y="146" text-anchor="middle" fill="#1b2f4a"
+                  font-family="'Caveat', 'Segoe Script', cursive" font-size="136" font-weight="700" letter-spacing="1">
+              Starry Skies
+            </text>
+            <g fill="#bb9d55">
+              <use href="#star-4pt" transform="translate(36 82) scale(0.75)"/>
+              <use href="#star-4pt" transform="translate(54 148) scale(1.05)"/>
+              <use href="#star-4pt" transform="translate(524 54) scale(1.35)"/>
+              <use href="#star-4pt" transform="translate(562 168) scale(0.65)"/>
+              <use href="#star-4pt" transform="translate(946 44) scale(0.95)"/>
+              <use href="#star-4pt" transform="translate(992 160) scale(0.65)"/>
+              <circle cx="18" cy="102" r="3.5"/>
+              <circle cx="60" cy="44" r="4"/>
+              <circle cx="456" cy="36" r="4.5"/>
+              <circle cx="892" cy="72" r="3.5"/>
+              <circle cx="976" cy="186" r="3.5"/>
             </g>
-          </svg>
-        </h1>
-      </header>
+          </g>
+
+          <!-- Dark mode variant -->
+          <g class="logo-variant logo-variant-dark">
+            <text x="512" y="146" text-anchor="middle" fill="#d8b4b8"
+                  font-family="'Caveat', 'Segoe Script', cursive" font-size="136" font-weight="700" letter-spacing="1">
+              Starry Skies
+            </text>
+            <g fill="#ba9c54">
+              <use href="#star-4pt" transform="translate(36 82) scale(0.75)"/>
+              <use href="#star-4pt" transform="translate(54 148) scale(1.05)"/>
+              <use href="#star-4pt" transform="translate(524 54) scale(1.35)"/>
+              <use href="#star-4pt" transform="translate(562 168) scale(0.65)"/>
+              <use href="#star-4pt" transform="translate(946 44) scale(0.95)"/>
+              <use href="#star-4pt" transform="translate(992 160) scale(0.65)"/>
+              <circle cx="18" cy="102" r="3.5"/>
+              <circle cx="60" cy="44" r="4"/>
+              <circle cx="456" cy="36" r="4.5"/>
+              <circle cx="892" cy="72" r="3.5"/>
+              <circle cx="976" cy="186" r="3.5"/>
+            </g>
+          </g>
+        </svg>
+      </h1>
+    </header>
 
     <!-- ==================== HOME ==================== -->
     <section id="home" class="active">
@@ -354,21 +381,7 @@
   const SUN_SVG = `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2.5v2.2M12 19.3v2.2M4.93 4.93l1.56 1.56M17.51 17.51l1.56 1.56M2.5 12h2.2M19.3 12h2.2M4.93 19.07l1.56-1.56M17.51 6.49l1.56-1.56"/></svg>`;
 
   function syncLogoWithMode(mode) {
-    const logoImg = document.getElementById('site-logo-img');
-    if (!logoImg) return;
-    const isPostSubpage = window.location.pathname.includes('/diary/') ||
-      (logoImg.getAttribute('data-light-src') || '').startsWith('../');
-    const prefix = isPostSubpage ? '../' : '';
-    const targetSrc = mode === 'dark'
-      ? (logoImg.getAttribute('data-dark-src') || `${prefix}logo-dark.png`)
-      : (logoImg.getAttribute('data-light-src') || `${prefix}logo.png`);
-    if (logoImg.getAttribute('src') !== targetSrc) {
-      logoImg.setAttribute('src', targetSrc);
-    }
-    logoImg.style.display = '';
-    if (logoImg.nextElementSibling) {
-      logoImg.nextElementSibling.style.display = 'none';
-    }
+    document.body.setAttribute('data-mode', mode === 'dark' ? 'dark' : 'light');
   }
 
   function applyColorMode(mode) {
